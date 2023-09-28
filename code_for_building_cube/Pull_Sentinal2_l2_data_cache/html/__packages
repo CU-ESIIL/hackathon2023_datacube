@@ -18,3 +18,5 @@ tidyr
 ggtern
 geosphere
 lubridate
+cowplot
+magick
