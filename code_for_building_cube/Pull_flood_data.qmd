@@ -54,40 +54,46 @@ flood_point_data <- glue("/vsicurl/https://floodobservatory.colorado.edu/temp/Fl
  vect() |>
   as.data.frame() |>
   st_as_sf(coords = c("long","lat")) |>  
-  mutate(Began = as.POSIXct(strptime(Began, format="%Y/%m/%d")) )
- #class(x$Began)
+  mutate(Began = as.POSIXct(strptime(Began, format="%Y/%m/%d"))) |>  
+  mutate(Ended = as.POSIXct(strptime(Ended, format="%Y/%m/%d"))) |>  
+  mutate(Validation = as.factor(Validation))|>  
+  mutate(MainCause = as.factor(MainCause))|>  
+  mutate(log_dead = log10(Dead))|>  
+  mutate(log_displaced = log10(Displaced))
+
+flood_point_data
 ```
 
 ```{r plot_flood_point_severity}
 ggplot(data=flood_point_data, aes(color=Severity)) +
-  geom_sf(cex=0.1)
+  geom_sf(cex=0.01)
 ```
 
 ```{r plot_flood_point_MainCause}
-ggplot(data=flood_point_data, aes(color=MainCause))  +geom_sf(cex=0.1)
+ggplot(data=flood_point_data, aes(color=MainCause))  +geom_sf(cex=0.01)
 ```
 
 ```{r plot_flood_point_displaced}
-ggplot(data=flood_point_data, aes(color=Displaced))  +geom_sf(cex=0.1)
+ggplot(data=flood_point_data, aes(color=log_displaced))  +geom_sf(cex=0.01)
 ```
 
 ```{r plot_flood_point_Dead}
-ggplot(data=flood_point_data, aes(color=Dead))  +geom_sf(cex=0.1)
+ggplot(data=flood_point_data, aes(color=log_dead))  +geom_sf(cex=0.01)
 ```
 
 
 ```{r plot_flood_point_Validation}
-ggplot(data=flood_point_data, aes(color=Validation))  +geom_sf(cex=0.1)
+ggplot(data=flood_point_data, aes(color=Validation))  +geom_sf(cex=0.01)
 ```
 
 
 ```{r plot_flood_point_Ended}
-ggplot(data=flood_point_data, aes(color=Began))  +geom_sf(cex=0.1)
+ggplot(data=flood_point_data, aes(color=Ended))  +geom_sf(cex=0.01)
 ```
 
 
 ```{r plot_flood_point_Area}
 ggplot(data=flood_point_data, aes(color=Area))  +
-  geom_sf(cex=0.1) 
+  geom_sf(cex=0.01) 
 ```
 

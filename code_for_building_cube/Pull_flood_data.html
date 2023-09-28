@@ -200,49 +200,96 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">vect</span>() <span class="sc">|&gt;</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"long"</span>,<span class="st">"lat"</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Began =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(Began, <span class="at">format=</span><span class="st">"%Y/%m/%d"</span>)) )</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a> <span class="co">#class(x$Began)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Began =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(Began, <span class="at">format=</span><span class="st">"%Y/%m/%d"</span>))) <span class="sc">|&gt;</span>  </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Ended =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(Ended, <span class="at">format=</span><span class="st">"%Y/%m/%d"</span>))) <span class="sc">|&gt;</span>  </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Validation =</span> <span class="fu">as.factor</span>(Validation))<span class="sc">|&gt;</span>  </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MainCause =</span> <span class="fu">as.factor</span>(MainCause))<span class="sc">|&gt;</span>  </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_dead =</span> <span class="fu">log10</span>(Dead))<span class="sc">|&gt;</span>  </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_displaced =</span> <span class="fu">log10</span>(Displaced))</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>flood_point_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 5130 features and 14 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -173.454 ymin: -52.9076 xmax: 179.651 ymax: 68.1591
+CRS:           NA
+First 10 features:
+   ID GlideNumber         Country OtherCountry      Area      Began      Ended
+1   1           0         Algeria            0  92615.67 1985-01-01 1985-01-05
+2   2           0          Brazil            0 678498.82 1985-01-15 1985-02-02
+3   3           0     Phillipines            0  12846.03 1985-01-20 1985-01-21
+4   4           0       Indonesia            0  16542.12 1985-02-04 1985-02-18
+5   5           0      Mozambique            0  20082.21 1985-02-09 1985-02-11
+6   6           0 Comoros islands            0   1035.61 1985-02-16 1985-02-28
+7   7           0     New Zealand            0   7871.37 1985-02-17 1985-02-18
+8   8           0       Indonesia            0  77091.11 1985-02-19 1985-02-23
+9   9           0             USA            0 210527.96 1985-02-22 1985-03-01
+10 10           0         Bolivia            0  69706.89 1985-02-25 1985-02-28
+   Validation Dead Displaced         MainCause Severity
+1        News   26      3000        Heavy rain        1
+2        News  229     80000        Heavy rain        2
+3        News   43       444   Torrential rain        1
+4        News   21       300   Torrential rain        1
+5        News   19         0        Heavy rain        2
+6        News    2     35000  Tropical cyclone        1
+7        News    4       200        Heavy rain        1
+8        News   10      2000        Heavy rain        1
+9        News    7      2250 Rain and snowmelt        2
+10       News    2      1000        Heavy Rain        1
+                    geometry log_dead log_displaced
+1    POINT (5.23026 35.8142) 1.414973      3.477121
+2  POINT (-45.3489 -18.7111) 2.359835      4.903090
+3    POINT (122.974 10.0207) 1.633468      2.647383
+4    POINT (124.606 1.01489) 1.322219      2.477121
+5   POINT (32.3491 -25.8693) 1.278754          -Inf
+6     POINT (43.36 -11.6516) 0.301030      4.544068
+7   POINT (175.734 -37.2305) 0.602060      2.301030
+8    POINT (108.14 -7.04008) 1.000000      3.301030
+9   POINT (-85.1742 40.6691) 0.845098      3.352183
+10 POINT (-63.2887 -21.2244) 0.301030      3.000000</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Severity)) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Severity)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Pull_flood_data_files/figure-html/plot_flood_point_severity-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>MainCause))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>MainCause))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Pull_flood_data_files/figure-html/plot_flood_point_MainCause-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Displaced))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>log_displaced))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Pull_flood_data_files/figure-html/plot_flood_point_displaced-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Dead))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>log_dead))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Dead-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Validation))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Validation))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Validation-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Began))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Ended))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Ended-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Area))  <span class="sc">+</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Area))  <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Area-1.png" class="img-fluid" width="672"></p>
 </div>
