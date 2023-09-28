@@ -1,0 +1,93 @@
+---
+title: "Pull flood data"
+format:
+  html:
+    theme: default
+    toc: true
+    number-sections: true
+---
+
+[Global Active Archive of Large Flood Events, 1985-Present](https://floodobservatory.colorado.edu/Archives/index.html)
+
+Housed at the Dartmouth Flood Observatory (DFO) and maintained by the University of Colorado, the Global Active Archive of Large Flood Events is a comprehensive repository that records significant flood events from 1985 to the present day. This dynamic and "active" archive continually incorporates data from contemporary flood events, ensuring the information remains current and relevant.
+
+Key Features:
+
+
+* Diverse Data Sources: The information within the archive is meticulously collated from a wide array of sources, including news reports, governmental agencies, instrumental measurements, and satellite remote sensing.
+
+* Granular Event Details: Each recorded flood event within the archive is distinct, and its associated details are presented in an "area affected" map. Despite the discrete nature of these records, it's acknowledged that certain regions experience recurrent flooding, which may necessitate a nuanced approach in classifying such events.
+
+* Comprehensive Coverage: The archive boasts a global purview, capturing the magnitude and impact of significant flood events worldwide. It's noteworthy that while death and displacement estimates from tropical storms encompass all causative factors, storms devoid of notable river flooding aren't incorporated.
+
+* Accessible Formats: The archive is versatile in its presentation:
+  + An online table enumerates recent flood events.
+  + Detailed records from 1985 onwards are accessible in both Excel (.xlsx and .xml) formats. These are periodically updated.
+  + GIS users can tap into zip-compressed MapInfo and Shp format files that elucidate flood catalog numbers, centroids, and other salient attribute details.
+
+* Satellite Imaging: A considerable number of flood events have been vividly captured through satellite imaging. These have been further processed by the DFO to generate detailed maps delineating inundation extents. An index of these maps is accessible via the DFO Flood Maps Index.
+  + For those interested in understanding the methodology behind the creation of these invaluable maps and tables, additional notes and insights are available within the archive.
+
+The Global Active Archive, given its academic and research-oriented nature, is generously made available at no charge for scholarly pursuits and educational endeavors.
+
+Sample Citation:
+G.R. Brakenridge. Global Active Archive of Large Flood Events. Dartmouth Flood Observatory, University of Colorado, USA.
+
+[Flood data file types available for download](/Users/ty/Documents/Github/hackathon2023_datacube/code_for_building_cube/file_types_for_flood_data.png)
+
+[Here is arial imagery for some floods](https://floodobservatory.colorado.edu/FloodMapIndex.htm)
+
+# Load Libraries
+```{r load_libraries}
+library(glue)
+library(sf)
+library(readxl)
+library(terra)
+library(ggplot2)
+```
+
+
+# Connect to api
+https://floodobservatory.colorado.edu/temp/
+```{r pull_flood_points}
+flood_csv <- glue("/vsicurl/https://floodobservatory.colorado.edu/temp/FloodArchive.xlsx") |>
+ vect() |>
+  as.data.frame() |>
+  st_as_sf(coords = c("long","lat")) 
+   
+flood_csv
+```
+
+```{r plot_flood_point_severity}
+ggplot(data=flood_csv, aes(color=Severity)) +
+  geom_sf(cex=0.1)
+```
+
+```{r plot_flood_point_MainCause}
+ggplot(data=flood_csv, aes(color=MainCause))  +geom_sf(cex=0.1)
+```
+
+```{r plot_flood_point_displaced}
+ggplot(data=flood_csv, aes(color=Displaced))  +geom_sf(cex=0.1)
+```
+
+```{r plot_flood_point_Dead}
+ggplot(data=flood_csv, aes(color=Dead))  +geom_sf(cex=0.1)
+```
+
+
+```{r plot_flood_point_Validation}
+ggplot(data=flood_csv, aes(color=Validation))  +geom_sf(cex=0.1)
+```
+
+
+```{r plot_flood_point_Ended}
+ggplot(data=flood_csv, aes(color=Ended))  +geom_sf(cex=0.1)
+```
+
+
+```{r plot_flood_point_Area}
+ggplot(data=flood_csv, aes(color=Area))  +
+  geom_sf(cex=0.1) 
+```
+

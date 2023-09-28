@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Pull flood data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Pull_flood_data_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Pull_flood_data_files/libs/quarto-html/quarto.js"></script>
+<script src="Pull_flood_data_files/libs/quarto-html/popper.min.js"></script>
+<script src="Pull_flood_data_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Pull_flood_data_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Pull_flood_data_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Pull_flood_data_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Pull_flood_data_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Pull_flood_data_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Pull_flood_data_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link active" data-scroll-target="#load-libraries"> <span class="header-section-number">1</span> Load Libraries</a></li>
+  <li><a href="#connect-to-api" id="toc-connect-to-api" class="nav-link" data-scroll-target="#connect-to-api"> <span class="header-section-number">2</span> Connect to api</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Pull flood data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p><a href="https://floodobservatory.colorado.edu/Archives/index.html">Global Active Archive of Large Flood Events, 1985-Present</a></p>
+<p>Housed at the Dartmouth Flood Observatory (DFO) and maintained by the University of Colorado, the Global Active Archive of Large Flood Events is a comprehensive repository that records significant flood events from 1985 to the present day. This dynamic and “active” archive continually incorporates data from contemporary flood events, ensuring the information remains current and relevant.</p>
+<p>Key Features:</p>
+<ul>
+<li><p>Diverse Data Sources: The information within the archive is meticulously collated from a wide array of sources, including news reports, governmental agencies, instrumental measurements, and satellite remote sensing.</p></li>
+<li><p>Granular Event Details: Each recorded flood event within the archive is distinct, and its associated details are presented in an “area affected” map. Despite the discrete nature of these records, it’s acknowledged that certain regions experience recurrent flooding, which may necessitate a nuanced approach in classifying such events.</p></li>
+<li><p>Comprehensive Coverage: The archive boasts a global purview, capturing the magnitude and impact of significant flood events worldwide. It’s noteworthy that while death and displacement estimates from tropical storms encompass all causative factors, storms devoid of notable river flooding aren’t incorporated.</p></li>
+<li><p>Accessible Formats: The archive is versatile in its presentation:</p>
+<ul>
+<li>An online table enumerates recent flood events.</li>
+<li>Detailed records from 1985 onwards are accessible in both Excel (.xlsx and .xml) formats. These are periodically updated.</li>
+<li>GIS users can tap into zip-compressed MapInfo and Shp format files that elucidate flood catalog numbers, centroids, and other salient attribute details.</li>
+</ul></li>
+<li><p>Satellite Imaging: A considerable number of flood events have been vividly captured through satellite imaging. These have been further processed by the DFO to generate detailed maps delineating inundation extents. An index of these maps is accessible via the DFO Flood Maps Index.</p>
+<ul>
+<li>For those interested in understanding the methodology behind the creation of these invaluable maps and tables, additional notes and insights are available within the archive.</li>
+</ul></li>
+</ul>
+<p>The Global Active Archive, given its academic and research-oriented nature, is generously made available at no charge for scholarly pursuits and educational endeavors.</p>
+<p>Sample Citation: G.R. Brakenridge. Global Active Archive of Large Flood Events. Dartmouth Flood Observatory, University of Colorado, USA.</p>
+<p><a href="/Users/ty/Documents/Github/hackathon2023_datacube/code_for_building_cube/file_types_for_flood_data.png">Flood data file types available for download</a></p>
+<p><a href="https://floodobservatory.colorado.edu/FloodMapIndex.htm">Here is arial imagery for some floods</a></p>
+<section id="load-libraries" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Load Libraries</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>terra 1.7.39</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'terra'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:glue':
+
+    trim</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="connect-to-api" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Connect to api</h1>
+<p>https://floodobservatory.colorado.edu/temp/</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>flood_csv <span class="ot">&lt;-</span> <span class="fu">glue</span>(<span class="st">"/vsicurl/https://floodobservatory.colorado.edu/temp/FloodArchive.xlsx"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">vect</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"long"</span>,<span class="st">"lat"</span>)) </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>flood_csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 5130 features and 12 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -173.454 ymin: -52.9076 xmax: 179.651 ymax: 68.1591
+CRS:           NA
+First 10 features:
+   ID GlideNumber         Country OtherCountry      Area      Began      Ended
+1   1           0         Algeria            0  92615.67 1985/01/01 1985/01/05
+2   2           0          Brazil            0 678498.82 1985/01/15 1985/02/02
+3   3           0     Phillipines            0  12846.03 1985/01/20 1985/01/21
+4   4           0       Indonesia            0  16542.12 1985/02/04 1985/02/18
+5   5           0      Mozambique            0  20082.21 1985/02/09 1985/02/11
+6   6           0 Comoros islands            0   1035.61 1985/02/16 1985/02/28
+7   7           0     New Zealand            0   7871.37 1985/02/17 1985/02/18
+8   8           0       Indonesia            0  77091.11 1985/02/19 1985/02/23
+9   9           0             USA            0 210527.96 1985/02/22 1985/03/01
+10 10           0         Bolivia            0  69706.89 1985/02/25 1985/02/28
+   Validation Dead Displaced         MainCause Severity
+1        News   26      3000        Heavy rain        1
+2        News  229     80000        Heavy rain        2
+3        News   43       444   Torrential rain        1
+4        News   21       300   Torrential rain        1
+5        News   19         0        Heavy rain        2
+6        News    2     35000  Tropical cyclone        1
+7        News    4       200        Heavy rain        1
+8        News   10      2000        Heavy rain        1
+9        News    7      2250 Rain and snowmelt        2
+10       News    2      1000        Heavy Rain        1
+                    geometry
+1    POINT (5.23026 35.8142)
+2  POINT (-45.3489 -18.7111)
+3    POINT (122.974 10.0207)
+4    POINT (124.606 1.01489)
+5   POINT (32.3491 -25.8693)
+6     POINT (43.36 -11.6516)
+7   POINT (175.734 -37.2305)
+8    POINT (108.14 -7.04008)
+9   POINT (-85.1742 40.6691)
+10 POINT (-63.2887 -21.2244)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_csv, <span class="fu">aes</span>(<span class="at">color=</span>Severity)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_severity-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_csv, <span class="fu">aes</span>(<span class="at">color=</span>MainCause))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_MainCause-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_csv, <span class="fu">aes</span>(<span class="at">color=</span>Displaced))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_displaced-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_csv, <span class="fu">aes</span>(<span class="at">color=</span>Dead))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Dead-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_csv, <span class="fu">aes</span>(<span class="at">color=</span>Validation))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Validation-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_csv, <span class="fu">aes</span>(<span class="at">color=</span>Ended))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Ended-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_csv, <span class="fu">aes</span>(<span class="at">color=</span>Area))  <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Area-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

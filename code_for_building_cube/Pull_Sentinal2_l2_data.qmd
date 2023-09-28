@@ -1,5 +1,5 @@
 ---
-title: "Pull_sentinal2_l2_data"
+title: "Pulling Sentinal 2 data"
 format:
   html:
     theme: default
@@ -7,17 +7,16 @@ format:
     number-sections: true
 ---
 
-
-# Run these Java options before anything else. 
+# Set Java Options
+ 
 ```{r java_configuration}
+# Run these Java options before anything else.
 options(java.parameters = "-Xmx64G")
 options(timeout = max(600, getOption("timeout")))
 
 ```
 
-
-
-#R libraries and global setting.
+# R libraries and global setting.
 ```{r load_libraries, cache=TRUE, message=FALSE, warning=FALSE}
 
 #library(Rcpp)
@@ -46,13 +45,12 @@ sf::sf_extSoftVersion()
 gdalcubes_gdal_has_geos()
 ```
 
+# Start timer
 ```{r timer_start}
 start <- Sys.time()
 ```
 
-
-
-
+# Set color palette
 ```{r color_settings, cache=TRUE, warning=FALSE, message=FALSE}
 library(ggtern)
 our_yellow <- rgb2hex(r = 253, g = 201, b = 51)
@@ -62,124 +60,196 @@ our_white <- rgb2hex(r = 255, g = 255, b = 255)
 
 ```
 
+# Load area of interest
 ```{r load_aoi_polygon, cache=TRUE, warning=FALSE, message=FALSE}
-aoi_total <- st_read("/Users/ty/Documents/Github/Southern_California_Edison_Fire_Risk/SCE_Fire_Zone_V2/SCE_Fire_Zone_V2.shp") |> 
-  st_as_sf() 
+# Read the shapefile into an sf object
+aoi_total <- st_read("/Users/ty/Documents/Github/Southern_California_Edison_Fire_Risk/SCE_Fire_Zone_V2/SCE_Fire_Zone_V2.shp") %>% 
+  st_as_sf()
+
+# Plot the entire spatial dataset
 plot(aoi_total)
 
-aoi <- aoi_total |>
+# Filter the dataset to obtain the geometry with OBJECTID 5
+aoi <- aoi_total %>%
   filter(OBJECTID == 5)
+
+# Obtain and plot the bounding box of the filtered geometry
 shape_bbox <- st_bbox(aoi)
 plot(aoi)
 
-aoi |> st_transform("EPSG:4326") |>
+# Transform the filtered geometry to EPSG:4326 and store its bounding box
+aoi %>% st_transform("EPSG:4326") %>%
   st_bbox() -> bbox_4326
 
-aoi |> st_transform("EPSG:32618") |>
+# Transform the filtered geometry to EPSG:32618 and store its bounding box
+aoi %>% st_transform("EPSG:32618") %>%
   st_bbox() -> bbox_32618
 
 ```
 
-#not finding band 10 for some reason...?
+# Arrange STAC collection 
+In this code chunk, the primary goal is to search for and obtain satellite imagery data. The data source being tapped into is a SpatioTemporal Asset Catalog (STAC) provided by an online service (earth-search by Element84). Here's a breakdown:
+
+A connection is established with the STAC service, searching specifically within the "sentinel-s2-l2a-cogs" collection.
+-The search is spatially constrained to a bounding box (bbox_4326) and temporally limited to a range of one day, between May 15 and May 16, 2021.
+-Once the search is conducted, the desired assets or spectral bands from the returned satellite images are defined, ranging from Band 1 (B01) to Band 12 (B12) and including the Scene Classification Layer (SCL).
+-These bands are then organized into an image collection for further processing or analysis.
 ```{r search_STAC_collection, cache=TRUE, warning=FALSE, message=FALSE}
+# Initialize STAC connection
 s = stac("https://earth-search.aws.element84.com/v0")
-  items = s |>
+
+# Search for Sentinel-2 images within specified bounding box and date range
+items = s %>%
     stac_search(collections = "sentinel-s2-l2a-cogs",
-                bbox = c(bbox_4326["xmin"],bbox_4326["ymin"],
-                         bbox_4326["xmax"],bbox_4326["ymax"]), 
-                datetime = "2021-05-15/2021-05-16") |>
-    post_request() |> items_fetch(progress = FALSE)
-  length(items$features)
+                bbox = c(bbox_4326["xmin"], 
+                         bbox_4326["ymin"],
+                         bbox_4326["xmax"], 
+                         bbox_4326["ymax"]), 
+                datetime = "2021-05-15/2021-05-16") %>%
+    post_request() %>%
+    items_fetch(progress = FALSE)
 
+# Print number of found items
+length(items$features)
 
-  library(gdalcubes)
-assets = c("B01","B02","B03","B04","B05","B06", "B07","B08","B8A","B09","B11","B12","SCL")
+# Prepare the assets for analysis
+library(gdalcubes)
+assets = c("B01", "B02", "B03", "B04", "B05", "B06", 
+           "B07", 
+           "B08", "B8A", "B09", "B11", "B12", "SCL")
 s2_collection = stac_image_collection(items$features, asset_names = assets)
-#property_filter = function(x) {x[["eo:cloud_cover"]] < 10}
+
+# Display the image collection
 s2_collection
 ```
 
-Expand this to season and years. 
+# Define view window 
+In this code chunk, a 'view' on the previously obtained satellite image collection is being defined. Think of this as setting up a specific lens or perspective to look at the satellite data:
+
+-The view is set to the coordinate reference system EPSG:32618.
+-Spatial resolution is defined as 100x100 meters.
+-Temporal resolution is defined monthly (P1M), even though the actual range is only one day.
+-When there are multiple values in a grid cell or timeframe, they are aggregated using the median value.
+-If any resampling is needed, the nearest neighbor method is used (near).
+-The spatial and temporal extents are constrained to specific values.
+-By defining this view, it allows for consistent analysis and visualization of the image collection within the specified spatial and temporal resolutions and extents.
 ```{r set_view_window, cache=TRUE, warning=FALSE, message=FALSE}
-v = cube_view(srs="EPSG:32618", dx=100, dy=100, dt="P1M", 
-                           aggregation="median", resampling = "near",
-                           extent=list(t0 = "2021-05-15", t1 = "2021-05-16",
-                                       left=bbox_32618["xmin"], right=bbox_32618["xmax"],
-                                       top=bbox_32618["ymax"], bottom=bbox_32618["ymin"]))
+# Define a specific view on the satellite image collection
+v = cube_view(
+    srs = "EPSG:32618", 
+    dx = 100, 
+    dy = 100, 
+    dt = "P1M", 
+    aggregation = "median", 
+    resampling = "near",
+    extent = list(
+        t0 = "2021-05-15", 
+        t1 = "2021-05-16",
+        left = bbox_32618["xmin"], 
+        right = bbox_32618["xmax"],
+        top = bbox_32618["ymax"], 
+        bottom = bbox_32618["ymin"]
+    )
+)
+
+# Display the defined view
 v
-
-
 ```
 
+# Pull data
+In this chunk, the primary aim is to transform and prepare satellite imagery data for analysis:
 
-
-
-
+-The current time is stored in variable a for tracking the time taken by the process.
+-The previously defined 'view' on the satellite imagery, v, is used to create a raster cube, a multi-dimensional array containing the satellite data. This raster cube contains spatial, spectral, and temporal data.
+-The desired spectral bands are selected.
+-The data is limited to a specific area of interest, aoi.
+-The band names are renamed to their respective wavelengths in nanometers for clarity.
+-A subset of the data, comprising 50,000 random samples, is selected.
+-Unwanted columns are removed, and the dataset is transformed into a long format, where each row represents a particular date and wavelength combination.
+-The entire process duration is computed by taking the difference between the end time (b) and the start time (a).
+-The transformed dataset y is then displayed.
 ```{r pull_data, cache=TRUE, warning=FALSE, message=FALSE}
+# Record start time
 a <- Sys.time()
 
-raster_cube(s2_collection, v) |> # no mask
-  select_bands(c("B01","B02","B03","B04",
-                 "B05","B06","B07","B08",
-                 "B8A","B09","B11","B12"
-                 )) |>
-  extract_geom(aoi) |>
-   rename("time" = "time",
-          "443" = "B01",
-          "490" = "B02",
-          "560" = "B03",
-          "665" = "B04",
-          "705" = "B05",
-          "740" = "B06",
-          "783" = "B07",
-          "842" = "B08",
-          "865" = "B8A",
-          "940" = "B09",
-          "1610" = "B11",
-          "2190" = "B12") -> x
+# Transform the satellite image collection into a raster cube
+x <- s2_collection %>%
+    raster_cube(v) %>%
+    select_bands(c("B01", "B02", "B03", "B04", 
+                   "B05", "B06", "B07", "B08", 
+                   "B8A", "B09", "B11", "B12")) %>%
+    extract_geom(aoi) %>%
+    rename(
+        "time" = "time",
+        "443" = "B01",
+        "490" = "B02",
+        "560" = "B03",
+        "665" = "B04",
+        "705" = "B05",
+        "740" = "B06",
+        "783" = "B07",
+        "842" = "B08",
+        "865" = "B8A",
+        "940" = "B09",
+        "1610" = "B11",
+        "2190" = "B12"
+    )
 
-x |>
-  slice_sample(n=50000) |> # This is where we add the vegetation classification. 
-  select(-FID)|>
-   pivot_longer(!time, names_to = "wavelength_nm", values_to = "reflectance")|>
-  mutate(wavelength_nm = as.numeric(wavelength_nm)) -> y
+# Sample, transform and prepare data for analysis
+y <- x %>%
+    slice_sample(n = 50000) %>%
+    select(-FID) %>%
+    pivot_longer(!time, names_to = "wavelength_nm", values_to = "reflectance") %>%
+    mutate(wavelength_nm = as.numeric(wavelength_nm))
 
+# Record end time and compute duration
 b <- Sys.time()
-difftime(b,a)
-y
+processing_time <- difftime(b, a)
 
+# Display the processing time and transformed dataset
+processing_time
+y
 ```
 
-
-
+# Base plot
 
 ```{r base_plot, cache=TRUE, warning=FALSE, message=FALSE}
-#zz <- sample_n(z, 50000)
-day_density <- ggplot(data=y, aes(x=wavelength_nm, y=reflectance, group=time))+ 
-  stat_smooth( color=our_green, fill="lightgrey")+
-  geom_density2d(colour="black", bins=10, alpha=0.1)+
-  stat_density2d(aes(alpha=..level.., fill=..level..), linewidth=2, 
-        bins=10, geom="polygon") + 
-    scale_fill_gradient(low = our_white, high = our_yellow) +
-  
-    scale_alpha(range = c(0.00, 0.8), guide = FALSE) +
-  
+
+# Set custom colors for the plot
+our_green <- "#4CAF50"
+our_white <- "#FFFFFF"
+our_yellow <- "#FFEB3B"
+
+# Create a 2D density plot
+day_density <- ggplot(data = y, aes(x = wavelength_nm, y = reflectance, group = time)) + 
+  stat_smooth(color = our_green, fill = "lightgrey") +
+  geom_density2d(colour = "black", bins = 10, alpha = 0.1) +
+  stat_density2d(aes(alpha = ..level.., fill = ..level..), 
+                 linewidth = 2, bins = 10, geom = "polygon") + 
+  scale_fill_gradient(low = our_white, high = our_yellow) +
+  scale_alpha(range = c(0.00, 0.8), guide = FALSE) +
   theme_tufte() +
   xlab("wavelength") +
-  ylab("reflectance")+
-  ylim(0,16000)+
-  theme(aspect.ratio=5/14, axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1,colour =c("darkblue","blue","green", "red", "darkred", "darkred","darkred", "darkred", "darkred", "black","black","black","black"))) +
-  scale_x_continuous(breaks=c(443,490,560,665,705,740,783,842,865,940,1610,2190)) + theme(axis.title.x=element_blank(),
-  plot.margin = margin(t = 30,  # Top margin
-                             r = 10,  # Right margin
-                             b = 40,  # Bottom margin
-                             l = 18),       
-axis.title.y=element_blank())
+  ylab("reflectance") +
+  ylim(0, 16000) +
+  theme(
+    aspect.ratio = 5/14, 
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, 
+                               colour = c("darkblue", "blue", "green", "red", 
+                                          "darkred", "darkred", "darkred", "darkred", 
+                                          "darkred", "black", "black", "black", "black")),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    plot.margin = margin(t = 30, r = 10, b = 40, l = 18)
+  ) +
+  scale_x_continuous(breaks = c(443, 490, 560, 665, 705, 740, 783, 842, 865, 940, 1610, 2190))
+
+# Display the plot
 day_density
 ```
 
 
-
+# Inlay 1 - geographic zone
 ```{r aoi_inlay, cache=TRUE, warning=FALSE, message=FALSE}
 guide_map <- ggplot(data= aoi_total) +
   geom_sf(fill=our_yellow, color=our_white) +
@@ -194,6 +264,7 @@ guide_map <- ggplot(data= aoi_total) +
 guide_map
 ```
 
+# Inlay 2 - date text
 ```{r display_date, cache=TRUE, warning=FALSE, message=FALSE}
 library(geosphere)
 aoi_total |> st_centroid()  |> st_transform(crs="+proj=longlat") |> st_coordinates() |> colMeans() -> lat_long
@@ -212,7 +283,7 @@ doy <- format(date, format = "%j") |> as.numeric()
 display_date <- format(date, format="%e %B %Y   ")
 ```
 
-
+# Inlay 3 - daylength
 ```{r date_inlay, cache=TRUE, warning=FALSE, message=FALSE}
 
 date_inlay <- ggplot(data=daylengths) + 
@@ -234,7 +305,7 @@ date_inlay
 ```
 
 
-
+# Ensemble map assembly
 ```{r map_assembly, cache=TRUE, warning=FALSE, message=FALSE}
 library(cowplot)
 library(magick)
@@ -246,72 +317,23 @@ map_overlay <- ggdraw(day_density) +
  # draw_image("Ty_powerline_plots/earthlab_logo.png", x = -0.38, y = 0.38, scale=.25)+
   geom_text(aes(x=0.4, y=.9, label="Spectral library - Monthly average"), color=our_green, hjust = 0, cex=8, fontface='bold') +
   geom_text(aes(x=0.01, y=.04, 
-    label="Created by Earth Lab (L. Jones, V. Iglasias, T. Tuff, C. Amaral, E.Verleye ) for Southern California Edison -- September 2023. Sentinel 2 Data from 'https://earth-search.aws.element84.com/v0'"), color=our_grey, hjust  = 0, cex=3) +
+    label="Created by ESIIL (T. Tuff) for Fall Hackathon -- October 2023. Sentinel 2 Data from 'https://earth-search.aws.element84.com/v0'"), color=our_grey, hjust  = 0, cex=3) +
 geom_text(aes(x=0.4, y=.1, label="wavelength (nm)"), color=our_grey, hjust = 0, cex=4, fontface='bold') +
 geom_text(aes(x=0.01, y=.5,angle = 90, label="reflectance"), color=our_grey, hjust = 0, cex=4, fontface='bold')
 map_overlay
 ```
 
 
-
+# Save map
 ```{r save_map, cache=TRUE, warning=FALSE, message=FALSE}
 ggsave(map_overlay, file="day_density_15_May_2021_zone_5.png", bg="white", dpi = 600, width = 12,
   height = 5)
 ```
 
+# End timer
 ```{r end_timer, cache=TRUE, warning=FALSE, message=FALSE}
 end <- Sys.time()
 difftime(end,start)
 ```
 
-
-
-#boosted regression
-Not implemented yet
-```{r boosted_regression, eval=FALSE}
-library(reshape)
-library("viridis")  
-library(RColorBrewer)
-
-
-
-quantiles_of_reflectance <- function(one_species_data){
-  
- 
-for_predict <- one_species_data %>% select(wavelength_nm)
-to_fill <- data.frame(matrix(NA, ncol=100, nrow=nrow(one_species_data)))
-colnames(to_fill)<- paste0(rep("qt",100), seq(1,100))
-
-counter <- 1
-for(i in seq(0.01,0.99,by=0.01)){
-boost_me <- gbm(reflectance ~ wavelength_nm, data=one_species_data, 
-                  n.trees=2000, interaction.depth=49, shrinkage=0.01,
-                  bag.fraction=0.5,distribution=list(name = "quantile", alpha = i))
-to_fill[,counter] <- predict(boost_me, newdata=for_predict)
-counter <- counter + 1
-print(counter)
-}
-#to_fill <- to_fill[,1:10]
-
-
-melted_plot_data <- melt(to_fill, id.qt = "quantile")
-wv_repeat <- data.frame(matrix(for_predict[,1], nrow=nrow(for_predict)*10, ncol=1))
-  bound_quantiles <- cbind(wv_repeat, melted_plot_data)
-colnames(bound_quantiles) <- c("wavelength_nm","quantile","reflectance")
-prob_density <- bound_quantiles %>% 
-  mutate(probability_density = substring(quantile, 3))%>% 
-  mutate(probability_density_original = substring(quantile, 3))
-
-prob_density$probability_density <- as.numeric(prob_density$probability_density)/100
-prob_density$probability_density[which(prob_density$probability_density > 0.5)] <- 1 - prob_density$probability_density[which(prob_density$probability_density > 0.5)] 
-    
-prob_density$probability_density_original <- as.numeric(prob_density$probability_density_original)/100
-
-
-return(prob_density)
-}
-
-
-
-```
 
