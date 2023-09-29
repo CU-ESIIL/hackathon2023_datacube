@@ -1,0 +1,45 @@
+---
+title: "Pull flood polygons"
+format:
+  html:
+    theme: default
+    toc: true
+    number-sections: true
+---
+
+```{r}
+
+```
+
+```{r pull_flood_points}
+# Connect to API: https://floodobservatory.colorado.edu/temp/FloodArchive_region.shp
+
+flood_polygon_data <- glue("/vsicurl/https://floodobservatory.colorado.edu/temp/FloodArchive_region.shp") %>%
+  vect() %>%
+  st_as_sf(coords = c("long","lat")) %>%
+  mutate(BEGAN = as.POSIXct(strptime(BEGAN, format="%y/%m/%d"))) %>%
+  mutate(ENDED = as.POSIXct(strptime(ENDED, format="%y/%m/%d"))) %>%
+  mutate(VALIDATION = as.factor(VALIDATION)) %>%
+  mutate(MAINCAUSE = as.factor(MAINCAUSE)) %>%
+  mutate(log_dead = log10(DEAD)) %>%
+  mutate(log_displaced = log10(DISPLACED)) %>%
+  mutate(log_area = log10(AREA)) #%>%
+  #select(Began, Ended, ID, GlideNumber, Country,   
+  #        OtherCountry, Area, Validation, Dead, Displaced,   
+  #        MainCause, Severity, log_dead, log_displaced,log_area, geometry)
+
+flood_polygon_data
+```
+
+```{r plot_flood_polygons}
+ggplot(data=flood_polygon_data, aes(fill=log_displaced)) +
+  geom_sf() + 
+  theme_tufte()
+```
+
+```{r plot_flood_polygons}
+ggplot(data=flood_polygon_data, aes(fill=SEVERITY)) +
+  geom_sf() + 
+  theme_tufte()
+```
+

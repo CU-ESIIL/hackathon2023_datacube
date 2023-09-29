@@ -86,15 +86,16 @@ flood_point_data <- glue("/vsicurl/https://floodobservatory.colorado.edu/temp/Fl
   vect() %>%
   as.data.frame() %>%
   st_as_sf(coords = c("long","lat")) %>%
-  mutate(Began = as.POSIXct(strptime(Began, format="%Y/%m/%d"))) %>%
-  mutate(Ended = as.POSIXct(strptime(Ended, format="%Y/%m/%d"))) %>%
+  mutate(Began = as.POSIXct(strptime(Began, format="%y/%m/%d"))) %>%
+  mutate(Ended = as.POSIXct(strptime(Ended, format="%y/%m/%d"))) %>%
   mutate(Validation = as.factor(Validation)) %>%
   mutate(MainCause = as.factor(MainCause)) %>%
   mutate(log_dead = log10(Dead)) %>%
   mutate(log_displaced = log10(Displaced)) %>%
+  mutate(log_area = log10(Area)) %>%
   select(Began, Ended, ID, GlideNumber, Country,   
          OtherCountry, Area, Validation, Dead, Displaced,   
-         MainCause, Severity, log_dead, log_displaced, geometry)
+         MainCause, Severity, log_dead, log_displaced,log_area, geometry)
 
 flood_point_data
 ```
@@ -102,7 +103,8 @@ flood_point_data
 
 ```{r plot_flood_point_severity}
 ggplot(data=flood_point_data, aes(color=Severity)) +
-  geom_sf(cex=0.01)
+  geom_sf(cex=0.01) + 
+  theme_tufte()
 ```
 
 * ggplot(data=flood_point_data, aes(color=Severity)): This initializes a ggplot object using the flood_point_data dataframe. It also sets the aesthetic color based on the 'Severity' column. This means that different severities will be represented by different colors.
@@ -111,31 +113,37 @@ ggplot(data=flood_point_data, aes(color=Severity)) +
 The resulting plot would visualize the spatial distribution of flood points, with colors indicating the severity of each flood. Adjusting the size parameter can make the dots larger or smaller based on preference.
 
 ```{r plot_flood_point_MainCause}
-ggplot(data=flood_point_data, aes(color=MainCause))  +geom_sf(cex=0.01)
+ggplot(data=flood_point_data, aes(color=MainCause))  +geom_sf(cex=0.01) + 
+  theme_tufte()
 ```
 
 ```{r plot_flood_point_displaced}
-ggplot(data=flood_point_data, aes(color=log_displaced))  +geom_sf(cex=0.01)
+ggplot(data=flood_point_data, aes(color=log_displaced))  +geom_sf(cex=0.01) + 
+  theme_tufte()
 ```
 
 ```{r plot_flood_point_Dead}
-ggplot(data=flood_point_data, aes(color=log_dead))  +geom_sf(cex=0.01)
+ggplot(data=flood_point_data, aes(color=log_dead))  +geom_sf(cex=0.01) + 
+  theme_tufte()
 ```
 
 
 ```{r plot_flood_point_Validation}
-ggplot(data=flood_point_data, aes(color=Validation))  +geom_sf(cex=0.01)
+ggplot(data=flood_point_data, aes(color=Validation))  +geom_sf(cex=0.01) + 
+  theme_tufte()
 ```
 
 
 ```{r plot_flood_point_Ended}
-ggplot(data=flood_point_data, aes(color=Ended))  +geom_sf(cex=0.01)
+ggplot(data=flood_point_data, aes(color=Began))+ geom_sf(cex=0.01) + 
+  theme_tufte()
 ```
 
 
 ```{r plot_flood_point_Area}
 ggplot(data=flood_point_data, aes(color=Area))  +
-  geom_sf(cex=0.01) 
+  geom_sf(cex=0.01) + 
+  theme_tufte()
 ```
 
 
@@ -162,6 +170,25 @@ ggplot(data=flood_point_data)  +
   theme_tufte()
 ```
 
+```{r}
+ggplot(data=flood_point_data)  +
+  geom_point(aes(x=log_dead ,y=log_displaced), color="grey90", alpha=0.8)+
+  geom_density_2d(aes(x=log_dead ,y=log_displaced), color="cornflowerblue") + 
+  theme_tufte()
+```
+
+```{r}
+ggplot(data=flood_point_data)  +
+  geom_point(aes(x=log_area ,y=log_displaced), color="grey90", alpha=0.8)+
+  geom_density_2d(aes(x=log_area ,y=log_displaced), color="cornflowerblue") + 
+  theme_tufte()
+```
+```{r}
+ggplot(data=flood_point_data)  +
+  geom_point(aes(x=log_area ,y=log_dead), color="grey90", alpha=0.8)+
+  geom_density_2d(aes(x=log_area ,y=log_dead), color="cornflowerblue") + 
+  theme_tufte()
+```
 
 ```{r}
 ggplot(data=flood_point_data)  +
@@ -194,8 +221,9 @@ last_date <- max(non_spatial_version_data[,1])
 
 This code effectively extracts the range of dates present in the flood_point_data. However, a more robust approach might be to use column names rather than column indices for clarity and to avoid potential errors if the structure of the dataframe changes in the future.
 
+# Death time series
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
-death_series <- ts(st_drop_geometry(flood_point_data[,9]), frequency = 365, start = c(1985, 1), end = c(2021,300))
+death_series <- ts(st_drop_geometry(flood_point_data$Dead), frequency = 365, start = c(1985, 1), end = c(2021,311))
 head(death_series)
 ```
 
@@ -227,7 +255,7 @@ death_series %>%
 In essence, this code decomposes the death_series time series using the STL method and visualizes the observed series, its trend, its seasonal patterns, and the remainder, all presented in a clear and minimalist style courtesy of the theme_tufte(). This visualization can be immensely valuable in understanding underlying patterns and variations within time series data.
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
-seasonally_adjusted_max_temp <- death_series %>% stl(s.window='periodic') %>% seasadj() 
+seasonally_adjusted_log_dead <- death_series %>% stl(s.window='periodic') %>% seasadj() 
 ```
 
 ```{r,  cache=TRUE, warning=FALSE, message=FALSE}
@@ -237,18 +265,77 @@ death_series %>%
 ```
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
-arima_max_temp <- auto.arima(seasonally_adjusted_max_temp)
+arima_max_temp <- auto.arima(seasonally_adjusted_log_dead)
 arima_max_temp
 ```
 
 
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
-autoplot(cpt.meanvar(seasonally_adjusted_max_temp), cpt.colour = 'blue', cpt.linetype = 'solid')
+autoplot(cpt.meanvar(seasonally_adjusted_log_dead), cpt.colour = 'blue', cpt.linetype = 'solid')
 ```
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
-arima_max_temp %>% forecast(h=2400) %>% autoplot()
+arima_max_temp %>% forecast(h=10000) %>% autoplot()
+```
+
+
+# Displaced time series
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+death_series <- ts(st_drop_geometry(flood_point_data$Displaced), frequency = 365, start = c(1985, 1), end = c(2021,300))
+head(death_series)
+```
+
+
+* st_drop_geometry(flood_point_data[,9]): Before creating the time series, you're using the st_drop_geometry function from the sf package to drop spatial information from the data. You're then selecting the 9th column, which presumably contains death data (based on our prior discussions). However, it would be more robust to reference the column by name instead of its index to ensure the correct data is being selected.
+* ts(..., frequency = 365, start = c(1985, 1), end = c(2021,300)): This initializes a time series (ts) object. The frequency argument is set to 365, suggesting that the data is daily. The start argument specifies that the series begins in January 1985. The end argument, however, seems to have an oversight; the day value of 300 is out of range for typical calendar days. Perhaps you meant to represent the 300th day of 2021, but typically, the ts function expects the format c(year, frequency_value), with the frequency value not exceeding the specified frequency (in this case, 365).
+* death_series: Displays the created time series object.
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+death_series %>%
+  decompose() %>%
+  autoplot() + theme_tufte()
+```
+
+* death_series %>% decompose(): The decompose() function from the base R stats package breaks a time series into its component parts: trend, seasonal, and random (also called "remainder" or "error"). This allows for a clearer understanding of the underlying patterns in the data.
+* autoplot(): This function from the forecast package provides automatic ggplot2-based visualization of time series objects. When used on the output of decompose(), it generates a multipanel plot showing the observed, trend, seasonal, and remainder components of the time series.
+* theme_tufte(): This adds the Tufte theme (from the ggthemes package) to the plot. As previously mentioned, Edward Tufte's design principles prioritize clarity and minimalism, and this theme helps enhance the readability of the plot by reducing non-data ink.
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+death_series %>%
+ stl(s.window = "periodic") %>%
+  autoplot() + theme_tufte()
+```
+
+* death_series %>% stl(s.window = "periodic"): The stl() function decomposes the time series using LOESS. It's a more flexible method compared to the traditional decompose() function, especially when dealing with non-linear trends or changing seasonal patterns. The s.window = "periodic" argument indicates that the seasonal component should be treated as periodic, implying a stable seasonal pattern throughout the series.
+* autoplot(): Again, this function from the forecast package provides an automatic ggplot2-based visualization of time series objects. When applied to the output of stl(), it creates a multipanel plot displaying the observed series, trend component, seasonal component, and remainder (sometimes termed "noise" or "error").
+* theme_tufte(): This overlays the Tufte theme on the plot, providing a minimalist design that emphasizes the data.
+In essence, this code decomposes the death_series time series using the STL method and visualizes the observed series, its trend, its seasonal patterns, and the remainder, all presented in a clear and minimalist style courtesy of the theme_tufte(). This visualization can be immensely valuable in understanding underlying patterns and variations within time series data.
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+seasonally_adjusted_log_dead <- death_series %>% stl(s.window='periodic') %>% seasadj() 
+```
+
+```{r,  cache=TRUE, warning=FALSE, message=FALSE}
+death_series %>%
+ stl(s.window = "periodic") %>%
+  autoplot() + theme_tufte()
+```
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+arima_max_temp <- auto.arima(seasonally_adjusted_log_dead)
+arima_max_temp
+```
+
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+autoplot(cpt.meanvar(seasonally_adjusted_log_dead), cpt.colour = 'blue', cpt.linetype = 'solid')
+```
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+arima_max_temp %>% forecast(h=10000) %>% autoplot()
 ```
 
 
