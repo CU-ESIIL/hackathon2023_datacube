@@ -8,7 +8,12 @@ format:
 ---
 
 ```{r}
-
+library(dplyr)
+library(sf)
+library(terra)
+library(glue)
+library(ggplot2)
+library(ggthemes)
 ```
 
 
@@ -40,7 +45,7 @@ ggplot(data=flood_polygon_data, aes(fill=log_displaced)) +
 ```
 
 
-```{r plot_flood_polygons}
+```{r }
 ggplot(data=flood_polygon_data, aes(fill=SEVERITY)) +
   geom_sf() + 
   theme_tufte()
