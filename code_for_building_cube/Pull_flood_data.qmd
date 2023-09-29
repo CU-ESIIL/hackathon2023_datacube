@@ -177,7 +177,7 @@ ggplot(data=flood_point_data)  +
 ```
 
 ```{r}
-flood_point_data
+head(flood_point_data)
 ```
 
 ```{r}
@@ -194,7 +194,7 @@ This code effectively extracts the range of dates present in the flood_point_dat
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 death_series <- ts(st_drop_geometry(flood_point_data[,9]), frequency = 365, start = c(1985, 1), end = c(2021,300))
-death_series
+head(death_series)
 ```
 
 
