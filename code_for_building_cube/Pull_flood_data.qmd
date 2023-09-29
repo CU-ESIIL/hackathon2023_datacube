@@ -59,6 +59,8 @@ library(dplyr)
 library(ggthemes)
 library(forecast)
 library(lubridate)
+library(ggfortify)
+library(changepoint)
 ```
 
 
@@ -224,6 +226,29 @@ death_series %>%
 * theme_tufte(): This overlays the Tufte theme on the plot, providing a minimalist design that emphasizes the data.
 In essence, this code decomposes the death_series time series using the STL method and visualizes the observed series, its trend, its seasonal patterns, and the remainder, all presented in a clear and minimalist style courtesy of the theme_tufte(). This visualization can be immensely valuable in understanding underlying patterns and variations within time series data.
 
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+seasonally_adjusted_max_temp <- death_series %>% stl(s.window='periodic') %>% seasadj() 
+```
 
+```{r,  cache=TRUE, warning=FALSE, message=FALSE}
+death_series %>%
+ stl(s.window = "periodic") %>%
+  autoplot() + theme_tufte()
+```
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+arima_max_temp <- auto.arima(seasonally_adjusted_max_temp)
+arima_max_temp
+```
+
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+autoplot(cpt.meanvar(seasonally_adjusted_max_temp), cpt.colour = 'blue', cpt.linetype = 'solid')
+```
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+arima_max_temp %>% forecast(h=2400) %>% autoplot()
+```
 
 

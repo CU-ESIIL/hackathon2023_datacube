@@ -7,3 +7,6 @@ dplyr
 ggthemes
 forecast
 lubridate
+ggfortify
+zoo
+changepoint
