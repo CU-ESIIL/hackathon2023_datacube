@@ -77,7 +77,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 ***
 
 ## Our team
-<src="https://esiil.org/sites/default/files/inline-images/virginia%20headshot.jpg" width="125">
+<img src="https://esiil.org/sites/default/files/inline-images/virginia%20headshot.jpg" width="125">
 
 **Virginia Iglesias**
 
@@ -121,7 +121,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 ***
 
-<src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-01-17%20at%2011.57.14%20AM.png" width="125">
+<img src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-01-17%20at%2011.57.14%20AM.png" width="125">
 
 **Ty Tuff**
 
