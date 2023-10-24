@@ -12,7 +12,7 @@ Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _
 
 <div style="text-align:center;padding:1em 0;"> <h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/en/city/5574991"><span style="color:gray;">Current local time in</span><br />Boulder, United States</a></h4> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=America%2FDenver" width="100%" height="90" frameborder="0" seamless></iframe> </div>
 
-## Day 1 (Wednesday May, 17)
+## Day 1 (Wednesday October 26th)
 > ### ***Collaborating with Other People Using Cloud Computing***
 > * **Instructors:** Culler, Know Innovation Team, Swetnam & CyVerse Team, Tuff, Verleye
 >   * Team introductions
@@ -22,10 +22,6 @@ Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _
 >     * <a href="https://jetstream-cloud.org/" target="_blank">**JetStream2**</a> 🚀
 >   * <a href="https://github.com/" target="_blank">**GitHub**</a> for Collaboration (Culler, Tuff, Verleye) 🤝
 
-
-
-
-## Day 2 (Thursday May, 18)
 > ### ***R and Python Bilingualism: How to Talk to Everybody***
 > * **Instructors:** Culler, Quarderer(?), Sanovia(?), Tuff
 >   * Libraries for Doing Earth Data Science 📚
@@ -36,10 +32,6 @@ Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _
 >     * <a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank">**Spatial Data in R**</a>
 >     * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-vector-data-python/" target="_blank">**Introduction to Vector Data in Python**</a>
 >     * <a href="" target="_blank">**Introduction to Raster Data in Python**</a>
-
-
-
-## Day 3 (Friday May, 19)
 > ### ***Tools for Keeping Your Science Open and Reproducible*** 
 > (borrowed from the <a href="https://foss.cyverse.org/" target="_blank">***CyVerse Foundational Open Science Skills 2023***</a> open online course)
 > 
@@ -47,6 +39,14 @@ Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _
 >     * <a href="https://foss.cyverse.org/01_intro_open_sci/" target="_blank">**Introduction to Open Science**</a>
 >     * <a href="https://foss.cyverse.org/04_documentation_communication/" target="_blank">**Documentation & Communication**</a>
 >     * <a href="https://foss.cyverse.org/06_reproducibility_i/" target="_blank">**Repeatability and Reproducibility**</a>
+
+
+## Day 2 (Thursday November 2nd)
+
+
+
+## Day 3 (Thursday November 9th)
+
 
 ***
 
