@@ -86,7 +86,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 ***
 
-<img style="float: right;" src="https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/Elsa%20Culler%20-%20reduced.jpg" width="125">
+<img src="https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/Elsa%20Culler%20-%20reduced.jpg" width="125">
 
 **Elsa Culler**
 
@@ -95,7 +95,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 ***
 
-<img style="float: right;" src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-08-10%20at%201.53.28%20PM_0.png" width="125">
+<img src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-08-10%20at%201.53.28%20PM_0.png" width="125">
 
 **Rachel Lieber**
 
@@ -103,7 +103,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 ***
 
-<img style="float: right;" src="https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/profile.png?itok=81I5qGge" width="125">
+<img  src="https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/profile.png?itok=81I5qGge" width="125">
 
 **Nate Quarderer** 
 
@@ -112,7 +112,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 ***
 
-<img style="float: right;" src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-01-17%20at%2012.08.13%20PM.png" width="125">
+<img src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-01-17%20at%2012.08.13%20PM.png" width="125">
 
 **Erick Verleye**
 
