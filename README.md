@@ -1,4 +1,4 @@
-# Virtual Hackathon
+# ESIIL Virtual Hackathon 2023
 
 **Are you a pioneer in your field?** Excited about Environmental Data Science? Ready to be part of something bigger? Then grab your laptop, your expertise, and your passion for making the world a better place and join us for **Environmental MosAIc**, ESIIL’s first Hackathon. Together, we're not just learning and using AI; we are unlocking a greener and more inclusive tomorrow.
 
@@ -28,33 +28,33 @@ All are welcome to join the following pre-hackathon training sessions. Please co
 [...details...]
   
 - **Resources to address environmental challenges**: Participate in training on Environmental Data Science...
-[...details...]
+
 
 - **State-of-the-art cyberinfrastructure**: Work on a cloud-based...
-[...details...]
+
 
 ### Why artificial intelligence (AI)?
 
 **Environmental Data Science** is a convergent discipline that focuses on using big data and emerging technologies...
-[...details...]
+
 
 ### Who should participate in Environmental MosAIc?
 Anyone interested in environmental data science and AI! 
 
 - New to coding or AI?
 - Are you an AI expert...
-[...details...]
+
 
 Participants will join a team of environmental scientists...
-[...details...]
+
 
 All teams will receive feedback from a panel of experts...
-[...details...]
+
 
 ### Track II
 
 Are you interested in flood prediction? Would you like to form your own team?...
-[...details...]
+
 
 For more information about **Environmental MosAIc - Track II** coming soon!
 
