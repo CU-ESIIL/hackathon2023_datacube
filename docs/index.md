@@ -1,14 +1,14 @@
-![header](assets/pre-summit-training-header.png){width=1000}
+![header](assets/pre-summit-training-header.png)
 
 # Virtual Training for Collaboration in Environmental Data Science
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-Welcome to the Environmental Data Science Innovation & Inclusion Lab (<a href="https://esiil.org/" target="_blank">**ESIIL**</a>)! These training sessions are intended to provide attendees to the <a href="https://esiil.org/innovation-summit" target="_blank">**ESIIL Innovation Summit**</a> with some technical background to help foster innovation and collaboartion during the summit. Through this training, attendees will learn how to access and engage with cloud-based communication and computational tools that will be relied on throughout the summit, fundamental Environmental Data Science (EDS) skills using <a href="https://www.r-project.org/" target="_blank">**R**</a> and <a href="https://www.python.org/" target="_blank">**Python**</a>, and ways to make your science open and reproducible. These sessions are being recorded and published on our YouTube channel for anyone who is unable to attend, or for those who would like to go back and revisit these lessons. Finally, we will have super fun virtual and in-person help desks set up during the summit as questions come up and for anyone who would like help troubleshooting.
+Welcome to the Environmental Data Science Innovation & Inclusion Lab (<a href="https://esiil.org/" target="_blank">**ESIIL**</a>)! These training sessions are intended to provide attendees to the <a href="https://esiil.org/virtual-hackathon" target="_blank">**ESIIL Virtual Hackathon**</a> with some technical background to help foster innovation and collaboartion during the hackathon. Through this training, attendees will learn how to access and engage with cloud-based communication and computational tools that will be relied on throughout the hackathon, fundamental Environmental Data Science (EDS) skills using <a href="https://www.r-project.org/" target="_blank">**R**</a> and <a href="https://www.python.org/" target="_blank">**Python**</a>, and fundamentals of AI. These sessions are being recorded and published on our YouTube channel for anyone who is unable to attend, or for those who would like to go back and revisit these lessons. Finally, we will have super fun virtual help desks set up during the hackathon as questions come up and for anyone who would like help troubleshooting.
 
 ## Agenda
 
-Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _virtually_ over **Zoom**.
+Each session will run from **10am - 12pm Mountain Daylight Time** and will meet _virtually_ over **Zoom**.
 
 <div style="text-align:center;padding:1em 0;"> <h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/en/city/5574991"><span style="color:gray;">Current local time in</span><br />Boulder, United States</a></h4> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=America%2FDenver" width="100%" height="90" frameborder="0" seamless></iframe> </div>
 
@@ -78,12 +78,12 @@ Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _
 
 ## Our team
 
-![michele](https://cyverse.org/sites/default/files/inline-images/Michele.png){width=100}
+![virginia](https://esiil.org/sites/default/files/inline-images/virginia%20headshot.jpg)
 
-**Michele Cosi**
+**Virginia Iglesias**
 
-* Data Scientist, CyVerse
-* <a href="https://cosimichele.github.io/" target="_blank">**Website**</a>
+* Hackathon Coordinator/Research Scientist, ESIIL/Earth Lab
+* <a href="https://earthlab.colorado.edu/our-team/virginia-iglesias" target="_blank">**Website**</a>
 
 ***
 
