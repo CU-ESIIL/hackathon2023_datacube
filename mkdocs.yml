@@ -1,11 +1,11 @@
-site_name: 'ESIIL Data Library'
-site_description: 'Data for May 2023 ESIIL Innovation Summit'
+site_name: 'ESIIL Pre-Hackathon Training Sessions 2023'
+site_description: 'Instructional material for ESIIL Hackathon 2023'
 site_author: ESIIL CI team (lead = Ty Tuff)
 site_url: https://cu-esiil.github.io/data-library
 
 # Repository
-repo_name: data-library
-repo_url: https://github.com/cu-esiil/data-library
+repo_name: ackathon2023_datacube
+repo_url: https://cu-esiil.github.io/hackathon2023_datacube
 edit_uri: edit/main/docs/
 # Copyright
 copyright: 'Copyright &copy; 2023 University of Colorado Boulder'

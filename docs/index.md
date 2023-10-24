@@ -1,172 +1,141 @@
-ESIIL data library and vignette repository
-================
+![header](assets/pre-summit-training-header.png){width=1000}
 
-Welcome to the Environmental Data Science Innovation and Inclusion Lab
-(ESIIL) Data Library! As an NSF-funded national synthesis center, ESIIL
-is dedicated to fostering collaboration between biological and computer
-sciences to drive innovation and inclusivity across the two diciplines.
-Our data library features a diverse range of datasets, each with its own
-dedicated web page. To help you get started, we provide easy-to-use R
-and Python code snippets for downloading and working with each dataset.
-For more advanced users, we also offer comprehensive tutorials and
-vignettes tailored to individual datasets. Explore our rich collection
-and unlock the power of environmental data for your research today!
+# Virtual Training for Collaboration in Environmental Data Science
 
-<img src="assets/pre-summit-training-header.png" width="1000" />
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-<img src="assets/data_library.png" width="1000" />
+Welcome to the Environmental Data Science Innovation & Inclusion Lab (<a href="https://esiil.org/" target="_blank">**ESIIL**</a>)! These training sessions are intended to provide attendees to the <a href="https://esiil.org/innovation-summit" target="_blank">**ESIIL Innovation Summit**</a> with some technical background to help foster innovation and collaboartion during the summit. Through this training, attendees will learn how to access and engage with cloud-based communication and computational tools that will be relied on throughout the summit, fundamental Environmental Data Science (EDS) skills using <a href="https://www.r-project.org/" target="_blank">**R**</a> and <a href="https://www.python.org/" target="_blank">**Python**</a>, and ways to make your science open and reproducible. These sessions are being recorded and published on our YouTube channel for anyone who is unable to attend, or for those who would like to go back and revisit these lessons. Finally, we will have super fun virtual and in-person help desks set up during the summit as questions come up and for anyone who would like help troubleshooting.
 
-## Innovation Summit Environmental Data Science Questions
+## Agenda
 
-1.  **EDS in Indian Country**  
-    How can we effectively partner with tribal colleges and universities
-    to integrate environmental data science (EDS) into their curricula
-    and research programs, and empower Indigenous communities with the
-    tools and knowledge necessary to tackle pressing environmental
-    challenges and manage their natural resources sustainably?
+Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _virtually_ over **Zoom**.
 
-2.  **Solving water**  
-    How can inclusive environmental data science be leveraged to
-    effectively address and solve the myriad of complex water-related
-    challenges facing the world, such as water scarcity, pollution, and
-    climate change impacts, and ensure equitable access to safe and
-    clean water for all people?
+<div style="text-align:center;padding:1em 0;"> <h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/en/city/5574991"><span style="color:gray;">Current local time in</span><br />Boulder, United States</a></h4> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=America%2FDenver" width="100%" height="90" frameborder="0" seamless></iframe> </div>
 
-3.  **Data librarianship**  
-    What are the key unifying questions and challenges facing the
-    emerging field of environmental data librarianship, which seeks to
-    support researchers and organizations in the management, curation,
-    and sharing of complex environmental and social data sets?
+## Day 1 (Wednesday May, 17)
+> ### ***Collaborating with Other People Using Cloud Computing***
+> * **Instructors:** Culler, Know Innovation Team, Swetnam & CyVerse Team, Tuff, Verleye
+>   * Team introductions
+>   * Navigating KIStorm (Know Innovation Team) ⚡
+>   * Navigating the Constellation of Cyberinfrastructure (Swetnam & CyVerse Team, Tuff, Verleye)
+>     * <a href="https://de.cyverse.org/" target="_blank">**CyVerse Discovery Environment**</a> ✨
+>     * <a href="https://jetstream-cloud.org/" target="_blank">**JetStream2**</a> 🚀
+>   * <a href="https://github.com/" target="_blank">**GitHub**</a> for Collaboration (Culler, Tuff, Verleye) 🤝
 
-4.  **Cutting-edge remote sensing**  
-    As remote sensing technology advances to provide increasing spatial
-    resolution and access to previously unmeasured areas, how can we
-    ensure that the collection and analysis of this data is leveraged to
-    promote social justice by informing vulnerability assessments and
-    supporting ecosystem function monitoring, and what ethical
-    considerations must be taken into account as we navigate this
-    rapidly evolving field?
 
-5.  **Nature-based solutions and Human development**  
-    As city planning increasingly turns towards nature-based solutions
-    for sustainable development, how can the integration of big data and
-    environmental data science accelerate the design and implementation
-    of these solutions not only in urban areas but also in rural areas,
-    and what advancements in technology, such as digital twins and
-    complex systems models, could revolutionize the way we approach both
-    urban and rural city planning and help us create more resilient and
-    livable communities in the future?
 
-6.  **Extreme events and hazards**  
-    As extreme events such as fires, disease outbreaks, droughts,
-    floods, and famines become more frequent and severe due to climate
-    change, how can the integration of machine learning and
-    environmental data science into hazard planning science enhance our
-    ability to prepare for, mitigate, and respond to these events, and
-    what are the emerging questions and challenges facing planners as
-    they navigate the complexities of an uncertain and rapidly changing
-    climate future?
 
-7.  **Spatial scale**  
-    How can we better bridge the gap between the fine-grained details
-    and large-scale patterns in environmental data to improve our
-    understanding of complex systems, and what new insights might we
-    uncover by exploring the emergent properties/patterns that connect
-    large and small spatial scales?
+## Day 2 (Thursday May, 18)
+> ### ***R and Python Bilingualism: How to Talk to Everybody***
+> * **Instructors:** Culler, Quarderer(?), Sanovia(?), Tuff
+>   * Libraries for Doing Earth Data Science 📚
+>   * How do things change over time? (Time-series data applications) 📈
+>     * <a href="https://www.earthdatascience.org/courses/earth-analytics/time-series-data/date-class-in-r/" target="_blank">**Time Series Data in R**</a>
+>     * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/" target="_blank">**Time Series Data in Python**</a>
+>   * Let's make a map! (Vector & Raster spatial data applications) 🗺️
+>     * <a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank">**Spatial Data in R**</a>
+>     * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-vector-data-python/" target="_blank">**Introduction to Vector Data in Python**</a>
+>     * <a href="" target="_blank">**Introduction to Raster Data in Python**</a>
 
-8.  **Data ethics**  
-    As environmental data scientists navigate the ethical complexities
-    of collecting, managing, and analyzing data in the 21st century,
-    what are the most urgent and pressing data ethics issues that need
-    to be addressed? What steps can we take to ensure that the benefits
-    of environmental data science are accessible, equitable, and
-    sustainable for all?
 
-9.  **Ecological forecasting**  
-    As the need for accurate biodiversity monitoring and ecological
-    forecasting grows in urgency, how can environmental data scientists
-    leverage advances in machine learning, large data repositories, and
-    other emerging technologies to improve the precision and reliability
-    of biodiversity monitoring and ecological forecasts, and what
-    barriers and challenges must be overcome to ensure that these
-    forecasts are both scientifically rigorous and practically
-    applicable for informing environmental decision-making in the
-    future?
 
-10. **Data harmonization**  
-    As the need for integrating and analyzing large and diverse datasets
-    across different domains and scales grows in urgency, how can
-    environmental data scientists push the boundaries of data
-    harmonization to move from a world where harmonizing two datasets is
-    a feat, to a world where harmonizing hundreds of dissimilar datasets
-    in a rigorous and standardized way is the norm, and what are the key
-    technological and cultural shifts
+## Day 3 (Friday May, 19)
+> ### ***Tools for Keeping Your Science Open and Reproducible*** 
+> (borrowed from the <a href="https://foss.cyverse.org/" target="_blank">***CyVerse Foundational Open Science Skills 2023***</a> open online course)
+> 
+> * **Instructors:** Culler, Swetnam & CyVerse Team, Tuff
+>     * <a href="https://foss.cyverse.org/01_intro_open_sci/" target="_blank">**Introduction to Open Science**</a>
+>     * <a href="https://foss.cyverse.org/04_documentation_communication/" target="_blank">**Documentation & Communication**</a>
+>     * <a href="https://foss.cyverse.org/06_reproducibility_i/" target="_blank">**Repeatability and Reproducibility**</a>
 
-11. **Food supply**  
-    As we face the dual challenges of ensuring food security for a
-    growing global population and maintaining the ecological integrity
-    of our food production systems, how can environmental data
-    scientists leverage the power of real-time monitoring, machine
-    learning, spatial complexity, and big data to enhance our
-    understanding of the dynamics and resilience of food production
-    systems, and how can we effectively integrate precision agriculture
-    and high-tech animal husbandry practices into these data-driven
-    approaches to optimize sustainability, productivity, and efficiency
-    across the food production chain?
+***
 
-12. **Social justice**  
-    As environmental data scientists grapple with the intertwined
-    challenges of promoting social and environmental justice, harnessing
-    the power of big data and machine learning, and upholding data
-    ethics, what are the critical questions and ethical dilemmas that
-    arise in designing and implementing data-driven solutions that
-    address systemic inequities and environmental risks? How can we
-    ensure that our data science methodologies are transparent,
-    inclusive, and aligned with the values and priorities of
-    marginalized communities, and how can we leverage the potential of
-    big data and machine learning to drive transformative change towards
-    a more just and sustainable future?
+## Links
 
-13. **Data science in decision making and policy**  
-    As environmental data scientists strive to make their models and
-    tools more practical for decision and policy makers, what are the
-    key challenges in bridging the gap between theoretical advances and
-    practical applications of machine learning and big data analytics?
-    How can we ensure that our outputs are not only scientifically
-    rigorous, but also useful and relevant to decision makers who are
-    often constrained by limited time, resources, and data literacy? In
-    this context, how can we prioritize the most critical needs and
-    questions of society, while also advancing the frontiers of
-    environmental data science?
+**GitHub repository:** <a href="https://github.com/CU-ESIIL/pre-innovation-summit-training" target="_blank">**https://github.com/CU-ESIIL/pre-innovation-summit-training**</a>
 
-14. **AI in environmental data science**  
-    How can environmental data scientists pragmatically incorporate the
-    latest advancements in artificial intelligence to automate data
-    collection and analysis, and what are the ethical implications of
-    these technologies? How can we ensure that the outcomes generated by
-    AI-based environmental data science are aligned with human values
-    and priorities, and how can we prepare for the potential disruptions
-    that these advancements may bring to the field?
+**KIStorm:** <a href="https://kistorm.com/login" target="_blank">**https://kistorm.com/login**</a>
 
-15. **Math, modeling, statistics**  
-    How can we leverage existing mathematical techniques and develop new
-    ones to uncover meaningful patterns in the vast amounts of
-    environmental data we are collecting at larger scales, and how can
-    we ensure that these patterns are not merely artifacts of
-    statistical noise or biased sampling?
+**Slack:** <a href="https://join.slack.com/t/esiilinnovationsummit/shared_invite/zt-1udjsf8v6-ci7YIr1XgyuMdGCMuE3OuA" target="_blank">**esiilinnovationsummit.slack.com**</a>
 
-16. **EDS specific education**  
-    As the field of Environmental Data Science continues to grow, what
-    educational strategies should be employed to cultivate the necessary
-    interdisciplinary skills for success? How can we balance the need
-    for expertise in computer science, mathematical modeling, and
-    geography with a deep understanding of the ecological, social, and
-    planetary systems we seek to model? And, how do we ensure that
-    students are equipped with the critical thinking skills necessary to
-    navigate the ethical considerations that arise from working with big
-    data in the environmental sciences?
+**CyVerse User Portal:** <a href="https://user.cyverse.org" target="_blank">**https://user.cyverse.org**</a>
 
-## Acknowledgments
+**Open Earth Data Science Textbook:** <a href="https://www.earthdatascience.org/" target="_blank">**https://www.earthdatascience.org/**</a>
 
-This work is funded by the National Science Foundation (NSF Award Number
-<a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2153040&HistoricalAwards=false" target="_blank">DBI-2153040</a>).
+*** 
+
+## **Code of Conduct** (amended from <a href="https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html" target="_blank">The Carpentries</a>)
+  
+<img style="float: right;" src="https://www.software.ac.uk/sites/default/files/The%20Carpentries.jpg" width="100" height="100">
+
+* Use Welcoming and use inclusive language
+* Be respectful of different viewpoints and experiences
+* Gracefully accept constructive criticism
+* Focus on what is best for the community
+* Show courtesy and respect towards other community members
+
+***
+
+## Our team
+
+![michele](https://cyverse.org/sites/default/files/inline-images/Michele.png){width=100}
+
+**Michele Cosi**
+
+* Data Scientist, CyVerse
+* <a href="https://cosimichele.github.io/" target="_blank">**Website**</a>
+
+***
+
+![elsa](https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/Elsa%20Culler%20-%20reduced.jpg){width=100}
+
+**Elsa Culler**
+
+* Education Trainer - Earth Lab; ESIIL
+* <a href="https://earthlab.colorado.edu/our-team/elsa-culler" target="_blank">**Website**</a>
+
+***
+
+![ming](https://esiil.org/sites/default/files/inline-images/Posa%20M%20headshot_0.png){width=100}
+
+**Ming Posa**
+
+* Executive Assistant - ESIIL
+* <a href="https://esiil.org/our-team" target="_blank">**Website**</a>
+
+***
+
+![nate](https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/profile.png?itok=81I5qGge){width=100}
+
+**Nate Quarderer** 
+
+* Education Director - Earth Lab; ESIIL
+* <a href="https://earthlab.colorado.edu/our-team/nathan-quarderer" target="_blank">**Website**</a>
+
+***
+
+![jim](https://media.licdn.com/dms/image/D5603AQFIoqS91aBcaw/profile-displayphoto-shrink_200_200/0/1674354325257?e=1683763200&v=beta&t=Ua-EWUlQOzMrEdR61FS6UV0LDhwK4oltMOJeyMVIb1A){width=100}
+
+**Jim Sanovia**
+
+* Tribal Resilience Data Scientist - ESIIL
+* <a href="https://esiil.org/our-team" target="_blank">**Website**</a>
+
+***
+
+![tyson](https://avatars.githubusercontent.com/u/11527041?v=4){width=100}
+
+**Tyson Swetnam**
+
+* CoPI, CyVerse, ESIIL
+* <a href="https://tysonswetnam.com/" target="_blank">**Website**</a>
+
+***
+
+![ty](https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-01-17%20at%2011.57.14%20AM.png){width=100}
+
+**Ty Tuff**
+
+* Data Scientist - Earth Lab; ESIIL
+* <a href="https://earthlab.colorado.edu/our-team/ty-tuff" target="_blank">**Website**</a>
+
