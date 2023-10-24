@@ -77,17 +77,16 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 ***
 
 ## Our team
-
-![virginia](https://esiil.org/sites/default/files/inline-images/virginia%20headshot.jpg)
+<img style="float: right;" src="https://esiil.org/sites/default/files/inline-images/virginia%20headshot.jpg" width="125">
 
 **Virginia Iglesias**
 
-* Hackathon Coordinator/Research Scientist, ESIIL/Earth Lab
+* Research Scientist/Hackathon Coordinator - Earth Lab; ESIIL
 * <a href="https://earthlab.colorado.edu/our-team/virginia-iglesias" target="_blank">**Website**</a>
 
 ***
 
-![elsa](https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/Elsa%20Culler%20-%20reduced.jpg){width=100}
+<img style="float: right;" src="https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/Elsa%20Culler%20-%20reduced.jpg" width="125">
 
 **Elsa Culler**
 
@@ -96,16 +95,15 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 ***
 
-![ming](https://esiil.org/sites/default/files/inline-images/Posa%20M%20headshot_0.png){width=100}
+<img style="float: right;" src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-08-10%20at%201.53.28%20PM_0.png" width="125">
 
-**Ming Posa**
+**Rachel Lieber**
 
-* Executive Assistant - ESIIL
-* <a href="https://esiil.org/our-team" target="_blank">**Website**</a>
+* Community Engagement Specialist - ESIIL
 
 ***
 
-![nate](https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/profile.png?itok=81I5qGge){width=100}
+<img style="float: right;" src="https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/profile.png?itok=81I5qGge" width="125">
 
 **Nate Quarderer** 
 
@@ -114,25 +112,16 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 ***
 
-![jim](https://media.licdn.com/dms/image/D5603AQFIoqS91aBcaw/profile-displayphoto-shrink_200_200/0/1674354325257?e=1683763200&v=beta&t=Ua-EWUlQOzMrEdR61FS6UV0LDhwK4oltMOJeyMVIb1A){width=100}
+<img style="float: right;" src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-01-17%20at%2012.08.13%20PM.png" width="125">
 
-**Jim Sanovia**
+**Erick Verleye**
 
-* Tribal Resilience Data Scientist - ESIIL
-* <a href="https://esiil.org/our-team" target="_blank">**Website**</a>
-
-***
-
-![tyson](https://avatars.githubusercontent.com/u/11527041?v=4){width=100}
-
-**Tyson Swetnam**
-
-* CoPI, CyVerse, ESIIL
-* <a href="https://tysonswetnam.com/" target="_blank">**Website**</a>
+* Software Developer - ESIIL; Earth Lab
+* <a href="https://earthlab.colorado.edu/our-team/erick-verleye" target="_blank">**Website**</a>
 
 ***
 
-![ty](https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-01-17%20at%2011.57.14%20AM.png){width=100}
+<img style="float: right;" src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-01-17%20at%2011.57.14%20AM.png" width="125">
 
 **Ty Tuff**
 
