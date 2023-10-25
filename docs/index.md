@@ -13,14 +13,14 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 <div style="text-align:center;padding:1em 0;"> <h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/en/city/5574991"><span style="color:gray;">Current local time in</span><br />Boulder, United States</a></h4> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=America%2FDenver" width="100%" height="90" frameborder="0" seamless></iframe> </div>
 
 ## Day 1 (Thursday October 26th)
+>   * **Opening remarks:** Jennifer Balch, ESIIL Director
+>   * **Session overview:** Nate Quarderer, ESIIL Education Director
 > ### ***Collaborating with Other People Using Cloud Computing***
 > * **Instructors:** Culler, Tuff, Verleye
->   * Opening remarks (Jennifer Balch, ESIIL Director)
->   * Team introductions
->   * Navigating the Constellation of Cyberinfrastructure (Culler, Tuff, Verleye)
+>   * Navigating the Constellation of Cyberinfrastructure 
 >     * <a href="https://de.cyverse.org/" target="_blank">**CyVerse Discovery Environment**</a> ✨
 >     * <a href="https://jetstream-cloud.org/" target="_blank">**JetStream2**</a> 🚀
->   * <a href="https://github.com/" target="_blank">**GitHub**</a> for Collaboration (Culler, Tuff, Verleye) 🤝
+>   * <a href="https://github.com/" target="_blank">**GitHub**</a> for Collaboration 🤝
 
 > ### ***R and Python Bilingualism: How to Talk to Everybody***
 > * **Instructors:** Culler, Tuff
