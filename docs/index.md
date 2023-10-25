@@ -49,6 +49,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 **Open Earth Data Science Textbook:** <a href="https://www.earthdatascience.org/" target="_blank">**https://www.earthdatascience.org/**</a>
 
+**ESIIL Data Library:** <a href="https://data-library.esiil.org/" target="_blank">**https://data-library.esiil.org/**</a>
 *** 
 
 ## **Code of Conduct** (amended from <a href="https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html" target="_blank">The Carpentries</a>)
