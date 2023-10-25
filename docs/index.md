@@ -16,7 +16,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 >   * **Opening remarks:** Jennifer Balch, ESIIL Director
 >   * **Session overview:** Nate Quarderer, ESIIL Education Director
 > ### ***Collaborating with Other People Using Cloud Computing***
-> * **Instructors:** Culler, Tuff, Verleye
+> * **Instructors:** Culler, Verleye
 >   * Navigating the Constellation of Cyberinfrastructure 
 >     * <a href="https://de.cyverse.org/" target="_blank">**CyVerse Discovery Environment**</a> ✨
 >     * <a href="https://jetstream-cloud.org/" target="_blank">**JetStream2**</a> 🚀
