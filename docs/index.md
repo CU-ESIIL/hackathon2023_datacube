@@ -17,10 +17,10 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 >   * **Session overview:** Nate Quarderer, ESIIL Education Director
 > ### ***Collaborating with Other People Using Cloud Computing***
 > * **Instructors:** Culler, Verleye
+>   * <a href="https://github.com/" target="_blank">**GitHub**</a> for Collaboration 🤝
 >   * Navigating the Constellation of Cyberinfrastructure 
 >     * <a href="https://de.cyverse.org/" target="_blank">**CyVerse Discovery Environment**</a> ✨
 >     * <a href="https://jetstream-cloud.org/" target="_blank">**JetStream2**</a> 🚀
->   * <a href="https://github.com/" target="_blank">**GitHub**</a> for Collaboration 🤝
 
 > ### ***R and Python Bilingualism: How to Talk to Everybody***
 > * **Instructors:** Culler, Tuff
