@@ -24,11 +24,9 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 > ### ***R and Python Bilingualism: How to Talk to Everybody***
 > * **Instructors:** Culler, Tuff
->   * Additional Readings from our **Earth Data Science** textbook! 📚
->     * How do things change over time? (Time-series data applications) 📈
+>   * Additional Readings from our **Earth Data Science** textbook! 📚 📈 🗺️
 >       * <a href="https://www.earthdatascience.org/courses/earth-analytics/time-series-data/date-class-in-r/" target="_blank">**Time Series Data in R**</a>
 >       * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/" target="_blank">**Time Series Data in Python**</a>
->     * Let's make a map! (Vector & Raster spatial data applications) 🗺️
 >       * <a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank">**Spatial Data in R**</a>
 >       * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-vector-data-python/" target="_blank">**Introduction to Vector Data in Python**</a>
 >       * <a href="" target="_blank">**Introduction to Raster Data in Python**</a>
