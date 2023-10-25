@@ -16,6 +16,8 @@ nav:
   - Collaboration on Cloud: 
     - Collaboration on Cloud: 1_GIT_on_the_Cloud/collaboration.md
     - Github essentials: 1_GIT_on_the_Cloud/github_lesson.md
+  - R & Python Bilingualism:
+   - R and Python Bilingualism: 2_R_Python_Bilingualism/bilingualism_md.md
 
 # Configuration
 theme:
