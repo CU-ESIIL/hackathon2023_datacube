@@ -4,7 +4,7 @@ site_author: ESIIL CI team (lead = Ty Tuff)
 site_url: https://cu-esiil.github.io/data-library
 
 # Repository
-repo_name: ackathon2023_datacube
+repo_name: hackathon2023_datacube
 repo_url: https://cu-esiil.github.io/hackathon2023_datacube
 edit_uri: edit/main/docs/
 # Copyright
@@ -18,6 +18,8 @@ nav:
     - Github essentials: 1_GIT_on_the_Cloud/github_lesson.md
   - R & Python Bilingualism:
     - R and Python Bilingualism: 2_R_Python_Bilingualism/bilingualism_md.md
+  - Environmental Data Science & Data Cubes:
+  - Artificial Intelligence (AI) for Environmental Data Science:
 
 # Configuration
 theme:
