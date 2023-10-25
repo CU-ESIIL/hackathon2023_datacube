@@ -24,21 +24,14 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 > ### ***R and Python Bilingualism: How to Talk to Everybody***
 > * **Instructors:** Culler, Tuff
->   * Libraries for Doing Earth Data Science 📚
->   * How do things change over time? (Time-series data applications) 📈
->     * <a href="https://www.earthdatascience.org/courses/earth-analytics/time-series-data/date-class-in-r/" target="_blank">**Time Series Data in R**</a>
->     * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/" target="_blank">**Time Series Data in Python**</a>
->   * Let's make a map! (Vector & Raster spatial data applications) 🗺️
->     * <a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank">**Spatial Data in R**</a>
->     * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-vector-data-python/" target="_blank">**Introduction to Vector Data in Python**</a>
->     * <a href="" target="_blank">**Introduction to Raster Data in Python**</a>
-> ### ***Tools for Keeping Your Science Open and Reproducible*** 
-> (borrowed from the <a href="https://foss.cyverse.org/" target="_blank">***CyVerse Foundational Open Science Skills 2023***</a> open online course)
-> 
-> * **Instructors:** Culler, Swetnam & CyVerse Team, Tuff
->     * <a href="https://foss.cyverse.org/01_intro_open_sci/" target="_blank">**Introduction to Open Science**</a>
->     * <a href="https://foss.cyverse.org/04_documentation_communication/" target="_blank">**Documentation & Communication**</a>
->     * <a href="https://foss.cyverse.org/06_reproducibility_i/" target="_blank">**Repeatability and Reproducibility**</a>
+>   * Additional Readings from our **Earth Data Science** textbook! 📚
+>     * How do things change over time? (Time-series data applications) 📈
+>       * <a href="https://www.earthdatascience.org/courses/earth-analytics/time-series-data/date-class-in-r/" target="_blank">**Time Series Data in R**</a>
+>       * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/" target="_blank">**Time Series Data in Python**</a>
+>     * Let's make a map! (Vector & Raster spatial data applications) 🗺️
+>       * <a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank">**Spatial Data in R**</a>
+>       * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-vector-data-python/" target="_blank">**Introduction to Vector Data in Python**</a>
+>       * <a href="" target="_blank">**Introduction to Raster Data in Python**</a>
 
 
 ## Day 2 (Thursday November 2nd)
@@ -52,11 +45,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 ## Links
 
-**GitHub repository:** <a href="https://github.com/CU-ESIIL/pre-innovation-summit-training" target="_blank">**https://github.com/CU-ESIIL/pre-innovation-summit-training**</a>
-
-**KIStorm:** <a href="https://kistorm.com/login" target="_blank">**https://kistorm.com/login**</a>
-
-**Slack:** <a href="https://join.slack.com/t/esiilinnovationsummit/shared_invite/zt-1udjsf8v6-ci7YIr1XgyuMdGCMuE3OuA" target="_blank">**esiilinnovationsummit.slack.com**</a>
+**GitHub repository:** <a href="https://github.com/CU-ESIIL/hackathon2023_datacube" target="_blank">**https://github.com/CU-ESIIL/hackathon2023_datacube**</a>
 
 **CyVerse User Portal:** <a href="https://user.cyverse.org" target="_blank">**https://user.cyverse.org**</a>
 
