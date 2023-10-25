@@ -95,6 +95,15 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 ***
 
+<img src="https://esiil.org/sites/default/files/inline-images/Photo_CibeleAmaral_0.jpeg" width="125">
+
+**Cibele Amaral**
+
+* Analytics Hub Director - Earth Lab; ESIIL
+* <a href="https://earthlab.colorado.edu/our-team/cibele-amaral" target="_blank">**Website**</a>
+
+***
+
 <img src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-08-10%20at%201.53.28%20PM_0.png" width="125">
 
 **Rachel Lieber**
@@ -128,3 +137,11 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 * Data Scientist - Earth Lab; ESIIL
 * <a href="https://earthlab.colorado.edu/our-team/ty-tuff" target="_blank">**Website**</a>
 
+***
+
+<img src="https://media.licdn.com/dms/image/C4E03AQEq52pAkk-24Q/profile-displayphoto-shrink_200_200/0/1602717659464?e=1703721600&v=beta&t=l2s1DVNBb-6AIjXd3s2bLz2p-xBM_9f_SNLcew0LKOc" width="125">
+
+**Ayoub Ghriss**
+
+* PhD Student - Climate & Machine Learning Boulder; CU Boulder
+* <a href="https://aghriss.net/" target="_blank">**Website**</a>
