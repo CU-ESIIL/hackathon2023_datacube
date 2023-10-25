@@ -1,5 +1,3 @@
-# Collaboration Activity
-
 # ESIIL Hackathon 2023 Collaboration activity
 ### Instructor: Culler
 Git and GitHub are great tools for collaboration. They allow multiple people to edit their own copies of the project and merge them together later.
