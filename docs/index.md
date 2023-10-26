@@ -18,18 +18,31 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 > ### ***Collaborating with Other People Using Cloud Computing***
 > * **Instructors:** Culler, Verleye
 >   * <a href="https://github.com/" target="_blank">**GitHub**</a> for Collaboration 🤝
+>     * Why GitHub?
+>     * A brief overview of GitHub collaboration features
+>     * Pair programming, or How we suggest you use GitHub for the Hackathon
 >   * Navigating the Constellation of Cyberinfrastructure 
 >     * <a href="https://de.cyverse.org/" target="_blank">**CyVerse Discovery Environment**</a> ✨
 >     * <a href="https://jetstream-cloud.org/" target="_blank">**JetStream2**</a> 🚀
 
 > ### ***R and Python Bilingualism: How to Talk to Everybody***
 > * **Instructors:** Culler, Tuff
->   * Additional Readings from our **Earth Data Science** textbook! 📚 📈 🗺️
->       * <a href="https://www.earthdatascience.org/courses/earth-analytics/time-series-data/date-class-in-r/" target="_blank">**Time Series Data in R**</a>
->       * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/" target="_blank">**Time Series Data in Python**</a>
->       * <a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank">**Spatial Data in R**</a>
->       * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-vector-data-python/" target="_blank">**Introduction to Vector Data in Python**</a>
->       * <a href="" target="_blank">**Introduction to Raster Data in Python**</a>
+> * Activity:
+>   1. Split into groups of 2 (randomly assigned). Each group will go to a breakout room and have 10 minutes to:
+>      1. One person ONLY accepts the [GitHub Classroom assignment by clicking this link](https://classroom.github.com/a/9DWNrNFh). This will create a GitHub repository that contains two notebooks for both team members to collaborate on. One notebook is for creating a file with annual LA temperature data, and the other notebook uses it to fit a linear model and plot the data.
+>      2. Both team members clone the GitHub repository into Cyverse using either Jupyter Lab or RStudio. If you have trouble with this, don't worry - we'll go over it later. Please **make sure that both team members have the URL to their GitHub repository!**
+>      3. Choose which person will work on which notebook.
+>      4. Plan what your intermediate data file (annual temperatures in LA) will look like. There is a spot in both notebooks for writing down the plan.
+>   2. Everyone comes back to the main room
+>   3. We split into two breakout rooms by notebook - there should be one member from each group in each room. Each room will walk through completing the notebook and pushing your results up to GitHub.
+>   4. Return to your group of 2, and see if you can get your code to work together!
+> * When you are in a room with your group of 2, you can always get someone to come look at your code using the Ask For Help feature.
+> * Additional Readings from our **Earth Data Science** textbook! 📚 📈 🗺️
+>   * <a href="https://www.earthdatascience.org/courses/earth-analytics/time-series-data/date-class-in-r/" target="_blank">**Time Series Data in R**</a>
+>   * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/" target="_blank">**Time Series Data in Python**</a>
+>   * <a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank">**Spatial Data in R**</a>
+>   * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-vector-data-python/" target="_blank">**Introduction to Vector Data in Python**</a>
+>   * <a href="" target="_blank">**Introduction to Raster Data in Python**</a>
 
 
 ## Day 2 (Thursday November 2nd)
