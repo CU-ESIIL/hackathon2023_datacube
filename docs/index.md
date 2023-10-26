@@ -26,7 +26,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 >     * <a href="https://jetstream-cloud.org/" target="_blank">**JetStream2**</a> 🚀
 
 > ### ***R and Python Bilingualism: How to Talk to Everybody***
-> * **Instructors:** Culler, Tuff
+> * **Instructors:** Culler, Tuff, Swetnam
 > * Activity:
 >   1. Split into groups of 2 (randomly assigned). Each group will go to a breakout room and have 10 minutes to:
 >      1. One person ONLY accepts the [GitHub Classroom assignment by clicking this link](https://classroom.github.com/a/9DWNrNFh). This will create a GitHub repository that contains two notebooks for both team members to collaborate on. One notebook is for creating a file with annual LA temperature data, and the other notebook uses it to fit a linear model and plot the data.
