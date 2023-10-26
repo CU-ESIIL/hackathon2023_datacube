@@ -146,3 +146,13 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 * PhD Student - Climate & Machine Learning Boulder; CU Boulder
 * <a href="https://aghriss.net/" target="_blank">**Website**</a>
+
+
+***
+
+<img src="https://esiil.org/sites/default/files/inline-images/tyson%20headshot.png" width="125">
+
+**Tyson Swetnam** 
+
+* Co-PI and Science Lead, CyVerse
+* <a href="https://datascience.arizona.edu/person/tyson-swetnam" target="_blank">**Website**</a>
