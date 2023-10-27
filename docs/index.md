@@ -1,44 +1,48 @@
-![header](assets/pre-summit-training-header.png){width=1000}
+![header](assets/pre-summit-training-header.png)
 
 # Virtual Training for Collaboration in Environmental Data Science
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-Welcome to the Environmental Data Science Innovation & Inclusion Lab (<a href="https://esiil.org/" target="_blank">**ESIIL**</a>)! These training sessions are intended to provide attendees to the <a href="https://esiil.org/innovation-summit" target="_blank">**ESIIL Innovation Summit**</a> with some technical background to help foster innovation and collaboartion during the summit. Through this training, attendees will learn how to access and engage with cloud-based communication and computational tools that will be relied on throughout the summit, fundamental Environmental Data Science (EDS) skills using <a href="https://www.r-project.org/" target="_blank">**R**</a> and <a href="https://www.python.org/" target="_blank">**Python**</a>, and ways to make your science open and reproducible. These sessions are being recorded and published on our YouTube channel for anyone who is unable to attend, or for those who would like to go back and revisit these lessons. Finally, we will have super fun virtual and in-person help desks set up during the summit as questions come up and for anyone who would like help troubleshooting.
+Welcome to the Environmental Data Science Innovation & Inclusion Lab (<a href="https://esiil.org/" target="_blank">**ESIIL**</a>)! These training sessions are intended to provide attendees to the <a href="https://esiil.org/virtual-hackathon" target="_blank">**ESIIL Virtual Hackathon - Environmental MosAIc**</a> with some technical background to help foster innovation and collaboartion during the hackathon. Through this training, attendees will learn how to access and engage with cloud-based communication and computational tools that will be relied on throughout the hackathon, fundamental Environmental Data Science (EDS) skills using <a href="https://www.r-project.org/" target="_blank">**R**</a> and <a href="https://www.python.org/" target="_blank">**Python**</a>, and fundamentals of AI. These sessions are being recorded and published on our YouTube channel for anyone who is unable to attend, or for those who would like to go back and revisit these lessons. Finally, we will have super fun virtual help desks set up during the hackathon as questions come up and for anyone who would like help troubleshooting.
 
 ## Agenda
 
-Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _virtually_ over **Zoom**.
+Each session will run from **10am - 12pm Mountain Daylight Time** and will meet _virtually_ over **Zoom**.
 
 <div style="text-align:center;padding:1em 0;"> <h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/en/city/5574991"><span style="color:gray;">Current local time in</span><br />Boulder, United States</a></h4> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=America%2FDenver" width="100%" height="90" frameborder="0" seamless></iframe> </div>
 
-## Day 1 (Wednesday October 26th)
+## Day 1 (Thursday October 26th)
+>   * **Opening remarks:** Jennifer Balch, ESIIL Director
+>   * **Session overview:** Nate Quarderer, ESIIL Education Director
 > ### ***Collaborating with Other People Using Cloud Computing***
-> * **Instructors:** Culler, Know Innovation Team, Swetnam & CyVerse Team, Tuff, Verleye
->   * Team introductions
->   * Navigating KIStorm (Know Innovation Team) ⚡
->   * Navigating the Constellation of Cyberinfrastructure (Swetnam & CyVerse Team, Tuff, Verleye)
+> * **Instructors:** Culler, Verleye
+>   * <a href="https://github.com/" target="_blank">**GitHub**</a> for Collaboration 🤝
+>     * Why GitHub?
+>     * A brief overview of GitHub collaboration features
+>     * Pair programming, or How we suggest you use GitHub for the Hackathon
+>   * Navigating the Constellation of Cyberinfrastructure 
 >     * <a href="https://de.cyverse.org/" target="_blank">**CyVerse Discovery Environment**</a> ✨
 >     * <a href="https://jetstream-cloud.org/" target="_blank">**JetStream2**</a> 🚀
->   * <a href="https://github.com/" target="_blank">**GitHub**</a> for Collaboration (Culler, Tuff, Verleye) 🤝
 
 > ### ***R and Python Bilingualism: How to Talk to Everybody***
-> * **Instructors:** Culler, Quarderer(?), Sanovia(?), Tuff
->   * Libraries for Doing Earth Data Science 📚
->   * How do things change over time? (Time-series data applications) 📈
->     * <a href="https://www.earthdatascience.org/courses/earth-analytics/time-series-data/date-class-in-r/" target="_blank">**Time Series Data in R**</a>
->     * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/" target="_blank">**Time Series Data in Python**</a>
->   * Let's make a map! (Vector & Raster spatial data applications) 🗺️
->     * <a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank">**Spatial Data in R**</a>
->     * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-vector-data-python/" target="_blank">**Introduction to Vector Data in Python**</a>
->     * <a href="" target="_blank">**Introduction to Raster Data in Python**</a>
-> ### ***Tools for Keeping Your Science Open and Reproducible*** 
-> (borrowed from the <a href="https://foss.cyverse.org/" target="_blank">***CyVerse Foundational Open Science Skills 2023***</a> open online course)
-> 
-> * **Instructors:** Culler, Swetnam & CyVerse Team, Tuff
->     * <a href="https://foss.cyverse.org/01_intro_open_sci/" target="_blank">**Introduction to Open Science**</a>
->     * <a href="https://foss.cyverse.org/04_documentation_communication/" target="_blank">**Documentation & Communication**</a>
->     * <a href="https://foss.cyverse.org/06_reproducibility_i/" target="_blank">**Repeatability and Reproducibility**</a>
+> * **Instructors:** Culler, Tuff, Swetnam
+> * Activity:
+>   1. Split into groups of 2 (randomly assigned). Each group will go to a breakout room and have 10 minutes to:
+>      1. One person ONLY accepts the [GitHub Classroom assignment by clicking this link](https://classroom.github.com/a/9DWNrNFh). This will create a GitHub repository that contains two notebooks for both team members to collaborate on. One notebook is for creating a file with annual LA temperature data, and the other notebook uses it to fit a linear model and plot the data.
+>      2. Both team members clone the GitHub repository into Cyverse using either Jupyter Lab or RStudio. If you have trouble with this, don't worry - we'll go over it later. Please **make sure that both team members have the URL to their GitHub repository!**
+>      3. Choose which person will work on which notebook.
+>      4. Plan what your intermediate data file (annual temperatures in LA) will look like. There is a spot in both notebooks for writing down the plan.
+>   2. Everyone comes back to the main room
+>   3. We split into two breakout rooms by notebook - there should be one member from each group in each room. Each room will walk through completing the notebook and pushing your results up to GitHub.
+>   4. Return to your group of 2, and see if you can get your code to work together!
+> * When you are in a room with your group of 2, you can always get someone to come look at your code using the Ask For Help feature.
+> * Additional Readings from our **Earth Data Science** textbook! 📚 📈 🗺️
+>   * <a href="https://www.earthdatascience.org/courses/earth-analytics/time-series-data/date-class-in-r/" target="_blank">**Time Series Data in R**</a>
+>   * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/" target="_blank">**Time Series Data in Python**</a>
+>   * <a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank">**Spatial Data in R**</a>
+>   * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-vector-data-python/" target="_blank">**Introduction to Vector Data in Python**</a>
+>   * <a href="" target="_blank">**Introduction to Raster Data in Python**</a>
 
 
 ## Day 2 (Thursday November 2nd)
@@ -52,16 +56,13 @@ Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _
 
 ## Links
 
-**GitHub repository:** <a href="https://github.com/CU-ESIIL/pre-innovation-summit-training" target="_blank">**https://github.com/CU-ESIIL/pre-innovation-summit-training**</a>
-
-**KIStorm:** <a href="https://kistorm.com/login" target="_blank">**https://kistorm.com/login**</a>
-
-**Slack:** <a href="https://join.slack.com/t/esiilinnovationsummit/shared_invite/zt-1udjsf8v6-ci7YIr1XgyuMdGCMuE3OuA" target="_blank">**esiilinnovationsummit.slack.com**</a>
+**GitHub repository:** <a href="https://github.com/CU-ESIIL/hackathon2023_datacube" target="_blank">**https://github.com/CU-ESIIL/hackathon2023_datacube**</a>
 
 **CyVerse User Portal:** <a href="https://user.cyverse.org" target="_blank">**https://user.cyverse.org**</a>
 
 **Open Earth Data Science Textbook:** <a href="https://www.earthdatascience.org/" target="_blank">**https://www.earthdatascience.org/**</a>
 
+**ESIIL Data Library:** <a href="https://data-library.esiil.org/" target="_blank">**https://data-library.esiil.org/**</a>
 *** 
 
 ## **Code of Conduct** (amended from <a href="https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html" target="_blank">The Carpentries</a>)
@@ -77,17 +78,16 @@ Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _
 ***
 
 ## Our team
+<img src="https://esiil.org/sites/default/files/inline-images/virginia%20headshot.jpg" width="125">
 
-![michele](https://cyverse.org/sites/default/files/inline-images/Michele.png){width=100}
+**Virginia Iglesias**
 
-**Michele Cosi**
-
-* Data Scientist, CyVerse
-* <a href="https://cosimichele.github.io/" target="_blank">**Website**</a>
+* Research Scientist/Hackathon Coordinator - Earth Lab; ESIIL
+* <a href="https://earthlab.colorado.edu/our-team/virginia-iglesias" target="_blank">**Website**</a>
 
 ***
 
-![elsa](https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/Elsa%20Culler%20-%20reduced.jpg){width=100}
+<img src="https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/Elsa%20Culler%20-%20reduced.jpg" width="125">
 
 **Elsa Culler**
 
@@ -96,16 +96,24 @@ Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _
 
 ***
 
-![ming](https://esiil.org/sites/default/files/inline-images/Posa%20M%20headshot_0.png){width=100}
+<img src="https://esiil.org/sites/default/files/inline-images/Photo_CibeleAmaral_0.jpeg" width="125">
 
-**Ming Posa**
+**Cibele Amaral**
 
-* Executive Assistant - ESIIL
-* <a href="https://esiil.org/our-team" target="_blank">**Website**</a>
+* Analytics Hub Director - Earth Lab; ESIIL
+* <a href="https://earthlab.colorado.edu/our-team/cibele-amaral" target="_blank">**Website**</a>
 
 ***
 
-![nate](https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/profile.png?itok=81I5qGge){width=100}
+<img src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-08-10%20at%201.53.28%20PM_0.png" width="125">
+
+**Rachel Lieber**
+
+* Community Engagement Specialist - ESIIL
+
+***
+
+<img  src="https://earthlab.colorado.edu/sites/default/files/styles/square_med/public/media/image/profile.png?itok=81I5qGge" width="125">
 
 **Nate Quarderer** 
 
@@ -114,28 +122,37 @@ Each session will run from **12pm - 2pm Mountain Daylight Time** and will meet _
 
 ***
 
-![jim](https://media.licdn.com/dms/image/D5603AQFIoqS91aBcaw/profile-displayphoto-shrink_200_200/0/1674354325257?e=1683763200&v=beta&t=Ua-EWUlQOzMrEdR61FS6UV0LDhwK4oltMOJeyMVIb1A){width=100}
+<img src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-01-17%20at%2012.08.13%20PM.png" width="125">
 
-**Jim Sanovia**
+**Erick Verleye**
 
-* Tribal Resilience Data Scientist - ESIIL
-* <a href="https://esiil.org/our-team" target="_blank">**Website**</a>
-
-***
-
-![tyson](https://avatars.githubusercontent.com/u/11527041?v=4){width=100}
-
-**Tyson Swetnam**
-
-* CoPI, CyVerse, ESIIL
-* <a href="https://tysonswetnam.com/" target="_blank">**Website**</a>
+* Software Developer - ESIIL; Earth Lab
+* <a href="https://earthlab.colorado.edu/our-team/erick-verleye" target="_blank">**Website**</a>
 
 ***
 
-![ty](https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-01-17%20at%2011.57.14%20AM.png){width=100}
+<img src="https://esiil.org/sites/default/files/inline-images/Screen%20Shot%202023-01-17%20at%2011.57.14%20AM.png" width="125">
 
 **Ty Tuff**
 
 * Data Scientist - Earth Lab; ESIIL
 * <a href="https://earthlab.colorado.edu/our-team/ty-tuff" target="_blank">**Website**</a>
 
+***
+
+<img src="https://media.licdn.com/dms/image/C4E03AQEq52pAkk-24Q/profile-displayphoto-shrink_200_200/0/1602717659464?e=1703721600&v=beta&t=l2s1DVNBb-6AIjXd3s2bLz2p-xBM_9f_SNLcew0LKOc" width="125">
+
+**Ayoub Ghriss**
+
+* PhD Student - Climate & Machine Learning Boulder; CU Boulder
+* <a href="https://aghriss.net/" target="_blank">**Website**</a>
+
+
+***
+
+<img src="https://esiil.org/sites/default/files/inline-images/tyson%20headshot.png" width="125">
+
+**Tyson Swetnam** 
+
+* Co-PI and Science Lead, CyVerse
+* <a href="https://datascience.arizona.edu/person/tyson-swetnam" target="_blank">**Website**</a>

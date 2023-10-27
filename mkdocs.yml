@@ -4,7 +4,7 @@ site_author: ESIIL CI team (lead = Ty Tuff)
 site_url: https://cu-esiil.github.io/data-library
 
 # Repository
-repo_name: ackathon2023_datacube
+repo_name: hackathon2023_datacube
 repo_url: https://cu-esiil.github.io/hackathon2023_datacube
 edit_uri: edit/main/docs/
 # Copyright
@@ -13,9 +13,15 @@ copyright: 'Copyright &copy; 2023 University of Colorado Boulder'
 # Page tree
 nav:
   - Home: index.md
-  - Collaboration on Cloud: 
-    - Collaboration on Cloud: 1_GIT_on_the_Cloud/collaboration.md
-    - Github essentials: 1_GIT_on_the_Cloud/github_lesson.md
+  - Collaboration in the Cloud: 
+    - Collaboration in the Cloud: 1_GIT_on_the_Cloud/collaboration.md
+    - GitHub essentials: 1_GIT_on_the_Cloud/github_lesson.md
+  - R & Python Bilingualism:
+    - R and Python Bilingualism: 2_R_Python_Bilingualism/bilingualism_md.md
+  - Environmental Data Science & Data Cubes:
+    - EDS & Data Cubes: 3_EDS_Data_Cube/eds_data_cube_md.md
+  - Artificial Intelligence (AI) for Environmental Data Science:
+    - Artificial Intelligence: 4_Artificial_Intelligence/artificial_intelligence_md.md
 
 # Configuration
 theme:

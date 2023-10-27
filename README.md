@@ -8,6 +8,13 @@
 
 All are welcome to join the following pre-hackathon training sessions. Please complete [this form](#) if you are not participating in ESIIL's Hackathon and would like to join our pre-hackathon trainings.
 
+- **Cyberinfrastructure & R-Python Bilingualism**: Join Elsa Culler, Ty Tuff, and Erick Verleye on October 26, 10 am - 12 pm MST.
+
+  **Agenda**:
+  - Git and GitHub fundamentals
+  - Navigating the Constellation of Cloud-based Cyberinfrastructure
+  - R & Python Bilingualism
+    
 - **Environmental Data Science & Data Cube**: Join Nate Quarderer, Cibele Amaral, and Ty Tuff on November 2, 10 am - 12 pm MST.
 
   **Agenda**:
