@@ -1,0 +1,97 @@
+---
+title: "HydroBASINS"
+format:
+  html:
+    theme: default
+    toc: true
+    number-sections: true
+---
+
+Lehner, B., Grill G. (2013). Global river hydrography and network routing: baseline data and new approaches to study the world’s large river systems. Hydrological Processes, 27(15): 2171–2186. https://doi.org/10.1002/hyp.9740
+
+https://www.hydrosheds.org/products/hydrobasins
+
+```{r}
+library(dplyr)
+library(sf)
+library(terra)
+library(tidyterra)
+library(glue)
+library(ggplot2)
+library(ggthemes)
+library(stars)
+```
+
+
+```{r}
+flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/HydroBASINS/standard/hybas_na_lev06_v1c.zip") %>%
+  vect() %>%
+  st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data
+```
+
+
+```{r plot_flood_polygons}
+ggplot(data=flood_polygon_data, aes(fill=ORDER)) +
+  geom_sf() + 
+  theme_tufte()
+```
+
+
+https://figshare.com/ndownloader/files/20087237
+
+
+
+```{r}
+
+```
+
+```{r}
+flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-dem/hyd_na_dem_15s.zip/hyd_na_dem_15s.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data
+```
+
+
+```{r plot_flood_polygons}
+
+ggplot() +
+  geom_spatraster(data=flood_polygon_data) +
+  theme_tufte()
+```
+
+
+```{r}
+flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-con/na_con_3s/n20w110_con.zip/n20w110_con.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data
+```
+```{r}
+flood_polygon_data2 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-con/na_con_3s/n20w120_con.zip/n20w120_con.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data2
+```
+
+```{r}
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-con/na_con_3s/n40w080_con.zip/n40w080_con.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data3
+```
+
+```{r plot_flood_polygons}
+
+ggplot() +
+  geom_spatraster(data=flood_polygon_data) +
+  geom_spatraster(data=flood_polygon_data2) +
+  geom_spatraster(data=flood_polygon_data3) +
+  theme_tufte()
+```
