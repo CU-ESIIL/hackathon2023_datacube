@@ -1,10 +1,9 @@
 ---
 title: "Pulling Sentinal 2 data"
-format:
-  html:
-    theme: default
-    toc: true
-    number-sections: true
+format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 # Set Java Options
