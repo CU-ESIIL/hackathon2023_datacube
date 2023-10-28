@@ -1,10 +1,9 @@
 ---
 title: "Pull flood data"
-format:
-  html:
-    theme: default
-    toc: true
-    number-sections: true
+format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 [Global Active Archive of Large Flood Events, 1985-Present](https://floodobservatory.colorado.edu/Archives/index.html)

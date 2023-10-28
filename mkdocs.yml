@@ -17,11 +17,11 @@ nav:
     - Collaboration in the Cloud: 1_GIT_on_the_Cloud/collaboration.md
     - GitHub essentials: 1_GIT_on_the_Cloud/github_lesson.md
   - Data:
-    - Flood event inventory: code_for_building_cube/Pull_flood_data.qmd
-    - Flood event area (polygons): code_for_building_cube/Pull_flood_polygons.qmd
-    - Hydrobasins: code_for_building_cube/Pull_hydrobasins.qmd
-    - River vectors: code_for_building_cube/Pull_river_vector_data.qmd
-    - Sentinal 2 satellite data: code_for_building_cube/Pull_Sentinal2_l2_data.qmd
+    - Flood event inventory: code_for_building_cube/Pull_flood_data.md
+    - Flood event area (polygons): code_for_building_cube/Pull_flood_polygons.md
+    - Hydrobasins: code_for_building_cube/Pull_hydrobasins.md
+    - River vectors: code_for_building_cube/Pull_river_vector_data.md
+    - Sentinal 2 satellite data: code_for_building_cube/Pull_Sentinal2_l2_data.md
   - Artificial Intelligence (AI) for Environmental Data Science:
     - Artificial Intelligence: 4_Artificial_Intelligence/artificial_intelligence_md.md
 
