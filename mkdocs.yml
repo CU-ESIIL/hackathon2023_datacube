@@ -22,7 +22,7 @@ nav:
     - Hydrobasins: code_for_building_cube/Pull_hydrobasins.md
     - River vectors: code_for_building_cube/Pull_river_vector_data.md
     - Sentinal 2 satellite data: code_for_building_cube/Pull_Sentinal2_l2_data.md
-  - Analytics 
+  - Analytics: 
     - Artificial Intelligence (AI) for Environmental Data Science: 4_Artificial_Intelligence/artificial_intelligence_md.md
 
 # Configuration

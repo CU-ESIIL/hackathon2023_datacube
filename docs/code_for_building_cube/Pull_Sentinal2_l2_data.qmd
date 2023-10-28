@@ -1,5 +1,7 @@
 ---
 title: "Pulling Sentinal 2 data"
+author: "Ty Tuff, ESIIL Data Scientist"
+date: "2023-10-27"
 format: gfm
 editor_options: 
   markdown: 
