@@ -45,12 +45,12 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 >   * <a href="" target="_blank">**Introduction to Raster Data in Python**</a>
 
 
-## Week 2 Data (Thursday November 2nd)
+## Week 2 -- Data (Thursday November 2nd)
 > * **Instructors:** Tuff, Culler, Amaral, Verleye
 
 
-## Day 3 Analytics (Thursday November 9th)
-> * **Instructors:** 
+## Week 3 -- Analytics (Thursday November 9th)
+> * **Instructors:** Ghriss, Tuff
 
 ***
 
