@@ -13,17 +13,17 @@ copyright: 'Copyright &copy; 2023 University of Colorado Boulder'
 # Page tree
 nav:
   - Home: index.md
-  - Week 1 - Github and Discovery environment: 
+  - Collaboration in the Cloud: 
     - GitHub essentials: 1_GIT_on_the_Cloud/github_lesson.md
-    - Collaboration in the Cloud: 1_GIT_on_the_Cloud/collaboration.md
-  - Week 2 - Data:
+    - CyVerse Discovery Environment: 1_GIT_on_the_Cloud/collaboration.md
+  - Data:
     - Flood event inventory: code_for_building_cube/Pull_flood_data.md
     - Flood event area (polygons): code_for_building_cube/Pull_flood_polygons.md
     - Hydrobasins: code_for_building_cube/Pull_hydrobasins.md
     - River vectors: code_for_building_cube/Pull_river_vector_data.md
     - Sentinal 2 satellite data: code_for_building_cube/Pull_Sentinal2_l2_data.md
-  - Week 3 - Artificial Intelligence (AI) for Environmental Data Science:
-    - Artificial Intelligence: 4_Artificial_Intelligence/artificial_intelligence_md.md
+  - Analytics 
+    - Artificial Intelligence (AI) for Environmental Data Science:: 4_Artificial_Intelligence/artificial_intelligence_md.md
 
 # Configuration
 theme:
