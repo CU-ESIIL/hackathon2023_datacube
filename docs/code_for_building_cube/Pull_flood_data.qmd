@@ -134,7 +134,7 @@ ggplot(data=flood_point_data, aes(color=Validation))  +geom_sf(cex=0.01) +
 ```
 
 
-```{r plot_flood_point_Ended}
+```{r plot_flood_point_Ended, eval=FALSE}
 ggplot(data=flood_point_data, aes(color=Began))+ geom_sf(cex=0.01) + 
   theme_tufte()
 ```
@@ -147,7 +147,7 @@ ggplot(data=flood_point_data, aes(color=Area))  +
 ```
 
 
-```{r}
+```{r, eval=FALSE}
 ggplot(data=flood_point_data)  +
   geom_point(aes(x=Began ,y=log_dead), color="grey90", alpha=0.8) +
   geom_density_2d(aes(x=Began ,y=log_dead), color="cornflowerblue") + 
@@ -163,7 +163,7 @@ ggplot(data=flood_point_data)  +
 
 The resulting plot would visually represent the relationship between the date floods started and the logarithm of the associated death toll, with additional visual cues indicating areas of high density (many events with similar characteristics).
 
-```{r}
+```{r, eval=FALSE}
 ggplot(data=flood_point_data)  +
   geom_point(aes(x=Began ,y=log_displaced), color="grey90", alpha=0.8)+
   geom_density_2d(aes(x=Began ,y=log_displaced), color="cornflowerblue") + 
