@@ -24,7 +24,7 @@ nav:
     - Sentinal 2 satellite data: code_for_building_cube/Pull_Sentinal2_l2_data.md
     - EPA water quality: code_for_building_cube/epa_water_quality.md
     - Species Occurrence from iNaturalist: code_for_building_cube/iNaturalist.md
-    - NEON and LTER Harmonization: code_for_building_cube/neon_and_lter.md
+    - NEON Lakes: code_for_building_cube/neon_and_lter.md
     - NEON Aquatic survey: code_for_building_cube/neon_aquatic.md
     - NEON LIDAR: code_for_building_cube/neon_lidar_and_organismal.md
     - NEON general: code_for_building_cube/neon.md
