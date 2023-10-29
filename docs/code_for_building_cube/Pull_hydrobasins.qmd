@@ -12,7 +12,7 @@ Lehner, B., Grill G. (2013). Global river hydrography and network routing: basel
 
 https://www.hydrosheds.org/products/hydrobasins
 
-```{r}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 library(dplyr)
 library(sf)
 library(terra)
@@ -24,7 +24,7 @@ library(stars)
 ```
 
 
-```{r river_basins}
+```{r river_basins, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/HydroBASINS/standard/hybas_na_lev06_v1c.zip") %>%
   vect() %>%
   st_as_sf(coords = c("lon","lat"))
@@ -33,7 +33,7 @@ flood_polygon_data
 ```
 
 
-```{r plot_river_basins}
+```{r plot_river_basins, cache=TRUE, warning=FALSE, message=FALSE}
 ggplot(data=flood_polygon_data, aes(fill=ORDER)) +
   geom_sf() + 
   theme_tufte()
@@ -45,7 +45,7 @@ https://figshare.com/ndownloader/files/20087237
 
 
 
-```{r DEM}
+```{r DEM, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-dem/hyd_na_dem_15s.zip/hyd_na_dem_15s.tif") %>%
   rast() #%>%
   #st_as_sf(coords = c("lon","lat"))
@@ -54,7 +54,7 @@ flood_polygon_data
 ```
 
 
-```{r DEM_plot}
+```{r DEM_plot, cache=TRUE, warning=FALSE, message=FALSE}
 
 ggplot() +
   geom_spatraster(data=flood_polygon_data) +
@@ -62,7 +62,7 @@ ggplot() +
 ```
 
 
-```{r}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-con/na_con_3s/n20w110_con.zip/n20w110_con.tif") %>%
   rast() #%>%
   #st_as_sf(coords = c("lon","lat"))
@@ -77,7 +77,7 @@ flood_polygon_data2 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hy
 flood_polygon_data2
 ```
 
-```{r}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-con/na_con_3s/n40w080_con.zip/n40w080_con.tif") %>%
   rast() #%>%
   #st_as_sf(coords = c("lon","lat"))
@@ -85,7 +85,7 @@ flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hy
 flood_polygon_data3
 ```
 
-```{r }
+```{r, cache=TRUE, warning=FALSE, message=FALSE }
 
 ggplot() +
   geom_spatraster(data=flood_polygon_data) +
@@ -99,7 +99,7 @@ ggplot() +
 
 
 
-```{r}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-dir/na_dir_3s/n50w100_dir.zip/n50w100_dir.tif") %>%
   rast() #%>%
   #st_as_sf(coords = c("lon","lat"))
@@ -108,7 +108,7 @@ flood_polygon_data
 ```
 
 
-```{r}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data2 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-dir/na_dir_3s/n50w110_dir.zip/n50w110_dir.tif") %>%
   rast() #%>%
   #st_as_sf(coords = c("lon","lat"))
@@ -116,7 +116,7 @@ flood_polygon_data2 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hy
 flood_polygon_data2
 ```
 
-```{r flow_direction}
+```{r flow_direction, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-dir/na_dir_3s/n50w120_dir.zip/n50w120_dir.tif") %>%
   rast() #%>%
   #st_as_sf(coords = c("lon","lat"))
@@ -124,7 +124,7 @@ flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hy
 flood_polygon_data3
 ```
 
-```{r plot_flow_direction}
+```{r plot_flow_direction, cache=TRUE, warning=FALSE, message=FALSE}
 
 ggplot() +
   geom_spatraster(data=flood_polygon_data) +
@@ -134,7 +134,7 @@ ggplot() +
 ```
 
 
-```{r}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-aca/hyd_na_aca_15s.zip/hyd_na_aca_15s.tif") %>%
   rast() #%>%
   #st_as_sf(coords = c("lon","lat"))
@@ -142,7 +142,7 @@ flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hy
 flood_polygon_data3
 ```
 
-```{r }
+```{r , cache=TRUE, warning=FALSE, message=FALSE}
 
 ggplot() +
 
@@ -151,7 +151,7 @@ ggplot() +
 ```
 
 
-```{r upstream_distance}
+```{r upstream_distance, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-ldn/hyd_na_ldn_15s.zip/hyd_na_ldn_15s.tif") %>%
   rast() #%>%
   #st_as_sf(coords = c("lon","lat"))
@@ -159,7 +159,7 @@ flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hy
 flood_polygon_data3
 ```
 
-```{r plot_upstream_distance}
+```{r plot_upstream_distance, cache=TRUE, warning=FALSE, message=FALSE}
 
 ggplot() +
 
@@ -168,7 +168,7 @@ ggplot() +
 ```
 
 
-```{r}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-msk/hyd_na_msk_15s.zip/hyd_na_msk_15s.tif") %>%
   rast() #%>%
   #st_as_sf(coords = c("lon","lat"))
@@ -176,7 +176,7 @@ flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hy
 flood_polygon_data3
 ```
 
-```{r }
+```{r , cache=TRUE, warning=FALSE, message=FALSE}
 
 ggplot() +
 
@@ -185,7 +185,7 @@ ggplot() +
 ```
 
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_shapefile.zip/GloRiC_v10_shapefile/GloRiC_v10.shp") %>%
   st_read() %>%
   st_as_sf(coords = c("lon","lat"))
@@ -193,7 +193,7 @@ flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hy
 flood_polygon_data3
 ```
 
-```{r , eval=FALSE}
+```{r , eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
 
 ggplot() +
 
@@ -204,13 +204,13 @@ ggplot() +
 https://figshare.com/ndownloader/files/31910714
 
 https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_Canada_v10_shapefile.zip
-```{r, eval=FALSE}
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
 flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_Canada_v10_shapefile.zip/GloRiC_Canada_v10_shapefile.csv") %>%
   vect()
 flood_polygon_data3
 ```
 
-```{r , eval=FALSE}
+```{r , eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
 
 ggplot() +
 

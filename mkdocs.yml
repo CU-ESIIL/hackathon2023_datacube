@@ -22,6 +22,15 @@ nav:
     - Hydrobasins: code_for_building_cube/Pull_hydrobasins.md
     - River vectors: code_for_building_cube/Pull_river_vector_data.md
     - Sentinal 2 satellite data: code_for_building_cube/Pull_Sentinal2_l2_data.md
+    - EPA water quality: code_for_building_cube/epa_water_quality.md
+    - Species Occurrence from iNaturalist: code_for_building_cube/iNaturalist.md
+    - NEON and LTER Harmonization: code_for_building_cube/neon_and_lter.md
+    - NEON Aquatic survey: code_for_building_cube/neon_aquatic.md
+    - NEON LIDAR: code_for_building_cube/neon_lidar_and_organismal.md
+    - NEON general: code_for_building_cube/neon.md
+    - Open Street Map: code_for_building_cube/osm.md
+    - US Census: code_for_building_cube/US_Census.md
+    - USGS Water Services: code_for_building_cube/usgs_water_services.md
   - Analytics: 
     - Artificial Intelligence (AI) for Environmental Data Science: 4_Artificial_Intelligence/artificial_intelligence_md.md
 

@@ -1,5 +1,7 @@
 Pulling Sentinal 2 data
 ================
+Ty Tuff, ESIIL Data Scientist
+2023-10-27
 
 # Set Java Options
 
