@@ -22,8 +22,12 @@ Just like a snake that swallows a rat, traditional computing systems often strug
 
 As we scale up, we encounter a new challenge: trying to pass an antelope through a python — a metaphor for the next level of complexity in data processing. The sheer size and complexity of the data can become overwhelming. This is where GDAL’s Virtual File System (VSI) becomes our ecological adaptation. VSI allows us to access remote data transparently and more efficiently. Instead of ingesting the entire "antelope," VSI enables the "python" to dynamically access and process only the parts of the data it needs, when it needs them, much like constriction before digestion. This selective access minimizes the need for local storage and expedites the data handling process.
 
+![Antelope through a Python](../assets/antelopeinpython.png)
+
 ## 3) Drinking from a Fire Hose: Accelerated Inference with AI and ML
 
 Once we've enabled the flow of large amounts of digestible data, we encounter the metaphorical challenge of drinking from a fire hose. The data, now flowing and accessible, is immense and rapid — posing a challenge not just to store and process, but to understand and derive meaning from in real-time. This is where artificial intelligence (AI) and machine learning (ML) step in. These technologies act as a sophisticated filtration system, enabling us to drink safely and beneficially from the torrent. AI and ML can analyze patterns, make predictions, and infer insights at a pace that keeps up with the fast stream of data, turning raw information into actionable knowledge.
+
+![Inference through a firehose](../assets/drink-firehose.png)
 
 By addressing these three pivotal challenges with cloud computing, GDAL VSI, and AI/ML, we not only manage to consume the data effectively but also transform our capabilities in environmental data science. We can move from mere data ingestion to meaningful data interpretation, all at a scale and speed necessary for impactful environmental analysis.

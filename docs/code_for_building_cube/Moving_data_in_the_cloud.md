@@ -38,6 +38,8 @@ the data it needs, when it needs them, much like constriction before
 digestion. This selective access minimizes the need for local storage
 and expedites the data handling process.
 
+![Antelope through a Python](../assets/antelopeinpython.png)
+
 ## 3) Drinking from a Fire Hose: Accelerated Inference with AI and ML
 
 Once we’ve enabled the flow of large amounts of digestible data, we
@@ -50,6 +52,8 @@ sophisticated filtration system, enabling us to drink safely and
 beneficially from the torrent. AI and ML can analyze patterns, make
 predictions, and infer insights at a pace that keeps up with the fast
 stream of data, turning raw information into actionable knowledge.
+
+![Inference through a firehose](../assets/drink-firehose.png)
 
 By addressing these three pivotal challenges with cloud computing, GDAL
 VSI, and AI/ML, we not only manage to consume the data effectively but
