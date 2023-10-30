@@ -16,7 +16,7 @@ In the realm of environmental data science, the vast and ever-expanding datasets
 
 Just like a snake that swallows a rat, traditional computing systems often struggle to process the large volumes of environmental data — they're constrained by their static hardware limitations. Cloud computing introduces a python-esque capability: massive scalability. By migrating to the cloud, we essentially make the snake bigger, allowing it to handle larger "prey." Scalable computers in the cloud can grow with the demand, providing the necessary computational power to process extensive datasets, which is vital in a field where data volumes are increasing exponentially.
 
-![Raster through a snake](assets/mouseinsnake.png)
+![Raster through a snake](../assets/mouseinsnake.png)
 
 ## 2) The Antelope through the Python Problem: Streamlining with GDAL VSI
 
