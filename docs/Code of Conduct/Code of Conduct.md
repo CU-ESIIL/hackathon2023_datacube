@@ -5,5 +5,5 @@ editor_options:
     wrap: 72
 ---
 
-> Image source: [Code of conduct](docs/assets/Behavior poster v3.png)
+![Code of conduct](docs/assets/Behavior poster v3.png)
 
