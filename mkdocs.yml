@@ -13,7 +13,7 @@ copyright: 'Copyright &copy; 2023 University of Colorado Boulder'
 # Page tree
 nav:
   - Home: index.md
-  - Code of Conduct: Code of Conduct
+  - Code of Conduct: Code of Conduct.md
   - Collaboration in the Cloud: 
     - GitHub essentials: 1_GIT_on_the_Cloud/github_lesson.md
     - CyVerse Discovery Environment: 1_GIT_on_the_Cloud/collaboration.md
