@@ -1,4 +1,4 @@
-## Our team
+
 <img src="https://esiil.org/sites/default/files/inline-images/virginia%20headshot.jpg" width="125">
 
 **Virginia Iglesias**
