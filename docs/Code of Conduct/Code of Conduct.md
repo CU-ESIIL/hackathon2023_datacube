@@ -5,5 +5,5 @@ editor_options:
     wrap: 72
 ---
 
-![Code of conduct for Environmental Mosaic Hackathon](/assets/Behavior poster v3.png)
+> Image source: [Code of conduct](docs/assets/Behavior poster v3.png)
 
