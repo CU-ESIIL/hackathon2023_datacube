@@ -23,6 +23,9 @@ with the demand, providing the necessary computational power to process
 extensive datasets, which is vital in a field where data volumes are
 increasing exponentially.
 
+![Raster through a
+snake](/Users/ty/Documents/Github/hackathon2023_datacube/docs/assets/mouseinsnake.png)
+
 ## 2) The Antelope through the Python Problem: Streamlining with GDAL VSI
 
 As we scale up, we encounter a new challenge: trying to pass an antelope

@@ -16,6 +16,8 @@ In the realm of environmental data science, the vast and ever-expanding datasets
 
 Just like a snake that swallows a rat, traditional computing systems often struggle to process the large volumes of environmental data — they're constrained by their static hardware limitations. Cloud computing introduces a python-esque capability: massive scalability. By migrating to the cloud, we essentially make the snake bigger, allowing it to handle larger "prey." Scalable computers in the cloud can grow with the demand, providing the necessary computational power to process extensive datasets, which is vital in a field where data volumes are increasing exponentially.
 
+![Raster through a snake](/Users/ty/Documents/Github/hackathon2023_datacube/docs/assets/mouseinsnake.png)
+
 ## 2) The Antelope through the Python Problem: Streamlining with GDAL VSI
 
 As we scale up, we encounter a new challenge: trying to pass an antelope through a python — a metaphor for the next level of complexity in data processing. The sheer size and complexity of the data can become overwhelming. This is where GDAL’s Virtual File System (VSI) becomes our ecological adaptation. VSI allows us to access remote data transparently and more efficiently. Instead of ingesting the entire "antelope," VSI enables the "python" to dynamically access and process only the parts of the data it needs, when it needs them, much like constriction before digestion. This selective access minimizes the need for local storage and expedites the data handling process.
