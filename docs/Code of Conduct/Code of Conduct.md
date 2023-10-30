@@ -5,4 +5,5 @@ editor_options:
     wrap: 72
 ---
 
-![](images/Behavior%20poster%20v3.jpg)
+![](docs/assets/Behavior poster v3.png)
+
