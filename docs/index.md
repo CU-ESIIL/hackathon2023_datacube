@@ -53,7 +53,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 >   * **Session overview:** Nate Quarderer, ESIIL Education Director
 > > ### ***Cyverse Discovery Environment***
 > * **Instructors:** Culler, Verleye
->   * **Review** (Culler, Verleye)
+>   * **Review** 
 
 > ### ***Data Library***
 > * **Instructors:** Tuff, Amaral
