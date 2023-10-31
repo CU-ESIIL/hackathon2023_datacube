@@ -14,7 +14,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 
 ## Week 1 -- Collaborating in the Cloud (Thursday October 26th)
 
-> ### <a href="https://www.youtube.com/watch?v=scmmjnhBaTs" target="_blank">**Watch this training**</a> or <a href="./docs/assets/Hackathon_CI_Training_Transcript.pdf" target="_blank">**read the transcript**</a>
+> ### <a href="https://www.youtube.com/watch?v=scmmjnhBaTs" target="_blank">**Watch this training**</a> or <a href="./assets/Hackathon_CI_Training_Transcript.pdf" target="_blank">**read the transcript**</a>
 
 >   * **Opening remarks:** Jennifer Balch, ESIIL Director
 >   * **Session overview:** Nate Quarderer, ESIIL Education Director
