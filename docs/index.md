@@ -40,7 +40,8 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 >   3. We split into two breakout rooms by notebook - there should be one member from each group in each room. Each room will walk through completing the notebook and pushing your results up to GitHub.
 >   4. Return to your group of 2, and see if you can get your code to work together!
 > * When you are in a room with your group of 2, you can always get someone to come look at your code using the Ask For Help feature.
-> * Additional Readings from our **Earth Data Science** textbook! 📚 📈 🗺️
+
+> ### ***Additional Readings from our **Earth Data Science** Textbook!***
 >   * <a href="https://www.earthdatascience.org/courses/earth-analytics/time-series-data/date-class-in-r/" target="_blank">**Time Series Data in R**</a>
 >   * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/" target="_blank">**Time Series Data in Python**</a>
 >   * <a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank">**Spatial Data in R**</a>
@@ -61,9 +62,9 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 >     * Accessing data with an API
 >     * Saving your own data cube
 
-> * Recommended Readings:
->     * <a href="https://www.nature.com/articles/sdata201618" target="_blank">The FAIR guiding principles for scientific data management and stewardship</a>
->     *  <a href="https://www.gida-global.org/care" target="_blank">CARE principles for Indigenous data governance</a>
+> ### ***Recommended Readings***
+>  * <a href="https://www.nature.com/articles/sdata201618" target="_blank">The FAIR guiding principles for scientific data management and stewardship</a>
+> * <a href="https://www.gida-global.org/care" target="_blank">CARE principles for Indigenous data governance</a>
 
 
 ## Week 3 -- Analytics (Thursday November 9th)
