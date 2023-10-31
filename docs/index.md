@@ -51,15 +51,19 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 ## Week 2 -- Data (Thursday November 2nd)
 
 >   * **Session overview:** Nate Quarderer, ESIIL Education Director
-> > ### ***Cyverse Discovery Environment***
+> ### ***Cyverse Discovery Environment***
 > * **Instructors:** Culler, Verleye
->   * **Review** 
+>     * Review 
 
 > ### ***Data Library***
 > * **Instructors:** Tuff, Amaral
 >     * The Data Library
 >     * Accessing data with an API
 >     * Saving your own data cube
+
+> * Recommended Readings:
+>     * <a href="https://www.nature.com/articles/sdata201618" target="_blank">The FAIR guiding principles for scientific data management and stewardship</a>
+>     *  <a href="https://www.gida-global.org/care" target="_blank">CARE principles for Indigenous data governance</a>
 
 
 ## Week 3 -- Analytics (Thursday November 9th)
