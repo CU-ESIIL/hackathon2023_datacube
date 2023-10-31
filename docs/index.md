@@ -49,7 +49,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 >   * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-raster-data-python/" target="_blank">**Introduction to Raster Data in Python**</a>
 
 
-## Week 2 -- Data (Thursday November 2nd)
+## Week 2 -- Environmental Data Science and Environmental MosAIc's Data Library (Thursday November 2nd)
 
 >   * **Session overview:** Nate Quarderer, ESIIL Education Director
 > ### ***Cyverse Discovery Environment***
