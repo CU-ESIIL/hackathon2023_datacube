@@ -1,7 +1,7 @@
 site_name: 'ESIIL Pre-Hackathon Training Sessions 2023'
 site_description: 'Instructional material for ESIIL Hackathon 2023'
 site_author: ESIIL CI team (lead = Ty Tuff)
-site_url: https://cu-esiil.github.io/data-library
+site_url: https://cu-esiil.github.io/hackathon2023_datacube
 
 # Repository
 repo_name: hackathon2023_datacube
