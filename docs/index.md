@@ -41,7 +41,7 @@ Each session will run from **10am - 12pm Mountain Daylight Time** and will meet 
 >   4. Return to your group of 2, and see if you can get your code to work together!
 > * When you are in a room with your group of 2, you can always get someone to come look at your code using the Ask For Help feature.
 
-> ### ***Additional Readings from our **Earth Data Science** Textbook!***
+> ### ***Additional Readings from our Earth Data Science Textbook!***
 >   * <a href="https://www.earthdatascience.org/courses/earth-analytics/time-series-data/date-class-in-r/" target="_blank">**Time Series Data in R**</a>
 >   * <a href="https://www.earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/" target="_blank">**Time Series Data in Python**</a>
 >   * <a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank">**Spatial Data in R**</a>
