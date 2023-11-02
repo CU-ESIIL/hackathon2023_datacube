@@ -4,7 +4,7 @@ Cibele Amaral, ESIIL Remote Sensing Scientist 2023-11-02
 
 ## Surviving in an ever-changing environment
 > ### "**Environment**, the complex of physical, chemical, and biotic factors that act upon an organism or an ecological community and ultimately **determine its form and survival**." (Encyclopedia Britannica)
-> ![Ghost_forest.jpeg](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/Ghost_forest.jpeg)
+> ![Image1.jpeg](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/Image1.jpg)
 How much can an organism resist and adapt to a new environmental condition? Photo credit: Cibele Amaral
 
 ### 1. Global warming
