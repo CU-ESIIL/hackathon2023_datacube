@@ -92,4 +92,20 @@
 
     <img width="1462" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/9dc79edc-e527-4b98-a94f-4d500571b97a">
 
+11. Select `SSH and GPG keys`
 
+    <img width="1462" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/427be66e-b1e2-46ca-93b6-e3585a7c7fb3">
+
+12. Select `New SSH key`
+
+    <img width="1462" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/a33ad793-ea4d-4d44-9a8f-bde1b04f69c0">
+
+13. Give your key a descriptive name, paste your ENTIRE public key in the `Key` input box, and click `Add SSH Key`. You may need to re-authenticate with your password or two-factor authentication.:
+
+    <img width="1462" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/74888d16-5042-4f3b-abaa-34498c83a276">
+
+14. You should now see your new SSH key in your `Authentication Keys` list! Now you will be able to clone private repositories and push changes to GitHub from your Cyverse analysis!
+
+    <img width="1462" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/a4bdfada-f7f4-40b7-a1af-41b18d7bd3e6">
+
+> NOTE! Your GitHub authentication is ONLY for the analysis you're working with right now. You will be able to use it as long as you want there, but once you start a new analysis you will need to go through this process again. Feel free to delete keys from old analyses that have been shut down.
