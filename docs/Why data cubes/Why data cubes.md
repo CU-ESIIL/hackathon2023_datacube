@@ -20,7 +20,7 @@ How much can an organism resist and adapt to a new environmental condition? Phot
 > Projections indicate that the world is speeding towards a warmer climate and will experience more catastrophic extreme events.
 
 
-## "How can we help organisms (populations and communities) to adapt to a wild future?"
+## "How can we use data science to help organisms (populations and communities) to adapt to a wild future?"
  
 ## The era of revolutions and their integrated role in environmental sciences
 
@@ -33,19 +33,20 @@ Image credit: Kathy Bogan, Jennifer Balch, Chelsea Nagy.
 >
 > ![[airqualityzm_2022.gif](https://hackmd.io/_uploads/rJ2Dvde7a.gif)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/airqualityzm_2022.gif)
 > 
-> Hispanic, Asian, and Black and African American public school children attend schools with higher concentrations of air pollution than white students. Find more at [An Unequal Air Pollution Burden at School](https://earthobservatory.nasa.gov/images/152009/an-unequal-air-pollution-burden-at-school).
+> Example of socio-enviromental data science: Hispanic, Asian, and Black and African American public school children attend schools with higher concentrations of air pollution than white students. Find more at [An Unequal Air Pollution Burden at School](https://earthobservatory.nasa.gov/images/152009/an-unequal-air-pollution-burden-at-school).
 
 ### 3. Artificial Intelligence revolution: using state-of-the-art AI models to understand organism-environment interactions, predict responses under various scenarios, and manage ecosystems properly 
 > ![[digital-twin-banner-foreground.png](https://hackmd.io/_uploads/HJnY-Kxm6.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/digital-twin-banner-foreground.png)
 AI models can help us to classify, cluster, forecast and identify outliers. They also provide us with data simulation and model emulation. Digital Twin representation, find more at [Digital Twin Overview](https://www.esri.com/en-us/digital-twin).
 
- ## "But... why data cubes?"
-
->"Data cube is the arrangement of relevant data in an n-dimensional array to support analytics."
+## "But... why data cubes?"
+>
 >![[xarray-datastructure.png](https://hackmd.io/_uploads/Bk6daFx76.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/xarray-datastructure.png)
-Photo credit: [x-array](https://xarray.dev/).
+>
+>Data cube is the arrangement of relevant data in an n-dimensional array to support analytics. Photo credit: [x-array](https://xarray.dev/).
 
-> ![modeling.png](https://hackmd.io/_uploads/HklNZclXa.png)
+> ![[modeling.png](https://hackmd.io/_uploads/HklNZclXa.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/modeling.png)
+> 
 > We need paired samples to create a model and wall-to-wall layers to map predictions.
 
 ### 1. Spatial data formats, referencing systems, and resolutions
