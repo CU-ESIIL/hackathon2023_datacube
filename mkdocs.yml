@@ -35,6 +35,7 @@ nav:
     - US Census: code_for_building_cube/US_Census.md
     - Remote sensing: code_for_building_cube/Pull_Sentinal2_l2_data.md
   - Analytics: 
+    - Why Data Cubes?: Why data cubes/Why data cubes.md
     - Artificial Intelligence (AI) for Environmental Data Science: 4_Artificial_Intelligence/artificial_intelligence_md.md
 
 # Configuration
