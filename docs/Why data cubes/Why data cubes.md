@@ -11,11 +11,11 @@ How much can an organism resist and adapt to a new enviromental condition? Photo
 
 
 ### 1. Global warming
-> ![[ClimateDashboard-global-surface-temperature-graph-20230118-1400px.png](https://hackmd.io/_uploads/B18vnNlXT.png](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/ClimateDashboard-global-surface-temperature-graph-20230118-1400px.png)]
+> ![ClimateDashboard-global-surface-temperature-graph-20230118-1400px.png](https://hackmd.io/_uploads/B18vnNlXT.png](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/ClimateDashboard-global-surface-temperature-graph-20230118-1400px.png)]
 > Yearly surface temperature compared to the 20th-century average from 1880–2022. Blue bars indicate cooler-than-average years; red bars show warmer-than-average years. NOAA Climate.gov graph, based on data from the National Centers for Environmental Information.
 
 ### 2. Extreme events and disturbances
->![extreme_events.jpg](https://hackmd.io/_uploads/SyFAurg7a.jpg)
+>![extreme_events.jpg](https://hackmd.io/_uploads/SyFAurg7a.jpg)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/extreme_events.jpg)
 >Diseases, droughts, wildfires, and floods are examples of ecological disturbances that are increasing due to an unbalanced Earth system.
 
 
