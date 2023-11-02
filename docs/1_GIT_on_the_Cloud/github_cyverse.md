@@ -47,3 +47,49 @@
    <img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/b7702aee-b561-440d-92a9-daa9990a7f96">
 
 ## Set up your GitHub credentials
+
+1. From Jupyter Lab, click on the GitHub icon on the left menu:
+
+   <img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/8c694ad7-2454-4ffc-b422-e95382d0205f">
+
+2. Click `Clone a Repository`:
+
+   <img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/42f691b0-efbd-45f8-8554-157c70902abe">
+
+3. Paste the link to the innovation-summit-utils [https://github.com/CU-ESIIL/innovation-summit-utils.git](https://github.com/CU-ESIIL/innovation-summit-utils.git) and click `Clone`:
+
+   <img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/50c07e00-fb17-48a5-a460-ab5fc730384c">
+
+
+4. You should now see the `innovation-summit-utils` folder in your directory tree (provided you haven't changed directories from the default `/home/jovyan/data-store`
+
+   <img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/7e455efc-7d56-47d4-a854-563c38a14acc">
+
+5. Go into the `innovation-summit-utils` folder:
+
+   <img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/bbc0955b-008a-4376-9d4e-9644982ccb8c">
+
+6. open up the `configure_github_ssh.ipynb` notebook by double-clicking:
+
+   <img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/a3cbf78c-b1ce-448b-b02b-a648fd074136">
+
+7. Select the default `earth-analytics-python` kernel
+
+   <img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/7a59013b-160d-4a91-81d8-e64f77acbbfe">
+
+8. Now you should see the notebook open. Click the `play` button at the top. You will be prompted to enter your GitHub username and email:
+
+   <img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/50f617c6-8b77-4e32-99cd-d2dcdb7dc5dc">
+
+   <img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/46115471-60de-4fa9-918b-9a3cbf2d28af">
+
+   <img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/8a71d74b-0e53-417a-9a30-ac31915c8ce4">
+
+9. You should now see your Public Key. Copy the WHOLE LINE including `ssh-ed25519` at the beginning and the `jovyan@...` at the end
+<img width="1004" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/876c3294-34e9-4d05-86e2-046a69b6d843">
+
+10. Go to your GitHub settings page (you may need to log in to GitHub first):
+
+    <img width="1462" alt="image" src="https://github.com/CU-ESIIL/hackathon2023_datacube/assets/3465768/9dc79edc-e527-4b98-a94f-4d500571b97a">
+
+
