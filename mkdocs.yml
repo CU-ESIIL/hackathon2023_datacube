@@ -19,6 +19,7 @@ nav:
     - GitHub essentials: 1_GIT_on_the_Cloud/github_lesson.md
     - CyVerse Discovery Environment: 1_GIT_on_the_Cloud/collaboration.md
     - Environmental Data Science in the Cloud: code_for_building_cube/Moving_data_in_the_cloud.md
+  - Why Data Cubes?: Why data cubes/Why data cubes.md
   - Data:
     - Flood event inventory: code_for_building_cube/Pull_flood_data.md
     - Flood event area (polygons): code_for_building_cube/Pull_flood_polygons.md  
@@ -34,7 +35,6 @@ nav:
     - Open Street Map: code_for_building_cube/osm.md
     - US Census: code_for_building_cube/US_Census.md
     - Remote sensing: code_for_building_cube/Pull_Sentinal2_l2_data.md
-  - Why Data Cubes?: Why data cubes/Why data cubes.md
   - Analytics: 
     - Artificial Intelligence (AI) for Environmental Data Science: 4_Artificial_Intelligence/artificial_intelligence_md.md
 
