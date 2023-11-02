@@ -6,7 +6,7 @@ Cibele Amaral, ESIIL Remote Sensing Scientist 2023-11-02
 > "**Environment**, the complex of physical, chemical, and biotic factors that act upon an organism or an ecological community and ultimately **determine its form and survival**." (Encyclopedia Britannica)
 > 
 > ![DSC06378_resize.jpg](https://hackmd.io/_uploads/ByHFNrlQa.jpg)
-How much an organism can resist and adapt to a new enviromental condition? Photo credit: Cibele Amaral
+How much can an organism resist and adapt to a new enviromental condition? Photo credit: Cibele Amaral
 
 
 
@@ -42,7 +42,7 @@ Image credit: Kathy Bogan, Jennifer Balch, Chelsea Nagy.
 > ![digital-twin-banner-foreground.png](https://hackmd.io/_uploads/HJnY-Kxm6.png)
 AI models can help us to classify, cluster, forecast and identify outliers. They also provide us with data simulation and models emulation. Digital Twin representation, find more at [Digital Twin Overview](https://www.esri.com/en-us/digital-twin).
 
- ## "But... why data cubes?"
+ ### "But... why data cubes?"
 
 >"Data cube is the arrange of relevant data in an n-dimensional array to support analytics."
 >![xarray-datastructure.png](https://hackmd.io/_uploads/Bk6daFx76.png)
