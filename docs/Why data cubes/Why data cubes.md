@@ -21,7 +21,7 @@ How much can an organism resist and adapt to a new environmental condition? Phot
 > Projections indicate that the world is speeding towards a warmer climate and will experience more catastrophic extreme events.
 
 
-> ## "How can we help organisms (populations, and communities) to adapt to a wild future?"
+## "How can we help organisms (populations and communities) to adapt to a wild future?"
  
 ## The era of revolutions and their integrated role in environmental sciences
 
@@ -39,7 +39,7 @@ Image credit: Kathy Bogan, Jennifer Balch, Chelsea Nagy.
 > ![[digital-twin-banner-foreground.png](https://hackmd.io/_uploads/HJnY-Kxm6.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/digital-twin-banner-foreground.png)
 AI models can help us to classify, cluster, forecast and identify outliers. They also provide us with data simulation and model emulation. Digital Twin representation, find more at [Digital Twin Overview](https://www.esri.com/en-us/digital-twin).
 
- ### "But... why data cubes?"
+ ## "But... why data cubes?"
 
 >"Data cube is the arrangement of relevant data in an n-dimensional array to support analytics."
 >![[xarray-datastructure.png](https://hackmd.io/_uploads/Bk6daFx76.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/xarray-datastructure.png)
@@ -69,7 +69,7 @@ Photo credit: [x-array](https://xarray.dev/).
 > Find more at [gdalcubes](https://github.com/appelmar/gdalcubes#gdalcubes-)
 
 ### 3. Cloud-optimized Geospatial Format
-> - Saving the data
+> - Save the data (COG, zarr)
 >
 > ![[cogeo-formats-table.png](https://hackmd.io/_uploads/Bkjmr9gXa.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/cogeo-formats-table.png)
 Cloud optimization enables efficient, on-the-fly access to geospatial data, offering several advantages such as reduced latency (1), scalability (2), flexibility (3), and cost-effectiveness (4). Find more at [Cloud-Optimized Geospatial Formats Guide](https://guide.cloudnativegeo.org/). 
