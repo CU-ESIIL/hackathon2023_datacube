@@ -15,7 +15,6 @@ How much can an organism resist and adapt to a new environmental condition? Phot
 >![[extreme_events.jpg](https://hackmd.io/_uploads/SyFAurg7a.jpg)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/extreme_events.jpg)
 >Diseases, droughts, wildfires, and floods are examples of ecological disturbances that are increasing due to an unbalanced Earth system.
 
-
 ### 3. Projections
 > ![[projected_emissions_temperature_CSSP_lrg_1.png](https://hackmd.io/_uploads/Skj5JHeQT.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/projected_emissions_temperature_CSSP_lrg_1.png) 
 > Projections indicate that the world is speeding towards a warmer climate and will experience more catastrophic extreme events.
@@ -33,6 +32,7 @@ How much can an organism resist and adapt to a new environmental condition? Phot
 Image credit: Kathy Bogan, Jennifer Balch, Chelsea Nagy.
 >
 > ![[airqualityzm_2022.gif](https://hackmd.io/_uploads/rJ2Dvde7a.gif)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/airqualityzm_2022.gif)
+> 
 > Hispanic, Asian, and Black and African American public school children attend schools with higher concentrations of air pollution than white students. Find more at [An Unequal Air Pollution Burden at School](https://earthobservatory.nasa.gov/images/152009/an-unequal-air-pollution-burden-at-school).
 
 ### 3. Artificial Intelligence revolution: using state-of-the-art AI models to understand organism-environment interactions, predict responses under various scenarios, and manage ecosystems properly 
