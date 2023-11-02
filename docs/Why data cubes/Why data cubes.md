@@ -10,13 +10,13 @@ How much can an organism resist and adapt to a new enviromental condition? Photo
 
 
 
-### 1. Global Warming
+### 1. Global warming
 > ![ClimateDashboard-global-surface-temperature-graph-20230118-1400px.png](https://hackmd.io/_uploads/B18vnNlXT.png)
 Yearly surface temperature compared to the 20th-century average from 1880–2022. Blue bars indicate cooler-than-average years; red bars show warmer-than-average years. NOAA Climate.gov graph, based on data from the National Centers for Environmental Information.
 
 ### 2. Extreme events and disturbances
 >![extreme_events.jpg](https://hackmd.io/_uploads/SyFAurg7a.jpg)
->Diseases, droughts, wildfires and floods are examples of ecological disturbances that are increasing due to an unbalanced Earth system.
+>Diseases, droughts, wildfires, and floods are examples of ecological disturbances that are increasing due to an unbalanced Earth system.
 
 
 ### 3. Projections
@@ -40,22 +40,22 @@ Image credit: Kathy Bogan, Jennifer Balch, Chelsea Nagy.
 
 ### 3. Artificial Intelligence revolution: using state-of-the-art AI models to understand organism-environment interactions, predict responses under various scenarios, and manage ecosystems properly 
 > ![digital-twin-banner-foreground.png](https://hackmd.io/_uploads/HJnY-Kxm6.png)
-AI models can help us to classify, cluster, forecast and identify outliers. They also provide us with data simulation and models emulation. Digital Twin representation, find more at [Digital Twin Overview](https://www.esri.com/en-us/digital-twin).
+AI models can help us to classify, cluster, forecast and identify outliers. They also provide us with data simulation and model emulation. Digital Twin representation, find more at [Digital Twin Overview](https://www.esri.com/en-us/digital-twin).
 
  ### "But... why data cubes?"
 
->"Data cube is the arrange of relevant data in an n-dimensional array to support analytics."
+>"Data cube is the arrangement of relevant data in an n-dimensional array to support analytics."
 >![xarray-datastructure.png](https://hackmd.io/_uploads/Bk6daFx76.png)
 Photo credit: [x-array](https://xarray.dev/).
 
 > ![modeling.png](https://hackmd.io/_uploads/HklNZclXa.png)
 > We need paired samples to create a model and wall-to-wall layers to map predictions.
 
-### 1. Spatial data formats, referencing systems and resolutions
+### 1. Spatial data formats, referencing systems, and resolutions
 
 > ![2022-05-02T09_23_37.798625.png](https://hackmd.io/_uploads/r1Jj_Ye7a.png)
 
-### 2. Cutting-edge tools to process data on the fly and create data cubes
+### 2. Cutting-edge tools to process data on-the-fly and create data cubes
 
 >![logo.svg](https://hackmd.io/_uploads/BJoafqeX6.svg)
 Find more at [gdalcubes](https://github.com/appelmar/gdalcubes#gdalcubes-)
