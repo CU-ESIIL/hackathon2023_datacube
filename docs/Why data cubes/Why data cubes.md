@@ -4,11 +4,11 @@ Cibele Amaral, ESIIL Remote Sensing Scientist 2023-11-02
 
 ## Surviving in an ever-changing environment
 > ### "**Environment**, the complex of physical, chemical, and biotic factors that act upon an organism or an ecological community and ultimately **determine its form and survival**." (Encyclopedia Britannica)
-> ![Image1.jpeg](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/Image1.jpg)
+> ![Image1.jpeg](.../assets/Image1.jpg)
 How much can an organism resist and adapt to a new environmental condition? Photo credit: Cibele Amaral
 
 ### 1. Global warming
-> ![[ClimateDashboard-global-surface-temperature-graph-20230118-1400px.png](https://hackmd.io/_uploads/B18vnNlXT.png](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/ClimateDashboard-global-surface-temperature-graph-20230118-1400px.png)
+> ![[ClimateDashboard-global-surface-temperature-graph-20230118-1400px.png](.../assets/ClimateDashboard-global-surface-temperature-graph-20230118-1400px.png)
 > Yearly surface temperature compared to the 20th-century average from 1880–2022. Blue bars indicate cooler-than-average years; red bars show warmer-than-average years. NOAA Climate.gov graph, based on data from the National Centers for Environmental Information.
 
 ### 2. Extreme events and disturbances
