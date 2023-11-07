@@ -35,7 +35,7 @@ Image credit: Kathy Bogan, Jennifer Balch, Chelsea Nagy.
 > Example of socio-enviromental data science: Hispanic, Asian, and Black and African American public school children attend schools with higher concentrations of air pollution than white students. Find more at [An Unequal Air Pollution Burden at School](https://earthobservatory.nasa.gov/images/152009/an-unequal-air-pollution-burden-at-school).
 
 ### 3. Artificial Intelligence revolution: using state-of-the-art AI models to understand organism-environment interactions, predict responses under various scenarios, and manage ecosystems properly 
-> ![[digital-twin-banner-foreground.png](https://hackmd.io/_uploads/HJnY-Kxm6.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/digital-twin-banner-foreground.png)
+> ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/842985cf-5bb2-406f-8148-9cac54ebfc34)
 AI models can help us to classify, cluster, forecast and identify outliers. They also provide us with data simulation and model emulation. Digital Twin representation, find more at [Digital Twin Overview](https://www.esri.com/en-us/digital-twin).
 
 ## "But... why data cubes?"
