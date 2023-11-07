@@ -43,8 +43,7 @@ AI models can help us to classify, cluster, forecast and identify outliers. They
 > ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/34cf3e3b-bfec-479e-bc88-20086e4e6ca1)
 >Data cube is the arrangement of relevant data in an n-dimensional array to support analytics. Photo credit: [x-array](https://xarray.dev/).
 
-> ![[modeling.png](https://hackmd.io/_uploads/HklNZclXa.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/modeling.png)
-> 
+>![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/3f1474e9-536d-433b-af83-408b0c53b284) 
 > We need paired samples to create a model and wall-to-wall layers to map predictions.
 
 ### 1. Spatial data formats, referencing systems, and resolutions
