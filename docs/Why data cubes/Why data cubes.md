@@ -70,5 +70,6 @@ Cibele Amaral, ESIIL Remote Sensing Scientist 2023-11-02
 ### 3. Cloud-optimized Geospatial Format
 > - Save the data (COG, zarr)
 >
-> ![[cogeo-formats-table.png](https://hackmd.io/_uploads/Bkjmr9gXa.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/cogeo-formats-table.png)
+> ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/090dc438-4344-49ca-98b6-5e776864667a)
+>
 Cloud optimization enables efficient, on-the-fly access to geospatial data, offering several advantages such as reduced latency (1), scalability (2), flexibility (3), and cost-effectiveness (4). Find more at [Cloud-Optimized Geospatial Formats Guide](https://guide.cloudnativegeo.org/). 
