@@ -9,6 +9,7 @@ Welcome to the Environmental Data Science Innovation & Inclusion Lab (<a href="h
 ## Agenda
 
 Sessions 1 and 2 will run from **10am - 12pm Mountain Daylight Time** and will meet _virtually_ over **Zoom**.
+
 Session 3 will run from **9am - 12pm Mountain Daylight Time** and will meet _virtually_ over **Zoom**.
 
 
