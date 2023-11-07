@@ -31,8 +31,7 @@ How much can an organism resist and adapt to a new environmental condition? Phot
 >![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/f43c60f7-26bd-468e-bba9-29520f33fc86)
 Image credit: Kathy Bogan, Jennifer Balch, Chelsea Nagy.
 
-> ![[airqualityzm_2022.gif](https://hackmd.io/_uploads/rJ2Dvde7a.gif)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/airqualityzm_2022.gif)
-> 
+>![airqualityzm_2022](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/cc1d9c64-02da-4d59-9089-6212748a8adb) 
 > Example of socio-enviromental data science: Hispanic, Asian, and Black and African American public school children attend schools with higher concentrations of air pollution than white students. Find more at [An Unequal Air Pollution Burden at School](https://earthobservatory.nasa.gov/images/152009/an-unequal-air-pollution-burden-at-school).
 
 ### 3. Artificial Intelligence revolution: using state-of-the-art AI models to understand organism-environment interactions, predict responses under various scenarios, and manage ecosystems properly 
