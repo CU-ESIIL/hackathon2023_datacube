@@ -5,7 +5,7 @@ Cibele Amaral, ESIIL Remote Sensing Scientist 2023-11-02
 ## Surviving in an ever-changing environment
 > ### "**Environment**, the complex of physical, chemical, and biotic factors that act upon an organism or an ecological community and ultimately **determine its form and survival**." (Encyclopedia Britannica)
 > ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/0ca54eff-4c3d-48d3-af43-eb478bf08cdb)
-How much can an organism resist and adapt to a new environmental condition? Photo credit: Cibele Amaral
+> How much can an organism resist and adapt to a new environmental condition? Photo credit: Cibele Amaral
 
 ### 1. Global warming
 > ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/fbe007b9-cf72-4e1a-bce8-bac629d6d6a7)
@@ -13,7 +13,7 @@ How much can an organism resist and adapt to a new environmental condition? Phot
 
 ### 2. Extreme events and disturbances
 >![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/035f98c5-79da-4d6d-ba5d-4d1e074c6b96)
->Diseases, droughts, wildfires, and floods are examples of ecological disturbances that are increasing due to an unbalanced Earth system.
+> Diseases, droughts, wildfires, and floods are examples of ecological disturbances that are increasing due to an unbalanced Earth system.
 
 ### 3. Projections
 > ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/0797698f-ef06-4119-810d-c5fdafa73698)
@@ -28,22 +28,23 @@ How much can an organism resist and adapt to a new environmental condition? Phot
 > <a href="https://www.statista.com/statistics/273018/number-of-internet-users-worldwide/" rel="nofollow"><img src="https://www.statista.com/graphic/1/273018/number-of-internet-users-worldwide.jpg" alt="Statistic: Number of internet users worldwide from 2005 to 2022 (in millions) | Statista" style="width: 100%; height: auto !important; max-width:1000px;-ms-interpolation-mode: bicubic;"/></a><br />Find more statistics at  <a href="https://www.statista.com" rel="nofollow">Statista</a>.
 
 ### 2. Big data revolution: using open socio-environment data collected across scales 
->![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/f43c60f7-26bd-468e-bba9-29520f33fc86)
-Image credit: Kathy Bogan, Jennifer Balch, Chelsea Nagy.
+> ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/f43c60f7-26bd-468e-bba9-29520f33fc86)
+> Image credit: Kathy Bogan, Jennifer Balch, Chelsea Nagy.
 
->![airqualityzm_2022](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/cc1d9c64-02da-4d59-9089-6212748a8adb) 
+> ![airqualityzm_2022](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/cc1d9c64-02da-4d59-9089-6212748a8adb)
+>
 > Example of socio-enviromental data science: Hispanic, Asian, and Black and African American public school children attend schools with higher concentrations of air pollution than white students. Find more at [An Unequal Air Pollution Burden at School](https://earthobservatory.nasa.gov/images/152009/an-unequal-air-pollution-burden-at-school).
 
 ### 3. Artificial Intelligence revolution: using state-of-the-art AI models to understand organism-environment interactions, predict responses under various scenarios, and manage ecosystems properly 
 > ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/842985cf-5bb2-406f-8148-9cac54ebfc34)
-AI models can help us to classify, cluster, forecast and identify outliers. They also provide us with data simulation and model emulation. Digital Twin representation, find more at [Digital Twin Overview](https://www.esri.com/en-us/digital-twin).
+> AI models can help us to classify, cluster, forecast and identify outliers. They also provide us with data simulation and model emulation. Digital Twin representation, find more at [Digital Twin Overview](https://www.esri.com/en-us/digital-twin).
 
 ## "But... why data cubes?"
->
 > ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/34cf3e3b-bfec-479e-bc88-20086e4e6ca1)
->Data cube is the arrangement of relevant data in an n-dimensional array to support analytics. Photo credit: [x-array](https://xarray.dev/).
+> Data cube is the arrangement of relevant data in an n-dimensional array to support analytics. Photo credit: [x-array](https://xarray.dev/).
 
->![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/3f1474e9-536d-433b-af83-408b0c53b284) 
+> ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/3f1474e9-536d-433b-af83-408b0c53b284)
+> 
 > We need paired samples to create a model and wall-to-wall layers to map predictions.
 
 ### 1. Spatial data formats, referencing systems, and resolutions
