@@ -72,8 +72,19 @@ Session 3 will run from **9am - 12pm Mountain Daylight Time** and will meet _vir
 > * <a href="https://www.gida-global.org/care" target="_blank">CARE principles for Indigenous data governance</a>
 
 
-## Week 3 -- Analytics (Thursday November 9th)
-> * **Instructors:** Ghriss, Tuff
+## Week 3 -- Environmental MosAIc Data Library & Artificial Intelligence (Thursday November 9th)
+## **Please [connect your Cyverse account to GitHub](https://cu-esiil.github.io/hackathon2023_datacube/1_GIT_on_the_Cloud/github_cyverse/) prior to this training**
+
+>   * **Session overview:** Nate Quarderer, ESIIL Education Director
+> ### ***Cyverse Discovery Environment***
+> * **Instructors:** Culler, Verleye
+>     * Review 
+
+> ### ***Data Library***
+> * **Instructors:** Tuff, Amaral
+>     * The Data Library
+>     * Accessing data with an API
+>     * Saving your own data cube
 
 ***
 
