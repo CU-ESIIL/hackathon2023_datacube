@@ -40,8 +40,7 @@ AI models can help us to classify, cluster, forecast and identify outliers. They
 
 ## "But... why data cubes?"
 >
->![[xarray-datastructure.png](https://hackmd.io/_uploads/Bk6daFx76.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/xarray-datastructure.png)
->
+> ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/34cf3e3b-bfec-479e-bc88-20086e4e6ca1)
 >Data cube is the arrangement of relevant data in an n-dimensional array to support analytics. Photo credit: [x-array](https://xarray.dev/).
 
 > ![[modeling.png](https://hackmd.io/_uploads/HklNZclXa.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/modeling.png)
