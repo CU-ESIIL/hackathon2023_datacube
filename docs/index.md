@@ -76,15 +76,19 @@ Session 3 will run from **9am - 12pm Mountain Daylight Time** and will meet _vir
 ## **Please [connect your Cyverse account to GitHub](https://cu-esiil.github.io/hackathon2023_datacube/1_GIT_on_the_Cloud/github_cyverse/) prior to this training**
 
 >   * **Session overview:** Nate Quarderer, ESIIL Education Director
-> ### ***Cyverse Discovery Environment***
-> * **Instructors:** Culler, Verleye
->     * Review 
 
-> ### ***Data Library***
-> * **Instructors:** Tuff, Amaral
+> ### ***Environmental MosAIc Data Library***
+> * **Instructor:** Tuff
 >     * The Data Library
 >     * Accessing data with an API
 >     * Saving your own data cube
+
+> ### ***Artificial Intelligence***
+> * **Instructor:** Ghriss
+>     * AI and Machine Learning algorithms 
+>     * Examples of Machine Learning techniques
+>     * Interacting with a machine learning model
+>     * Fairness and ethical use of AI
 
 ***
 
