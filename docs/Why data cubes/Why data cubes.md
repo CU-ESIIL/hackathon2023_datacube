@@ -28,9 +28,9 @@ How much can an organism resist and adapt to a new environmental condition? Phot
 > <a href="https://www.statista.com/statistics/273018/number-of-internet-users-worldwide/" rel="nofollow"><img src="https://www.statista.com/graphic/1/273018/number-of-internet-users-worldwide.jpg" alt="Statistic: Number of internet users worldwide from 2005 to 2022 (in millions) | Statista" style="width: 100%; height: auto !important; max-width:1000px;-ms-interpolation-mode: bicubic;"/></a><br />Find more statistics at  <a href="https://www.statista.com" rel="nofollow">Statista</a>.
 
 ### 2. Big data revolution: using open socio-environment data collected across scales 
-> ![[multisource_data.png](https://hackmd.io/_uploads/Sy44MSg7a.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/multisource_data.png)
+>![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/f43c60f7-26bd-468e-bba9-29520f33fc86)
 Image credit: Kathy Bogan, Jennifer Balch, Chelsea Nagy.
->
+
 > ![[airqualityzm_2022.gif](https://hackmd.io/_uploads/rJ2Dvde7a.gif)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/airqualityzm_2022.gif)
 > 
 > Example of socio-enviromental data science: Hispanic, Asian, and Black and African American public school children attend schools with higher concentrations of air pollution than white students. Find more at [An Unequal Air Pollution Burden at School](https://earthobservatory.nasa.gov/images/152009/an-unequal-air-pollution-burden-at-school).
