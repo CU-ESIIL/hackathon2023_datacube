@@ -53,7 +53,7 @@ Session 3 will run from **9am - 12pm Mountain Daylight Time** and will meet _vir
 
 ## Week 2 -- Environmental Data Science and Environmental MosAIc's Data Library (Thursday November 2nd)
 
-### <a href="https://www.youtube.com/watch?v=6GILw5QrBSw">**Watch this training**</a> or <a href="./assets/Hackathon_CI_Training_Transcript.pdf" target="_blank">**read the transcript**</a>
+### <a href="https://www.youtube.com/watch?v=6GILw5QrBSw">**Watch this training**</a> or <a href="docs/assets/Transcript_hackathon_training2.pdf" target="_blank">**read the transcript**</a>
 
 >   * **Session overview:** Nate Quarderer, ESIIL Education Director
 > ### ***Cyverse Discovery Environment***
