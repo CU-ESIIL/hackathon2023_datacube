@@ -52,7 +52,8 @@ Cibele Amaral, ESIIL Remote Sensing Scientist 2023-11-02
 >
 > Vectors (points, lines, polygons) and rasters (wall-to-wall, gridded layers) are format types of spatial data. Photo credit: EDX.
 >
-> ![Sensors.png](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/Sensors.png)
+>![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/e6e06ec0-d2c5-4990-ad35-d5862d9a2a78)
+>
 > Sensors operate from different orbits and collect data with different Instantaneous Field Of View (IFOV). These parameters result in data layers with varying spatial resolution.
 
 ### 2. Cutting-edge tools to process data on the fly and create data cubes
