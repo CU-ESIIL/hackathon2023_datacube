@@ -16,7 +16,7 @@ How much can an organism resist and adapt to a new environmental condition? Phot
 >Diseases, droughts, wildfires, and floods are examples of ecological disturbances that are increasing due to an unbalanced Earth system.
 
 ### 3. Projections
-> ![[projected_emissions_temperature_CSSP_lrg_1.png](https://hackmd.io/_uploads/Skj5JHeQT.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/projected_emissions_temperature_CSSP_lrg_1.png) 
+> ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/0797698f-ef06-4119-810d-c5fdafa73698)
 > Projections indicate that the world is speeding towards a warmer climate and will experience more catastrophic extreme events.
 
 
