@@ -48,8 +48,7 @@ Cibele Amaral, ESIIL Remote Sensing Scientist 2023-11-02
 > We need paired samples to create a model and wall-to-wall layers to map predictions.
 
 ### 1. Spatial data formats, referencing systems, and resolutions
-
-> ![[2022-05-02T09_23_37.798625.png](https://hackmd.io/_uploads/r1Jj_Ye7a.png)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/2022-05-02T09_23_37.798625.png)
+>![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/80072684-5a90-42e9-9fba-b6883b23a144)
 >
 > Vectors (points, lines, polygons) and rasters (wall-to-wall, gridded layers) are format types of spatial data. Photo credit: EDX.
 >
