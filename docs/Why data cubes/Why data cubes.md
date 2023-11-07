@@ -12,7 +12,7 @@ How much can an organism resist and adapt to a new environmental condition? Phot
 > Yearly surface temperature compared to the 20th-century average from 1880–2022. Blue bars indicate cooler-than-average years; red bars show warmer-than-average years. NOAA Climate.gov graph, based on data from the National Centers for Environmental Information.
 
 ### 2. Extreme events and disturbances
->![[extreme_events.jpg](https://hackmd.io/_uploads/SyFAurg7a.jpg)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/extreme_events.jpg)
+>![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/035f98c5-79da-4d6d-ba5d-4d1e074c6b96)
 >Diseases, droughts, wildfires, and floods are examples of ecological disturbances that are increasing due to an unbalanced Earth system.
 
 ### 3. Projections
