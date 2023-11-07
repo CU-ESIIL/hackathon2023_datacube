@@ -63,7 +63,7 @@ Cibele Amaral, ESIIL Remote Sensing Scientist 2023-11-02
 > - Resample every layer to a standard spatial resolution
 > - Stack layers into a cube
 
->![[logo.svg](https://hackmd.io/_uploads/BJoafqeX6.svg)](https://github.com/CU-ESIIL/hackathon2023_datacube/blob/main/docs/assets/logo.svg)
+> ![image](https://github.com/CU-ESIIL/hackathon2023_datacube/assets/37226383/b380f925-88fd-4d8c-a401-6e1e62f08fc9)
 >
 > Find more at [gdalcubes](https://github.com/appelmar/gdalcubes#gdalcubes-)
 
