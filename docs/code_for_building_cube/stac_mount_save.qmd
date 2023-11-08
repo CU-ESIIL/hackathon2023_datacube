@@ -1,10 +1,11 @@
 ---
 title: "STAC_mount_save"
-format:
-  html:
-    theme: default
-    toc: true
-    number-sections: true
+author: "Ty Tuff, ESIIL Data Scientist"
+date: "2023-10-27"
+format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 ## 'To Make' or 'To Take' a photo
   The distinction between making and taking a photograph lies in the approach and intent behind the camera. Taking a photo is often a reactive process, where the photographer captures moments as they naturally unfold, seizing the spontaneity of life without alteration. It's a passive form of photography where the emphasis is on the right timing and the natural interplay of elements within the frame. On the other hand, making a photo is a proactive and deliberate act. It is akin to craftsmanship, where a professional photographer starts with a concept and utilizes a variety of tools and techniques to stage and construct the desired scene. They actively manipulate lighting, composition, and subjects to create a photograph that aligns with their pre-visualized artistic vision. While both methods use a camera to produce a photograph, making a photo involves a creation process, whereas taking a photo is about finding the scene.

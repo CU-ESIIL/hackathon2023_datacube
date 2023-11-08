@@ -69,6 +69,7 @@ flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hyd
 
 flood_polygon_data
 ```
+
 ```{r}
 flood_polygon_data2 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-con/na_con_3s/n20w120_con.zip/n20w120_con.tif") %>%
   rast() #%>%
@@ -186,7 +187,7 @@ ggplot() +
 
 
 ```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
-flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_shapefile.zip/GloRiC_v10_shapefile/GloRiC_v10.shp") %>%
+flood_polygon_data3 <- glue("/vsizip/vsicurl/ /GloRiC_v10_shapefile-2/GloRiC_v10_shapefile/GloRiC_v10.shp") %>%
   st_read() %>%
   st_as_sf(coords = c("lon","lat"))
 
