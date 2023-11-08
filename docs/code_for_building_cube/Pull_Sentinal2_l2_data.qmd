@@ -196,6 +196,7 @@ x <- s2_collection %>%
         "2190" = "B12"
     )
 
+
 # Sample, transform and prepare data for analysis
 y <- x %>%
     slice_sample(n = 50000) %>%

@@ -1,0 +1,357 @@
+---
+title: "STAC_mount_save"
+format:
+  html:
+    theme: default
+    toc: true
+    number-sections: true
+---
+
+```{r load_libraries, cache=TRUE, message=FALSE, warning=FALSE}
+
+#library(Rcpp)
+library(sf)
+library(gdalcubes)
+library(rstac)
+library(gdalUtils)
+library(terra)
+library(rgdal)
+library(reshape2)
+library(osmdata)
+library(terra)
+library(dplyr)
+#library(glue)
+library(stars)
+library(ggplot2)
+library(colorspace)
+library(geos)
+#library(glue)
+library(osmdata)
+library(ggthemes)
+library(tidyr)
+gdalcubes_options(parallel = 8)
+
+sf::sf_extSoftVersion()
+gdalcubes_gdal_has_geos()
+
+library(osmdata)
+library(dplyr)
+library(sf)
+library(terra)
+library(tidyterra)
+library(glue)
+library(ggplot2)
+library(ggthemes)
+library(stars)
+```
+
+
+
+```{r DEM, cache=TRUE, warning=FALSE, message=FALSE}
+# Record start time
+a <- Sys.time()
+
+DEM_continuous_CONUS_15s <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-dem/hyd_na_dem_15s.zip/hyd_na_dem_15s.tif") %>%
+  terra::rast() #%>%
+
+b <- Sys.time()
+difftime(b, a)
+
+DEM_continuous_CONUS_15s
+```
+
+
+```{r DEM_plot, cache=TRUE, warning=FALSE, message=FALSE}
+# Record start time
+a <- Sys.time()
+
+ggplot() +
+  geom_spatraster(data=DEM_continuous_CONUS_15s) +
+  theme_tufte()
+
+b <- Sys.time()
+difftime(b, a)
+```
+
+
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# Transform the filtered geometry to EPSG:4326 and store its bounding box
+# Record start time
+a <- Sys.time()
+
+DEM_continuous_CONUS_15s |>
+stars::st_as_stars() |> 
+  st_transform("EPSG:4326") |>
+  st_bbox() -> bbox_4326
+
+
+DEM_continuous_CONUS_15s |>
+stars::st_as_stars() |> 
+  st_transform("EPSG:32618") |>
+  st_bbox() -> bbox_32618
+
+b <- Sys.time()
+difftime(b, a)
+```
+
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+collection_formats()
+```
+
+
+```{r search_STAC_collection, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+# Record start time
+a <- Sys.time()
+
+# Initialize STAC connection
+s = stac("https://earth-search.aws.element84.com/v0")
+
+
+# Search for Sentinel-2 images within specified bounding box and date range
+#22 Million items
+items = s %>%
+    stac_search(collections = "sentinel-s2-l2a-cogs",
+                bbox = c(bbox_4326["xmin"], 
+                         bbox_4326["ymin"],
+                         bbox_4326["xmax"], 
+                         bbox_4326["ymax"]), 
+                datetime = "2021-05-15/2021-05-16") %>%
+    post_request() %>%
+    items_fetch(progress = FALSE)
+
+# Print number of found items
+length(items$features)
+
+# Prepare the assets for analysis
+library(gdalcubes)
+assets = c("B01", "B02", "B03", "B04", "B05", "B06", 
+           "B07", 
+           "B08", "B8A", "B09", "B11", "B12", "SCL")
+s2_collection = stac_image_collection(items$features, asset_names = assets,
+property_filter = function(x) {x[["eo:cloud_cover"]] < 20}) #all images with less than 20% clouds
+
+b <- Sys.time()
+difftime(b, a)
+
+# Display the image collection
+s2_collection
+```
+
+
+
+```{r set_view_window, cache=TRUE, warning=FALSE, message=FALSE}
+# Record start time
+a <- Sys.time()
+
+# Define a specific view on the satellite image collection
+v = cube_view(
+    srs = "EPSG:32618", #this is harder than expected. 
+    dx = 100, 
+    dy = 100, 
+    dt = "P1M", 
+    aggregation = "median", 
+    resampling = "near",
+    extent = list(
+        t0 = "2021-05-15", 
+        t1 = "2021-05-16",
+        left = bbox_32618[1], 
+        right = bbox_32618[2],
+        top = bbox_32618[4], 
+        bottom = bbox_32618[3]
+    )
+)
+
+b <- Sys.time()
+difftime(b, a)
+
+# Display the defined view
+v
+```
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+aoi <- getbb("United States", format_out="sf_polygon")
+
+conus <- aoi$multipolygon |>
+  st_crop(bbox_4326)
+
+
+ggplot(data=conus) +
+  geom_sf()
+```
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# Record start time
+a <- Sys.time()
+
+
+x <- s2_collection %>%
+    raster_cube(v) %>%
+    select_bands(c("B01", "B02", "B03", "B04", 
+                   "B05", "B06", "B07", "B08", 
+                   "B8A", "B09", "B11", "B12")) %>%
+    extract_geom(conus) %>%
+    rename(
+        "time" = "time",
+        "443" = "B01",
+        "490" = "B02",
+        "560" = "B03",
+        "665" = "B04",
+        "705" = "B05",
+        "740" = "B06",
+        "783" = "B07",
+        "842" = "B08",
+        "865" = "B8A",
+        "940" = "B09",
+        "1610" = "B11",
+        "2190" = "B12"
+    )
+
+b <- Sys.time()
+difftime(b, a)
+
+x
+```
+
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# Record start time
+a <- Sys.time()
+
+s2_collection |>
+    raster_cube(v) |>
+    select_bands(c( "B04", "B05"))  |>
+  apply_pixel(c("(B05-B04)/(B05+B04)"), names="NDVI") |>
+  write_tif() |>
+  raster::stack() -> x
+x
+
+b <- Sys.time()
+difftime(b, a)
+```
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# Record start time
+a <- Sys.time()
+
+s2_collection |>
+    raster_cube(v) |>
+    select_bands(c("B04","B05"))  |>
+  apply_pixel(c("(B05-B04)/(B05+B04)"), names="NDVI") |>
+  stars::st_as_stars() -> y
+
+b <- Sys.time()
+difftime(b, a)
+
+y
+```
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+boulder_county <- getbb("boulder, co", format_out="sf_polygon")
+
+boulder_county$multipolygon |> 
+  st_transform(crs =32720 ) |>
+  st_bbox() -> bbox_32720_boulder
+```
+
+
+
+```{r}
+
+# Record start time
+a <- Sys.time()
+
+items <- s %>%
+    stac_search(collections = "sentinel-s2-l2a-cogs",
+                bbox = c(-105.694362,	39.912886,	-105.052774,	40.262785),
+                datetime = "2020-01-01/2022-12-31",
+                limit = 500) %>% 
+    post_request() 
+
+S2.mask = image_mask("SCL", values=c(3,8,9))
+
+col = stac_image_collection(items$features, asset_names = assets, 
+                            property_filter = function(x) {x[["eo:cloud_cover"]] < 30})
+
+v = cube_view(srs = "EPSG:4326",  extent = list(t0 = "2020-01-01", t1 = "2022-12-31",
+              left = -105.694362, right = -105.052774,  top = 40.262785, bottom = 39.912886),
+              dx = 0.001, dy = 0.001, dt = "P1M", aggregation = "median", resampling = "bilinear")
+
+library(colorspace)
+ndvi.col = function(n) {
+  rev(sequential_hcl(n, "Green-Yellow"))
+}
+library(gdalcubes)
+raster_cube(col, v, mask = S2.mask) %>%
+    select_bands(c("B04", "B08")) %>%
+    apply_pixel("(B08-B04)/(B08+B04)", "NDVI") %>%
+    gdalcubes::animate(col = ndvi.col, zlim=c(-0.2,1), key.pos = 1, save_as = "anim.gif", fps = 4)
+
+b <- Sys.time()
+difftime(b, a)
+
+y
+```
+![](../code_for_building_cube/anim.gif)
+
+
+
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+items_2020 <- s %>%
+    stac_search(collections = "sentinel-s2-l2a-cogs",
+                bbox = c(-105.694362,	39.912886,	-105.052774,	40.262785),
+                datetime = "2020-05-01/2020-06-30",
+                limit = 500) %>% 
+    post_request() 
+
+items_2021 <- s %>%
+    stac_search(collections = "sentinel-s2-l2a-cogs",
+                bbox = c(-105.694362,	39.912886,	-105.052774,	40.262785),
+                datetime = "2021-05-01/2021-06-30",
+                limit = 500) %>% 
+    post_request() 
+
+
+col_2020 = stac_image_collection(items_2020$features, asset_names = assets, 
+                            property_filter = function(x) {x[["eo:cloud_cover"]] < 40})
+col_2021 = stac_image_collection(items_2021$features, asset_names = assets, 
+                            property_filter = function(x) {x[["eo:cloud_cover"]] < 40})
+
+v_2020 = cube_view(srs = "EPSG:32720",  extent = list(t0 = "2020-05-01", t1 = "2020-06-30",
+              left = bbox_32618_boulder["xmin"], right = bbox_32618_boulder["xmax"],  top = bbox_32618_boulder["ymax"], bottom = bbox_32618_boulder["ymin"]),
+              dx = 100, dy = 100, dt = "P1D", aggregation = "median", resampling = "bilinear")
+
+v_2021 = cube_view(v_2020, extent = list(t0 = "2021-05-01", t1 = "2021-06-30"))
+
+
+max_ndvi_mosaic <- function(col, v) {
+    raster_cube(col, v, mask = S2.mask) %>%
+    select_bands(c("B04", "B08")) %>%
+    apply_pixel(c("(B08-B04)/(B08+B04)"), names="NDVI") %>%
+    reduce_time("max(NDVI)")
+}
+
+suppressPackageStartupMessages(library(stars))
+max_ndvi_mosaic(col_2020, v_2020) %>%
+    st_as_stars() -> maxndvi_2020
+
+max_ndvi_mosaic(col_2021, v_2021) %>%
+    st_as_stars() -> maxndvi_2021
+
+difference = maxndvi_2021 - maxndvi_2020
+difference[difference > -0.15] = NA
+names(difference) <- "Difference of max NDVI (2020 - 2019)"
+
+library(tmap)
+tmap_mode("view")
+```
+
+

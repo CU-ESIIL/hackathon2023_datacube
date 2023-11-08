@@ -66,7 +66,7 @@ df3
 ### GBIF online download tool
   Here I upload the file that I downloaded from gbif.org. To create this file, I used GBIF's online tool to draw a bounding box around Boulder county and specified that I wanted all data with (1) Geographic coordinates, (2) No known errors, (3) recorded in 2021, and (4) iNaturalist listed as their provider. The provide that data in the form of a CSV, which I added to a folder called "rawData" in the working directory. These data come as a dataframe of occurrence records, which each record taking a row and different variables taking the columns. The first thing I do is clean the names using the 'scrubr' package. Then I plot the raw data to make sure they meet my expectations. I'm checking  for anomalies that would be cause by improper loading,  like the wrong spatial extent or unexpectedly empty fields.
   
-```{r, warning=FALSE, message=FALSE, fig.cap="Plot of raw iNaturalist data", cache=TRUE}
+```{r, eval=FALSE, warning=FALSE, message=FALSE, fig.cap="Plot of raw iNaturalist data", cache=TRUE}
 gbif <- fread("rawData/0289344-200613084148143.csv",header=TRUE)
 
 # Load necessary packages
