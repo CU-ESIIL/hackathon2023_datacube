@@ -6,6 +6,20 @@ format:
     toc: true
     number-sections: true
 ---
+## 'To Make' or 'To Take' a photo
+  The distinction between making and taking a photograph lies in the approach and intent behind the camera. Taking a photo is often a reactive process, where the photographer captures moments as they naturally unfold, seizing the spontaneity of life without alteration. It's a passive form of photography where the emphasis is on the right timing and the natural interplay of elements within the frame. On the other hand, making a photo is a proactive and deliberate act. It is akin to craftsmanship, where a professional photographer starts with a concept and utilizes a variety of tools and techniques to stage and construct the desired scene. They actively manipulate lighting, composition, and subjects to create a photograph that aligns with their pre-visualized artistic vision. While both methods use a camera to produce a photograph, making a photo involves a creation process, whereas taking a photo is about finding the scene.
+
+David Yarrow is a famous photographer who 'makes' his photographs. 
+![](../assets/stac_mount_save/David-Yarrow-sorrel-sky-gallery-Photographic-Print-Cindys-Shotgun-Wedding.png)
+![](../assets/stac_mount_save/bison.png)
+
+## What does it mean to 'make' a data cube?
+The artistry of Ansel Adams' photography serves as a compelling analogy for the meticulous craft of building a data cube from cloud data sources using tools like STAC and GDAL VSI. Just as Adams would survey the vastness of a landscape, discerning the interplay of light and shadow upon the mountains before him, a data architect surveys the expanse of available data. In this analogy, the raw data are the majestic mountains and sweeping landscapes waiting to be captured. The STAC collection acts as the photographer's deliberate choice of scene, pointing the camera lens—our data tools—towards the most telling and coherent dataset.
+
+![](../assets/stac_mount_save/Ansel_Adams_datacube.png)
+Just as Adams' photographs are more than mere records of a landscape, but rather a confluence of his vision, technique, and the scene's natural beauty, so too is the data cube more than the sum of its parts. It is the artful synthesis of information, crafted and composed with the skill and intent of an artist, producing not just a tool for analysis but a harmonized, data-driven portrait of the world it represents. The builder of the data cube is, indeed, an artist, and the data cube their masterpiece, revealing not just data, but a story, a perspective, a landscape sewn from the raw material of cloud-sourced information.
+
+As Adams would adjust his viewfinder, setting the boundaries of his photographic frame, the data builder sets the view window, filtering and transferring relevant data to their own medium, akin to Adams' film. This is where the raw data is transformed, organized into the structured form of a data frame or data cube, a process not unlike the careful development of a photograph in a darkroom. Here, the data cube creator, much like Adams with his careful dodging and burning, harmonizes disparate elements into a cohesive whole, each decision reflecting an intention and vision for the final product.
 
 ```{r load_libraries, cache=TRUE, message=FALSE, warning=FALSE}
 
@@ -20,12 +34,10 @@ library(reshape2)
 library(osmdata)
 library(terra)
 library(dplyr)
-#library(glue)
 library(stars)
 library(ggplot2)
 library(colorspace)
 library(geos)
-#library(glue)
 library(osmdata)
 library(ggthemes)
 library(tidyr)
@@ -43,22 +55,51 @@ library(glue)
 library(ggplot2)
 library(ggthemes)
 library(stars)
+library(magrittr)
 ```
 
 
+## 1) The Rat through the Snake Problem: Scalability with Cloud Computing
+
+Just like a snake that swallows a rat, traditional computing systems often struggle to process the large volumes of environmental data — they're constrained by their static hardware limitations. Cloud computing introduces a python-esque capability: massive scalability. By migrating to the cloud, we essentially make the snake bigger, allowing it to handle larger "prey." Scalable computers in the cloud can grow with the demand, providing the necessary computational power to process extensive datasets, which is vital in a field where data volumes are increasing exponentially.
+
+![Raster through a snake](../assets/mouseinsnake.png)
+
+
+## 2) The Antelope through the Python Problem: Streamlining with GDAL VSI
+
+As we scale up, we encounter a new challenge: trying to pass an antelope through a python — a metaphor for the next level of complexity in data processing. The sheer size and complexity of the data can become overwhelming. This is where GDAL’s Virtual File System (VSI) becomes our ecological adaptation. VSI allows us to access remote data transparently and more efficiently. Instead of ingesting the entire "antelope," VSI enables the "python" to dynamically access and process only the parts of the data it needs, when it needs them, much like constriction before digestion. This selective access minimizes the need for local storage and expedites the data handling process.
+
+![Antelope through a Python](../assets/antelopeinpython.png)
+
+### Mounting data
+A void-filled Digital Elevation Model (DEM) is a comprehensive topographical representation where any missing data points, known as voids, have been filled in. These voids can occur due to various reasons, such as clouds or technical errors during data collection. In a void-filled DEM, these gaps are interpolated or estimated using the surrounding data to create a continuous, seamless surface model. This process enhances the utility and accuracy of the DEM for hydrological modeling, terrain analysis, and other geographical applications. The HydroSHEDS website (https://www.hydrosheds.org/hydrosheds-core-downloads) provides access to high-quality, void-filled DEM datasets like the DEM_continuous_CONUS_15s, which users can download and easily integrate into spatial analysis workflows using tools such as 'terra' in R, allowing for sophisticated environmental and geographical research and planning.
 
 ```{r DEM, cache=TRUE, warning=FALSE, message=FALSE}
 # Record start time
-a <- Sys.time()
+a <- Sys.time()  
 
-DEM_continuous_CONUS_15s <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-dem/hyd_na_dem_15s.zip/hyd_na_dem_15s.tif") %>%
-  terra::rast() #%>%
+# Create a string with the file path using glue, then download and read the DEM file as a raster object
 
-b <- Sys.time()
-difftime(b, a)
+DEM_continuous_CONUS_15s <- glue(
+  "/vsizip/vsicurl/", #magic remote connection 
+  "https://data.hydrosheds.org/file/hydrosheds-v1-dem/hyd_na_dem_15s.zip", #copied link to download location
+  "/hyd_na_dem_15s.tif") %>% #path inside zip file
+  terra::rast()  
 
-DEM_continuous_CONUS_15s
+# The 'glue' function constructs the file path string, which is then passed to 'terra::rast()' to read the DEM file into R as a raster layer. '/vsizip/vsicurl/' is a special GDAL virtual file system syntax that allows reading directly from a zipped file on a remote server.
+
+# Record end time and calculate the time difference
+b <- Sys.time()  
+difftime(b, a) 
+
+# The resulting raster object is stored in 'DEM_continuous_CONUS_15s', which now contains the void-filled DEM data ready for use
+
+DEM_continuous_CONUS_15s  # Prints out the details of the 'DEM_continuous_CONUS_15s' raster object
+
+# output is a SpatRaster, which is the object type associated with the 'terra' package. 
 ```
+
 
 
 ```{r DEM_plot, cache=TRUE, warning=FALSE, message=FALSE}
@@ -74,9 +115,7 @@ difftime(b, a)
 ```
 
 
-
-
-```{r, cache=TRUE, warning=FALSE, message=FALSE}
+```{r DEM_bounding_box, cache=TRUE, warning=FALSE, message=FALSE}
 # Transform the filtered geometry to EPSG:4326 and store its bounding box
 # Record start time
 a <- Sys.time()
@@ -96,14 +135,42 @@ b <- Sys.time()
 difftime(b, a)
 ```
 
+```{r boulder_bounding_box, cache=TRUE, warning=FALSE, message=FALSE}
+boulder_county <- getbb("boulder, co", format_out="sf_polygon")
+
+boulder_county$multipolygon |> 
+  st_transform(crs =4326 ) |>
+  st_bbox() -> bbox_4326_boulder
+
+boulder_county$multipolygon |> 
+  st_transform(crs =32720 ) |>
+  st_bbox() -> bbox_32720_boulder
+```
+
+```{r conus_bounding_box, cache=TRUE, warning=FALSE, message=FALSE}
+aoi <- getbb("United States", format_out="sf_polygon")
+
+conus <- aoi$multipolygon |>
+  st_crop(bbox_4326)
 
 
-```{r, cache=TRUE, warning=FALSE, message=FALSE}
-collection_formats()
+ggplot(data=conus) +
+  geom_sf()
+```
+
+```{r basic_stac_request, cache=TRUE, warning=FALSE, message=FALSE}
+ stac("https://earth-search.aws.element84.com/v1") |>
+       get_request()
+
 ```
 
 
-```{r search_STAC_collection, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+```{r stac_collection_list, cache=TRUE, warning=FALSE, message=FALSE}
+collection_formats()
+```
+
+![](../assets/stac_mount_save/Ansel_adams_Jackson_hole.png)
+```{r Sentinel2_pull, cache=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
 # Record start time
 a <- Sys.time()
 
@@ -115,10 +182,10 @@ s = stac("https://earth-search.aws.element84.com/v0")
 #22 Million items
 items = s %>%
     stac_search(collections = "sentinel-s2-l2a-cogs",
-                bbox = c(bbox_4326["xmin"], 
-                         bbox_4326["ymin"],
-                         bbox_4326["xmax"], 
-                         bbox_4326["ymax"]), 
+                bbox = c(bbox_4326_boulder["xmin"], 
+                         bbox_4326_boulder["ymin"],
+                         bbox_4326_boulder["xmax"], 
+                         bbox_4326_boulder["ymax"]), 
                 datetime = "2021-05-15/2021-05-16") %>%
     post_request() %>%
     items_fetch(progress = FALSE)
@@ -142,14 +209,14 @@ s2_collection
 ```
 
 
-
+![](../assets/stac_mount_save/View_Ansel-Adams_Camera.png)
 ```{r set_view_window, cache=TRUE, warning=FALSE, message=FALSE}
 # Record start time
 a <- Sys.time()
 
 # Define a specific view on the satellite image collection
 v = cube_view(
-    srs = "EPSG:32618", #this is harder than expected. 
+    srs = "EPSG:32720", #this is harder than expected. 
     dx = 100, 
     dy = 100, 
     dt = "P1M", 
@@ -158,10 +225,10 @@ v = cube_view(
     extent = list(
         t0 = "2021-05-15", 
         t1 = "2021-05-16",
-        left = bbox_32618[1], 
-        right = bbox_32618[2],
-        top = bbox_32618[4], 
-        bottom = bbox_32618[3]
+        left = bbox_32720_boulder[1], 
+        right = bbox_32720_boulder[2],
+        top = bbox_32720_boulder[4], 
+        bottom = bbox_32720_boulder[3]
     )
 )
 
@@ -172,16 +239,10 @@ difftime(b, a)
 v
 ```
 
-```{r, cache=TRUE, warning=FALSE, message=FALSE}
-aoi <- getbb("United States", format_out="sf_polygon")
-
-conus <- aoi$multipolygon |>
-  st_crop(bbox_4326)
 
 
-ggplot(data=conus) +
-  geom_sf()
-```
+
+
 
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
@@ -194,7 +255,7 @@ x <- s2_collection %>%
     select_bands(c("B01", "B02", "B03", "B04", 
                    "B05", "B06", "B07", "B08", 
                    "B8A", "B09", "B11", "B12")) %>%
-    extract_geom(conus) %>%
+    extract_geom(boulder_county$multipolygon) %>%
     rename(
         "time" = "time",
         "443" = "B01",
@@ -233,6 +294,8 @@ x
 
 b <- Sys.time()
 difftime(b, a)
+
+
 ```
 
 
@@ -250,19 +313,15 @@ b <- Sys.time()
 difftime(b, a)
 
 y
+
+library(tmap)
+tmap_mode("view")
 ```
+
+ 
+
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
-boulder_county <- getbb("boulder, co", format_out="sf_polygon")
-
-boulder_county$multipolygon |> 
-  st_transform(crs =32720 ) |>
-  st_bbox() -> bbox_32720_boulder
-```
-
-
-
-```{r}
 
 # Record start time
 a <- Sys.time()
@@ -303,55 +362,92 @@ y
 
 
 
-
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# Record start time
+a <- Sys.time()
+
+s2_collection |>
+    raster_cube(v) |>
+    select_bands(c("B04","B05"))  |>
+  apply_pixel(c("(B05-B04)/(B05+B04)"), names="NDVI") |>
+  stars::st_as_stars() -> y
+
+b <- Sys.time()
+difftime(b, a)
+
+y
+
+
+```
+
+
+
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
 items_2020 <- s %>%
     stac_search(collections = "sentinel-s2-l2a-cogs",
                 bbox = c(-105.694362,	39.912886,	-105.052774,	40.262785),
-                datetime = "2020-05-01/2020-06-30",
-                limit = 500) %>% 
+                datetime = "2020-05-01/2020-06-30") %>% 
     post_request() 
 
 items_2021 <- s %>%
     stac_search(collections = "sentinel-s2-l2a-cogs",
                 bbox = c(-105.694362,	39.912886,	-105.052774,	40.262785),
-                datetime = "2021-05-01/2021-06-30",
-                limit = 500) %>% 
+                datetime = "2021-05-01/2021-06-30") %>% 
     post_request() 
 
 
-col_2020 = stac_image_collection(items_2020$features, asset_names = assets, 
-                            property_filter = function(x) {x[["eo:cloud_cover"]] < 40})
-col_2021 = stac_image_collection(items_2021$features, asset_names = assets, 
-                            property_filter = function(x) {x[["eo:cloud_cover"]] < 40})
+col_2020 = stac_image_collection(items_2020$features, asset_names = assets)
+col_2021 = stac_image_collection(items_2021$features, asset_names = assets)
 
 v_2020 = cube_view(srs = "EPSG:32720",  extent = list(t0 = "2020-05-01", t1 = "2020-06-30",
-              left = bbox_32618_boulder["xmin"], right = bbox_32618_boulder["xmax"],  top = bbox_32618_boulder["ymax"], bottom = bbox_32618_boulder["ymin"]),
+              left = bbox_32720_boulder["xmin"], right = bbox_32720_boulder["xmax"],  top = bbox_32720_boulder["ymax"], bottom = bbox_32720_boulder["ymin"]),
               dx = 100, dy = 100, dt = "P1D", aggregation = "median", resampling = "bilinear")
 
 v_2021 = cube_view(v_2020, extent = list(t0 = "2021-05-01", t1 = "2021-06-30"))
 
 
 max_ndvi_mosaic <- function(col, v) {
-    raster_cube(col, v, mask = S2.mask) %>%
+    raster_cube(col, v) %>%
     select_bands(c("B04", "B08")) %>%
     apply_pixel(c("(B08-B04)/(B08+B04)"), names="NDVI") %>%
     reduce_time("max(NDVI)")
 }
 
 suppressPackageStartupMessages(library(stars))
-max_ndvi_mosaic(col_2020, v_2020) %>%
-    st_as_stars() -> maxndvi_2020
+max_ndvi_mosaic(col_2020, v_2020) -> maxndvi_2020
 
-max_ndvi_mosaic(col_2021, v_2021) %>%
-    st_as_stars() -> maxndvi_2021
+max_ndvi_mosaic(col_2021, v_2021)  -> maxndvi_2021
+
+maxndvi_2021
+maxndvi_2020
 
 difference = maxndvi_2021 - maxndvi_2020
 difference[difference > -0.15] = NA
 names(difference) <- "Difference of max NDVI (2020 - 2019)"
 
-library(tmap)
-tmap_mode("view")
+
 ```
 
 
+
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_shapefile.zip/GloRiC_v10_shapefile/GloRiC_v10.shp") %>%
+  st_read() %>%
+  st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data3
+```
+
+
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+#st_read("/Users/ty/Downloads/GloRiC_v10_geodatabase/GloRiC_v10.gdb")
+
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_geodatabase.zip/GloRiC_v10_geodatabase/GloRiC_v10.gdb") %>%
+  st_read() %>%
+  st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data3
+```
+/Users/ty/Downloads/GloRiC_v10_geodatabase/GloRiC_v10.gdb
+
+https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_geodatabase.zip

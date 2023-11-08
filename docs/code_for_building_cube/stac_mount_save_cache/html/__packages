@@ -17,3 +17,5 @@ ggthemes
 tidyr
 tidyterra
 glue
+magrittr
+tmap
