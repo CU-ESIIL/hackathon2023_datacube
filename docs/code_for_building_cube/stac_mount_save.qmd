@@ -22,7 +22,7 @@ Just as Adams' photographs are more than mere records of a landscape, but rather
 
 As Adams would adjust his viewfinder, setting the boundaries of his photographic frame, the data builder sets the view window, filtering and transferring relevant data to their own medium, akin to Adams' film. This is where the raw data is transformed, organized into the structured form of a data frame or data cube, a process not unlike the careful development of a photograph in a darkroom. Here, the data cube creator, much like Adams with his careful dodging and burning, harmonizes disparate elements into a cohesive whole, each decision reflecting an intention and vision for the final product.
 
-```{r load_libraries, cache=FALSE, message=FALSE, warning=FALSE}
+```{r load_libraries, cache=FALSE, message=FALSE, warning=FALSE, collapse=TRUE}
 
 #library(Rcpp)
 library(sf)
@@ -171,7 +171,7 @@ collection_formats()
 ```
 
 ![](../assets/stac_mount_save/Ansel_adams_Jackson_hole.png)
-```{r Sentinel2_pull, cache=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+```{r build_collection, cache=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
 # Record start time
 a <- Sys.time()
 
@@ -181,14 +181,14 @@ s = stac("https://earth-search.aws.element84.com/v0")
 
 # Search for Sentinel-2 images within specified bounding box and date range
 #22 Million items
-items = s %>%
+items = s |>
     stac_search(collections = "sentinel-s2-l2a-cogs",
                 bbox = c(bbox_4326_boulder["xmin"], 
                          bbox_4326_boulder["ymin"],
                          bbox_4326_boulder["xmax"], 
                          bbox_4326_boulder["ymax"]), 
-                datetime = "2021-05-15/2021-05-16") %>%
-    post_request() %>%
+                datetime = "2021-05-15/2021-05-16") |>
+    post_request() |>
     items_fetch(progress = FALSE)
 
 # Print number of found items
@@ -246,17 +246,17 @@ v
 
 
 
-```{r, cache=TRUE, warning=FALSE, message=FALSE}
+```{r extract_spectra, cache=TRUE, warning=FALSE, message=FALSE}
 # Record start time
 a <- Sys.time()
 
 
-x <- s2_collection %>%
-    raster_cube(v) %>%
+x <- s2_collection |>
+    raster_cube(v) |>
     select_bands(c("B01", "B02", "B03", "B04", 
                    "B05", "B06", "B07", "B08", 
-                   "B8A", "B09", "B11", "B12")) %>%
-    extract_geom(boulder_county$multipolygon) %>%
+                   "B8A", "B09", "B11", "B12")) |>
+    extract_geom(boulder_county$multipolygon) |>
     rename(
         "time" = "time",
         "443" = "B01",
@@ -281,7 +281,7 @@ head(x)
 
 
 
-```{r, cache=TRUE, warning=FALSE, message=FALSE}
+```{r make_raster_cube, cache=TRUE, warning=FALSE, message=FALSE}
 # Record start time
 a <- Sys.time()
 
@@ -300,7 +300,7 @@ difftime(b, a)
 ```
 
 
-```{r, cache=TRUE, warning=FALSE, message=FALSE}
+```{r make_STARS_cube, cache=TRUE, warning=FALSE, message=FALSE}
 # Record start time
 a <- Sys.time()
 
@@ -314,20 +314,17 @@ b <- Sys.time()
 difftime(b, a)
 
 y
-
-library(tmap)
-tmap_mode("view")
 ```
 
  
 
 
-```{r, cache=TRUE, warning=FALSE, message=FALSE}
+```{r time_series_cube, cache=TRUE, warning=FALSE, message=FALSE}
 
 # Record start time
 a <- Sys.time()
 
-items <- s %>%
+items <- s |>
     stac_search(collections = "sentinel-s2-l2a-cogs",
                 bbox = c(-105.694362,	39.912886,	-105.052774,	40.262785),
                 datetime = "2020-01-01/2022-12-31",
@@ -348,9 +345,9 @@ ndvi.col = function(n) {
   rev(sequential_hcl(n, "Green-Yellow"))
 }
 library(gdalcubes)
-raster_cube(col, v, mask = S2.mask) %>%
-    select_bands(c("B04", "B08")) %>%
-    apply_pixel("(B08-B04)/(B08+B04)", "NDVI") %>%
+raster_cube(col, v, mask = S2.mask) |>
+    select_bands(c("B04", "B08")) |>
+    apply_pixel("(B08-B04)/(B08+B04)", "NDVI") |>
     gdalcubes::animate(col = ndvi.col, zlim=c(-0.2,1), key.pos = 1, save_as = "anim.gif", fps = 4)
 
 b <- Sys.time()
@@ -363,37 +360,19 @@ y
 
 
 
-```{r, cache=TRUE, warning=FALSE, message=FALSE}
-# Record start time
-a <- Sys.time()
-
-s2_collection |>
-    raster_cube(v) |>
-    select_bands(c("B04","B05"))  |>
-  apply_pixel(c("(B05-B04)/(B05+B04)"), names="NDVI") |>
-  stars::st_as_stars() -> y
-
-b <- Sys.time()
-difftime(b, a)
-
-y
-
-
-```
-
 
 
 ```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
-items_2020 <- s %>%
+items_2020 <- s |>
     stac_search(collections = "sentinel-s2-l2a-cogs",
                 bbox = c(-105.694362,	39.912886,	-105.052774,	40.262785),
-                datetime = "2020-05-01/2020-06-30") %>% 
+                datetime = "2020-05-01/2020-06-30") |> 
     post_request() 
 
-items_2021 <- s %>%
+items_2021 <- s |>
     stac_search(collections = "sentinel-s2-l2a-cogs",
                 bbox = c(-105.694362,	39.912886,	-105.052774,	40.262785),
-                datetime = "2021-05-01/2021-06-30") %>% 
+                datetime = "2021-05-01/2021-06-30") |> 
     post_request() 
 
 
@@ -408,9 +387,9 @@ v_2021 = cube_view(v_2020, extent = list(t0 = "2021-05-01", t1 = "2021-06-30"))
 
 
 max_ndvi_mosaic <- function(col, v) {
-    raster_cube(col, v) %>%
-    select_bands(c("B04", "B08")) %>%
-    apply_pixel(c("(B08-B04)/(B08+B04)"), names="NDVI") %>%
+    raster_cube(col, v) |>
+    select_bands(c("B04", "B08")) |>
+    apply_pixel(c("(B08-B04)/(B08+B04)"), names="NDVI") |>
     reduce_time("max(NDVI)")
 }
 
@@ -432,8 +411,8 @@ names(difference) <- "Difference of max NDVI (2020 - 2019)"
 
 
 ```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
-flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_shapefile.zip/GloRiC_v10_shapefile/GloRiC_v10.shp") %>%
-  st_read() %>%
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_shapefile.zip/GloRiC_v10_shapefile/GloRiC_v10.shp") |>
+  st_read() |>
   st_as_sf(coords = c("lon","lat"))
 
 flood_polygon_data3
@@ -443,12 +422,10 @@ flood_polygon_data3
 ```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
 #st_read("/Users/ty/Downloads/GloRiC_v10_geodatabase/GloRiC_v10.gdb")
 
-flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_geodatabase.zip/GloRiC_v10_geodatabase/GloRiC_v10.gdb") %>%
-  st_read() %>%
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_geodatabase.zip/GloRiC_v10_geodatabase/GloRiC_v10.gdb") |>
+  st_read() |>
   st_as_sf(coords = c("lon","lat"))
 
 flood_polygon_data3
 ```
-/Users/ty/Downloads/GloRiC_v10_geodatabase/GloRiC_v10.gdb
 
-https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_geodatabase.zip

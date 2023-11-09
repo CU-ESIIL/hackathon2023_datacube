@@ -58,6 +58,7 @@ disparate elements into a cohesive whole, each decision reflecting an
 intention and vision for the final product.
 
 ``` r
+
 #library(Rcpp)
 library(sf)
 library(gdalcubes)
@@ -79,20 +80,13 @@ library(tidyr)
 gdalcubes_options(parallel = 8)
 
 sf::sf_extSoftVersion()
-```
-
-              GEOS           GDAL         proj.4 GDAL_with_GEOS     USE_PROJ_H 
-          "3.11.0"        "3.5.3"        "9.1.0"         "true"         "true" 
-              PROJ 
-           "9.1.0" 
-
-``` r
+##           GEOS           GDAL         proj.4 GDAL_with_GEOS     USE_PROJ_H 
+##       "3.11.0"        "3.5.3"        "9.1.0"         "true"         "true" 
+##           PROJ 
+##        "9.1.0"
 gdalcubes_gdal_has_geos()
-```
+## [1] TRUE
 
-    [1] TRUE
-
-``` r
 library(osmdata)
 library(dplyr)
 library(sf)
@@ -354,14 +348,14 @@ s = stac("https://earth-search.aws.element84.com/v0")
 
 # Search for Sentinel-2 images within specified bounding box and date range
 #22 Million items
-items = s %>%
+items = s |>
     stac_search(collections = "sentinel-s2-l2a-cogs",
                 bbox = c(bbox_4326_boulder["xmin"], 
                          bbox_4326_boulder["ymin"],
                          bbox_4326_boulder["xmax"], 
                          bbox_4326_boulder["ymax"]), 
-                datetime = "2021-05-15/2021-05-16") %>%
-    post_request() %>%
+                datetime = "2021-05-15/2021-05-16") |>
+    post_request() |>
     items_fetch(progress = FALSE)
 
 # Print number of found items
@@ -383,7 +377,7 @@ b <- Sys.time()
 difftime(b, a)
 ```
 
-    Time difference of 0.579216 secs
+    Time difference of 1.507489 secs
 
 ``` r
 # Display the image collection
@@ -465,12 +459,12 @@ v
 a <- Sys.time()
 
 
-x <- s2_collection %>%
-    raster_cube(v) %>%
+x <- s2_collection |>
+    raster_cube(v) |>
     select_bands(c("B01", "B02", "B03", "B04", 
                    "B05", "B06", "B07", "B08", 
-                   "B8A", "B09", "B11", "B12")) %>%
-    extract_geom(boulder_county$multipolygon) %>%
+                   "B8A", "B09", "B11", "B12")) |>
+    extract_geom(boulder_county$multipolygon) |>
     rename(
         "time" = "time",
         "443" = "B01",
@@ -491,7 +485,7 @@ b <- Sys.time()
 difftime(b, a)
 ```
 
-    Time difference of 1.069386 mins
+    Time difference of 1.283643 mins
 
 ``` r
 head(x)
@@ -537,7 +531,7 @@ b <- Sys.time()
 difftime(b, a)
 ```
 
-    Time difference of 4.007104 mins
+    Time difference of 4.065354 mins
 
 ``` r
 # Record start time
@@ -553,7 +547,7 @@ b <- Sys.time()
 difftime(b, a)
 ```
 
-    Time difference of 1.429333 mins
+    Time difference of 1.414532 mins
 
 ``` r
 y
@@ -561,7 +555,7 @@ y
 
     stars_proxy object with 1 attribute in 1 file(s):
     $NDVI
-    [1] "[...]/file768518ea9065.nc:NDVI"
+    [1] "[...]/filebf1e3968299a.nc:NDVI"
 
     dimension(s):
          from     to   offset delta                refsys point
@@ -574,15 +568,10 @@ y
     time [2021-05-01,2021-06-01)    
 
 ``` r
-library(tmap)
-tmap_mode("view")
-```
-
-``` r
 # Record start time
 a <- Sys.time()
 
-items <- s %>%
+items <- s |>
     stac_search(collections = "sentinel-s2-l2a-cogs",
                 bbox = c(-105.694362,   39.912886,  -105.052774,    40.262785),
                 datetime = "2020-01-01/2022-12-31",
@@ -603,9 +592,9 @@ ndvi.col = function(n) {
   rev(sequential_hcl(n, "Green-Yellow"))
 }
 library(gdalcubes)
-raster_cube(col, v, mask = S2.mask) %>%
-    select_bands(c("B04", "B08")) %>%
-    apply_pixel("(B08-B04)/(B08+B04)", "NDVI") %>%
+raster_cube(col, v, mask = S2.mask) |>
+    select_bands(c("B04", "B08")) |>
+    apply_pixel("(B08-B04)/(B08+B04)", "NDVI") |>
     gdalcubes::animate(col = ndvi.col, zlim=c(-0.2,1), key.pos = 1, save_as = "anim.gif", fps = 4)
 ```
 
@@ -616,7 +605,7 @@ b <- Sys.time()
 difftime(b, a)
 ```
 
-    Time difference of 4.630936 mins
+    Time difference of 4.954337 mins
 
 ``` r
 y
@@ -624,7 +613,7 @@ y
 
     stars_proxy object with 1 attribute in 1 file(s):
     $NDVI
-    [1] "[...]/file768518ea9065.nc:NDVI"
+    [1] "[...]/filebf1e3968299a.nc:NDVI"
 
     dimension(s):
          from     to   offset delta                refsys point
@@ -639,50 +628,16 @@ y
 ![](../code_for_building_cube/anim.gif)
 
 ``` r
-# Record start time
-a <- Sys.time()
-
-s2_collection |>
-    raster_cube(v) |>
-    select_bands(c("B04","B05"))  |>
-  apply_pixel(c("(B05-B04)/(B05+B04)"), names="NDVI") |>
-  stars::st_as_stars() -> y
-
-b <- Sys.time()
-difftime(b, a)
-```
-
-    Time difference of 3.573504 secs
-
-``` r
-y
-```
-
-    stars object with 3 dimensions and 1 attribute
-    attribute(s), summary of first 1e+05 cells:
-          Min. 1st Qu. Median Mean 3rd Qu. Max.  NA's
-    NDVI    NA      NA     NA  NaN      NA   NA 1e+05
-    dimension(s):
-         from  to offset  delta  refsys point
-    x       1 642 -105.7  0.001  WGS 84    NA
-    y       1 350  40.26 -0.001  WGS 84    NA
-    time    1  36     NA     NA POSIXct FALSE
-                                                      values x/y
-    x                                                   NULL [x]
-    y                                                   NULL [y]
-    time [2020-01-01,2020-02-01),...,[2022-12-01,2023-01-01)    
-
-``` r
-items_2020 <- s %>%
+items_2020 <- s |>
     stac_search(collections = "sentinel-s2-l2a-cogs",
                 bbox = c(-105.694362,   39.912886,  -105.052774,    40.262785),
-                datetime = "2020-05-01/2020-06-30") %>% 
+                datetime = "2020-05-01/2020-06-30") |> 
     post_request() 
 
-items_2021 <- s %>%
+items_2021 <- s |>
     stac_search(collections = "sentinel-s2-l2a-cogs",
                 bbox = c(-105.694362,   39.912886,  -105.052774,    40.262785),
-                datetime = "2021-05-01/2021-06-30") %>% 
+                datetime = "2021-05-01/2021-06-30") |> 
     post_request() 
 
 
@@ -697,9 +652,9 @@ v_2021 = cube_view(v_2020, extent = list(t0 = "2021-05-01", t1 = "2021-06-30"))
 
 
 max_ndvi_mosaic <- function(col, v) {
-    raster_cube(col, v) %>%
-    select_bands(c("B04", "B08")) %>%
-    apply_pixel(c("(B08-B04)/(B08+B04)"), names="NDVI") %>%
+    raster_cube(col, v) |>
+    select_bands(c("B04", "B08")) |>
+    apply_pixel(c("(B08-B04)/(B08+B04)"), names="NDVI") |>
     reduce_time("max(NDVI)")
 }
 
@@ -717,8 +672,8 @@ names(difference) <- "Difference of max NDVI (2020 - 2019)"
 ```
 
 ``` r
-flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_shapefile.zip/GloRiC_v10_shapefile/GloRiC_v10.shp") %>%
-  st_read() %>%
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_shapefile.zip/GloRiC_v10_shapefile/GloRiC_v10.shp") |>
+  st_read() |>
   st_as_sf(coords = c("lon","lat"))
 
 flood_polygon_data3
@@ -727,13 +682,9 @@ flood_polygon_data3
 ``` r
 #st_read("/Users/ty/Downloads/GloRiC_v10_geodatabase/GloRiC_v10.gdb")
 
-flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_geodatabase.zip/GloRiC_v10_geodatabase/GloRiC_v10.gdb") %>%
-  st_read() %>%
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_geodatabase.zip/GloRiC_v10_geodatabase/GloRiC_v10.gdb") |>
+  st_read() |>
   st_as_sf(coords = c("lon","lat"))
 
 flood_polygon_data3
 ```
-
-/Users/ty/Downloads/GloRiC_v10_geodatabase/GloRiC_v10.gdb
-
-https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_geodatabase.zip
