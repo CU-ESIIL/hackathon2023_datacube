@@ -1,9 +1,66 @@
-STAC_mount_save
+The art of making a data cube
 ================
 Ty Tuff, ESIIL Data Scientist
 2023-10-27
 
+``` r
+
+#library(Rcpp)
+library(sf)
+library(gdalcubes)
+library(rstac)
+library(gdalUtils)
+library(terra)
+library(rgdal)
+library(reshape2)
+library(osmdata)
+library(terra)
+library(dplyr)
+library(stars)
+library(ggplot2)
+library(colorspace)
+library(geos)
+library(osmdata)
+library(ggthemes)
+library(tidyr)
+gdalcubes_options(parallel = 8)
+
+sf::sf_extSoftVersion()
+##           GEOS           GDAL         proj.4 GDAL_with_GEOS     USE_PROJ_H 
+##       "3.11.0"        "3.5.3"        "9.1.0"         "true"         "true" 
+##           PROJ 
+##        "9.1.0"
+gdalcubes_gdal_has_geos()
+## [1] TRUE
+
+library(osmdata)
+library(dplyr)
+library(sf)
+library(terra)
+library(tidyterra)
+library(glue)
+library(ggplot2)
+library(ggthemes)
+library(stars)
+library(magrittr)
+library(landsat)
+```
+
 # The philosophy of moving data in the cloud
+
+The philosophy of moving data in the cloud represents a paradigm shift
+in how we approach data within our analytical processes. Instead of the
+traditional method of transferring entire datasets to our local
+environments, the cloud encourages a more efficient model: bring your
+analysis to the data. This approach minimizes data movement and
+leverages the cloud’s computational power and scalability. By utilizing
+cloud-native tools and services, we can run our analyses directly on the
+data where it resides, selectively accessing and processing only what is
+necessary. This not only streamlines workflows but also significantly
+reduces overheads related to data transfer and storage management. In
+essence, the focus is on diverting computational resources to the data
+rather than the cumbersome and resource-intensive practice of moving
+large datasets to and fro.
 
 ## ‘To Make’ or ‘To Take’ a photo
 
@@ -58,49 +115,6 @@ development of a photograph in a darkroom. Here, the data cube creator,
 much like Adams with his careful dodging and burning, harmonizes
 disparate elements into a cohesive whole, each decision reflecting an
 intention and vision for the final product.
-
-``` r
-
-#library(Rcpp)
-library(sf)
-library(gdalcubes)
-library(rstac)
-library(gdalUtils)
-library(terra)
-library(rgdal)
-library(reshape2)
-library(osmdata)
-library(terra)
-library(dplyr)
-library(stars)
-library(ggplot2)
-library(colorspace)
-library(geos)
-library(osmdata)
-library(ggthemes)
-library(tidyr)
-gdalcubes_options(parallel = 8)
-
-sf::sf_extSoftVersion()
-##           GEOS           GDAL         proj.4 GDAL_with_GEOS     USE_PROJ_H 
-##       "3.11.0"        "3.5.3"        "9.1.0"         "true"         "true" 
-##           PROJ 
-##        "9.1.0"
-gdalcubes_gdal_has_geos()
-## [1] TRUE
-
-library(osmdata)
-library(dplyr)
-library(sf)
-library(terra)
-library(tidyterra)
-library(glue)
-library(ggplot2)
-library(ggthemes)
-library(stars)
-library(magrittr)
-library(landsat)
-```
 
 ## 1) The Rat through the Snake Problem: Scalability with Cloud Computing
 
@@ -187,7 +201,7 @@ DEM_continuous_CONUS_15s <- glue(
 # Record end time and calculate the time difference
 b <- Sys.time()  
 difftime(b, a) 
-## Time difference of 6.972442 secs
+## Time difference of 4.603666 secs
 
 # The resulting raster object is stored in 'DEM_continuous_CONUS_15s', which now contains the void-filled DEM data ready for use
 
@@ -203,10 +217,7 @@ DEM_continuous_CONUS_15s  # Prints out the details of the 'DEM_continuous_CONUS_
 # output is a SpatRaster, which is the object type associated with the 'terra' package. 
 ```
 
-``` r
-SA <- slope(DEM_continuous_CONUS_15s)
-SA
-```
+Continuous DEM for North America
 
 ``` r
 # Record start time
@@ -225,6 +236,96 @@ b <- Sys.time()
 difftime(b, a)
 ## Time difference of 52.49061 secs
 ```
+
+Calculate Slope from that DEM
+
+``` r
+SLOPE_continuous_CONUS_15s <-  terra::terrain(DEM_continuous_CONUS_15s, "slope") 
+
+SLOPE_continuous_CONUS_15s
+## class       : SpatRaster 
+## dimensions  : 13920, 20640, 1  (nrow, ncol, nlyr)
+## resolution  : 0.004166667, 0.004166667  (x, y)
+## extent      : -138, -52, 5, 63  (xmin, xmax, ymin, ymax)
+## coord. ref. : lon/lat WGS 84 (EPSG:4326) 
+## source(s)   : memory
+## name        :    slope 
+## min value   :  0.00000 
+## max value   : 56.98691
+```
+
+``` r
+# Record start time
+a <- Sys.time()
+
+ggplot() +
+  geom_spatraster(data=SLOPE_continuous_CONUS_15s) +
+  theme_tufte()
+```
+
+![](stac_mount_save_files/figure-gfm/SLOPE_plot-1.png)
+
+``` r
+
+b <- Sys.time()
+difftime(b, a)
+## Time difference of 3.859545 secs
+```
+
+Calculate aspect from DEM
+
+``` r
+ASPECT_continuous_CONUS_15s <-  terra::terrain(DEM_continuous_CONUS_15s, "aspect") 
+ASPECT_continuous_CONUS_15s
+## class       : SpatRaster 
+## dimensions  : 13920, 20640, 1  (nrow, ncol, nlyr)
+## resolution  : 0.004166667, 0.004166667  (x, y)
+## extent      : -138, -52, 5, 63  (xmin, xmax, ymin, ymax)
+## coord. ref. : lon/lat WGS 84 (EPSG:4326) 
+## source(s)   : memory
+## name        : aspect 
+## min value   :      0 
+## max value   :    360
+```
+
+``` r
+# Record start time
+a <- Sys.time()
+
+ggplot() +
+  geom_spatraster(data=ASPECT_continuous_CONUS_15s) +
+  theme_tufte()
+```
+
+![](stac_mount_save_files/figure-gfm/ASPECT_plot-1.png)
+
+``` r
+
+b <- Sys.time()
+difftime(b, a)
+## Time difference of 3.650267 secs
+```
+
+Create a cube from those layers!
+
+``` r
+mini_stack <- c(DEM_continuous_CONUS_15s, SLOPE_continuous_CONUS_15s,ASPECT_continuous_CONUS_15s)
+mini_stack
+## class       : SpatRaster 
+## dimensions  : 13920, 20640, 3  (nrow, ncol, nlyr)
+## resolution  : 0.004166667, 0.004166667  (x, y)
+## extent      : -138, -52, 5, 63  (xmin, xmax, ymin, ymax)
+## coord. ref. : lon/lat WGS 84 (EPSG:4326) 
+## sources     : hyd_na_dem_15s.tif  
+##               memory  
+##               memory  
+## names       : Band_1,    slope, aspect 
+## min values  :     ? ,  0.00000,      0 
+## max values  :     ? , 56.98691,    360
+```
+
+Reproject and return the bounding box coordinates for our Area of
+Interest
 
 ``` r
 # Transform the filtered geometry to EPSG:4326 and store its bounding box
@@ -247,6 +348,9 @@ difftime(b, a)
 ## Time difference of 3.7653 mins
 ```
 
+Get a polygon for Boulder County, reproject, and return bounding box.
+This is so I can make a smaller search in the stac catalog.
+
 ``` r
 boulder_county <- getbb("boulder, co", format_out="sf_polygon")
 
@@ -258,6 +362,9 @@ boulder_county$multipolygon |>
   st_transform(crs =32720 ) |>
   st_bbox() -> bbox_32720_boulder
 ```
+
+Get a polygon for the United States and crop it to be the same size as
+the DEM above.
 
 ``` r
 aoi <- getbb("United States", format_out="sf_polygon")
@@ -272,6 +379,20 @@ ggplot(data=conus) +
 
 ![](stac_mount_save_files/figure-gfm/conus_bounding_box-1.png)
 
+Search the Stac catalog.
+
+STAC, or SpatioTemporal Asset Catalog, is an open-source specification
+designed to standardize the way geospatial data is indexed and
+discovered. Developed by Element 84 among others, it facilitates better
+interoperability and sharing of geospatial assets by providing a common
+language for describing them. STAC’s flexible design allows for easy
+cataloging of data, making it simpler for individuals and systems to
+search and retrieve geospatial information. By effectively organizing
+data about the Earth’s spatial and temporal characteristics, STAC
+enables users to harness the full power of the cloud and modern data
+processing technologies, optimizing the way we access and analyze
+environmental data on a global scale.
+
 ``` r
  stac("https://earth-search.aws.element84.com/v1") |>
        get_request()
@@ -280,6 +401,17 @@ ggplot(data=conus) +
 ## - description: A STAC API of public datasets on AWS
 ## - field(s): stac_version, type, id, title, description, links, conformsTo
 ```
+
+Element 84’s Earth Search is a STAC compliant search and discovery API
+that offers users access to a vast collection of geospatial open
+datasets hosted on AWS. It serves as a centralized search catalog
+providing standardized metadata for these open datasets, designed to be
+freely used and integrated into various applications. Alongside the API,
+Element 84 also provides a web application named Earth Search Console,
+which is map-centric and allows users to explore and visualize the data
+contained within the Earth Search API’s catalog. This suite of tools is
+part of Element 84’s initiative to make geospatial data more accessible
+and actionable for a wide range of users and applications.
 
 ``` r
 collection_formats()
@@ -356,6 +488,19 @@ collection_formats()
 ##                              | ESA, Flat Reflectance, Theia]
 ```
 
+Building a stac collection by aiming your camera at the landscape
+
+Creating a STAC collection is akin to a photographer framing a shot; the
+landscape is rich with diverse data, mirroring a scene bustling with
+potential subjects, colors, and light. Just as a photographer selects a
+portion of the vista to capture, focusing on elements that will compose
+a compelling image, a data scientist must similarly navigate the vast
+data terrain. They must ‘point their camera’ judiciously, ensuring that
+the ‘frame’ encapsulates the precise data needed. This careful selection
+is crucial, as it determines the relevance and quality of the data
+collection, much like the photographer’s choice dictates the story a
+photograph will tell.
+
 ![](../assets/stac_mount_save/Ansel_adams_Jackson_hole.png)
 
 ``` r
@@ -392,7 +537,7 @@ property_filter = function(x) {x[["eo:cloud_cover"]] < 20}) #all images with les
 
 b <- Sys.time()
 difftime(b, a)
-## Time difference of 0.7370582 secs
+## Time difference of 0.4706092 secs
 
 # Display the image collection
 s2_collection
@@ -419,6 +564,20 @@ s2_collection
 ## 12  B8A      0     1                       1
 ## 13  SCL      0     1                       1
 ```
+
+Setting up your camera and film
+
+The camera through which the data scientist frames the shot is
+multifaceted, akin to the tools and processes they employ. The camera’s
+film, analogous to the data cube, defines the resolution and dimensions
+of the captured data, shaping how the final dataset will be utilized.
+The lens and its settings—focus, aperture, and exposure—determine the
+clarity, depth, and breadth of the captured information, much like the
+algorithms and parameters set by the data scientist dictate the
+granularity and scope of the data cube. The flash, like data enhancement
+techniques, can illuminate hidden details, ensuring that the data cube,
+the final product, is as informative and accurate as the landscape it
+represents.
 
 ![](../assets/stac_mount_save/View_Ansel-Adams_Camera.png)
 
@@ -462,6 +621,67 @@ v
 ## Temporal aggregation method: "median"
 ## Spatial resampling method: "near"
 ```
+
+Take a picture!
+
+Raster style
+
+``` r
+# Record start time
+a <- Sys.time()
+
+s2_collection |>
+    raster_cube(v) |>
+    select_bands(c( "B04", "B05"))  |>
+  apply_pixel(c("(B05-B04)/(B05+B04)"), names="NDVI") |>
+  write_tif() |>
+  raster::stack() -> x
+x
+## class      : RasterStack 
+## dimensions : 185375, 185484, 34384096500, 1  (nrow, ncol, ncell, nlayers)
+## resolution : 100, 100  (x, y)
+## extent     : -3178879, 15369521, -3103100, 15434400  (xmin, xmax, ymin, ymax)
+## crs        : +proj=utm +zone=20 +south +datum=WGS84 +units=m +no_defs 
+## names      : NDVI
+
+b <- Sys.time()
+difftime(b, a)
+## Time difference of 4.132932 mins
+```
+
+STARS style
+
+``` r
+# Record start time
+a <- Sys.time()
+
+s2_collection |>
+    raster_cube(v) |>
+    select_bands(c("B04","B05"))  |>
+  apply_pixel(c("(B05-B04)/(B05+B04)"), names="NDVI") |>
+  stars::st_as_stars() -> y
+
+b <- Sys.time()
+difftime(b, a)
+## Time difference of 1.459866 mins
+
+y
+## stars_proxy object with 1 attribute in 1 file(s):
+## $NDVI
+## [1] "[...]/filec5982c38536c.nc:NDVI"
+## 
+## dimension(s):
+##      from     to   offset delta                refsys point
+## x       1 185484 -3178879   100 WGS 84 / UTM zone 20S    NA
+## y       1 185375 15434400  -100 WGS 84 / UTM zone 20S    NA
+## time    1      1       NA    NA               POSIXct FALSE
+##                       values x/y
+## x                       NULL [x]
+## y                       NULL [y]
+## time [2021-05-01,2021-06-01)
+```
+
+Extract data
 
 ``` r
 # Record start time
@@ -511,58 +731,7 @@ head(x)
 ## 6 3990
 ```
 
-``` r
-# Record start time
-a <- Sys.time()
-
-s2_collection |>
-    raster_cube(v) |>
-    select_bands(c( "B04", "B05"))  |>
-  apply_pixel(c("(B05-B04)/(B05+B04)"), names="NDVI") |>
-  write_tif() |>
-  raster::stack() -> x
-x
-## class      : RasterStack 
-## dimensions : 185375, 185484, 34384096500, 1  (nrow, ncol, ncell, nlayers)
-## resolution : 100, 100  (x, y)
-## extent     : -3178879, 15369521, -3103100, 15434400  (xmin, xmax, ymin, ymax)
-## crs        : +proj=utm +zone=20 +south +datum=WGS84 +units=m +no_defs 
-## names      : NDVI
-
-b <- Sys.time()
-difftime(b, a)
-## Time difference of 4.132932 mins
-```
-
-``` r
-# Record start time
-a <- Sys.time()
-
-s2_collection |>
-    raster_cube(v) |>
-    select_bands(c("B04","B05"))  |>
-  apply_pixel(c("(B05-B04)/(B05+B04)"), names="NDVI") |>
-  stars::st_as_stars() -> y
-
-b <- Sys.time()
-difftime(b, a)
-## Time difference of 1.459866 mins
-
-y
-## stars_proxy object with 1 attribute in 1 file(s):
-## $NDVI
-## [1] "[...]/filec5982c38536c.nc:NDVI"
-## 
-## dimension(s):
-##      from     to   offset delta                refsys point
-## x       1 185484 -3178879   100 WGS 84 / UTM zone 20S    NA
-## y       1 185375 15434400  -100 WGS 84 / UTM zone 20S    NA
-## time    1      1       NA    NA               POSIXct FALSE
-##                       values x/y
-## x                       NULL [x]
-## y                       NULL [y]
-## time [2021-05-01,2021-06-01)
-```
+Make a timeseries
 
 ``` r
 
