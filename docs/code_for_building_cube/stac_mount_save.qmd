@@ -22,7 +22,7 @@ Just as Adams' photographs are more than mere records of a landscape, but rather
 
 As Adams would adjust his viewfinder, setting the boundaries of his photographic frame, the data builder sets the view window, filtering and transferring relevant data to their own medium, akin to Adams' film. This is where the raw data is transformed, organized into the structured form of a data frame or data cube, a process not unlike the careful development of a photograph in a darkroom. Here, the data cube creator, much like Adams with his careful dodging and burning, harmonizes disparate elements into a cohesive whole, each decision reflecting an intention and vision for the final product.
 
-```{r load_libraries, cache=TRUE, message=FALSE, warning=FALSE}
+```{r load_libraries, cache=FALSE, message=FALSE, warning=FALSE}
 
 #library(Rcpp)
 library(sf)
@@ -171,7 +171,7 @@ collection_formats()
 ```
 
 ![](../assets/stac_mount_save/Ansel_adams_Jackson_hole.png)
-```{r Sentinel2_pull, cache=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
+```{r Sentinel2_pull, cache=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
 # Record start time
 a <- Sys.time()
 
@@ -276,7 +276,7 @@ x <- s2_collection %>%
 b <- Sys.time()
 difftime(b, a)
 
-x
+head(x)
 ```
 
 
