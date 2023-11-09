@@ -7,6 +7,8 @@ editor_options:
   markdown: 
     wrap: 72
 ---
+# The philosophy of moving data in the cloud
+
 ## 'To Make' or 'To Take' a photo
   The distinction between making and taking a photograph lies in the approach and intent behind the camera. Taking a photo is often a reactive process, where the photographer captures moments as they naturally unfold, seizing the spontaneity of life without alteration. It's a passive form of photography where the emphasis is on the right timing and the natural interplay of elements within the frame. On the other hand, making a photo is a proactive and deliberate act. It is akin to craftsmanship, where a professional photographer starts with a concept and utilizes a variety of tools and techniques to stage and construct the desired scene. They actively manipulate lighting, composition, and subjects to create a photograph that aligns with their pre-visualized artistic vision. While both methods use a camera to produce a photograph, making a photo involves a creation process, whereas taking a photo is about finding the scene.
 
@@ -57,6 +59,7 @@ library(ggplot2)
 library(ggthemes)
 library(stars)
 library(magrittr)
+library(landsat)
 ```
 
 
@@ -73,10 +76,18 @@ As we scale up, we encounter a new challenge: trying to pass an antelope through
 
 ![Antelope through a Python](../assets/antelopeinpython.png)
 
+## 3) Drinking from a Fire Hose: Accelerated Inference with AI and ML
+
+Once we've enabled the flow of large amounts of digestible data, we encounter the metaphorical challenge of drinking from a fire hose. The data, now flowing and accessible, is immense and rapid — posing a challenge not just to store and process, but to understand and derive meaning from in real-time. This is where artificial intelligence (AI) and machine learning (ML) step in. These technologies act as a sophisticated filtration system, enabling us to drink safely and beneficially from the torrent. AI and ML can analyze patterns, make predictions, and infer insights at a pace that keeps up with the fast stream of data, turning raw information into actionable knowledge.
+
+![Inference through a firehose](../assets/drink-firehose.png)
+
+By addressing these three pivotal challenges with cloud computing, GDAL VSI, and AI/ML, we not only manage to consume the data effectively but also transform our capabilities in environmental data science. We can move from mere data ingestion to meaningful data interpretation, all at a scale and speed necessary for impactful environmental analysis.
+
 ### Mounting data
 A void-filled Digital Elevation Model (DEM) is a comprehensive topographical representation where any missing data points, known as voids, have been filled in. These voids can occur due to various reasons, such as clouds or technical errors during data collection. In a void-filled DEM, these gaps are interpolated or estimated using the surrounding data to create a continuous, seamless surface model. This process enhances the utility and accuracy of the DEM for hydrological modeling, terrain analysis, and other geographical applications. The HydroSHEDS website (https://www.hydrosheds.org/hydrosheds-core-downloads) provides access to high-quality, void-filled DEM datasets like the DEM_continuous_CONUS_15s, which users can download and easily integrate into spatial analysis workflows using tools such as 'terra' in R, allowing for sophisticated environmental and geographical research and planning.
 
-```{r DEM, cache=TRUE, warning=FALSE, message=FALSE}
+```{r DEM, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 # Record start time
 a <- Sys.time()  
 
@@ -101,9 +112,13 @@ DEM_continuous_CONUS_15s  # Prints out the details of the 'DEM_continuous_CONUS_
 # output is a SpatRaster, which is the object type associated with the 'terra' package. 
 ```
 
+```{r slope_aspect, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE, eval=FALSE}
+SA <- slope(DEM_continuous_CONUS_15s)
+SA
+```
 
 
-```{r DEM_plot, cache=TRUE, warning=FALSE, message=FALSE}
+```{r DEM_plot, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 # Record start time
 a <- Sys.time()
 
@@ -116,7 +131,7 @@ difftime(b, a)
 ```
 
 
-```{r DEM_bounding_box, cache=TRUE, warning=FALSE, message=FALSE}
+```{r DEM_bounding_box, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 # Transform the filtered geometry to EPSG:4326 and store its bounding box
 # Record start time
 a <- Sys.time()
@@ -136,7 +151,7 @@ b <- Sys.time()
 difftime(b, a)
 ```
 
-```{r boulder_bounding_box, cache=TRUE, warning=FALSE, message=FALSE}
+```{r boulder_bounding_box, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 boulder_county <- getbb("boulder, co", format_out="sf_polygon")
 
 boulder_county$multipolygon |> 
@@ -148,7 +163,7 @@ boulder_county$multipolygon |>
   st_bbox() -> bbox_32720_boulder
 ```
 
-```{r conus_bounding_box, cache=TRUE, warning=FALSE, message=FALSE}
+```{r conus_bounding_box, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 aoi <- getbb("United States", format_out="sf_polygon")
 
 conus <- aoi$multipolygon |>
@@ -159,19 +174,19 @@ ggplot(data=conus) +
   geom_sf()
 ```
 
-```{r basic_stac_request, cache=TRUE, warning=FALSE, message=FALSE}
+```{r basic_stac_request, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
  stac("https://earth-search.aws.element84.com/v1") |>
        get_request()
 
 ```
 
 
-```{r stac_collection_list, cache=TRUE, warning=FALSE, message=FALSE}
+```{r stac_collection_list, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 collection_formats()
 ```
 
 ![](../assets/stac_mount_save/Ansel_adams_Jackson_hole.png)
-```{r build_collection, cache=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+```{r build_collection, cache=FALSE, warning=FALSE, message=FALSE, eval=TRUE, collapse=TRUE}
 # Record start time
 a <- Sys.time()
 
@@ -211,7 +226,7 @@ s2_collection
 
 
 ![](../assets/stac_mount_save/View_Ansel-Adams_Camera.png)
-```{r set_view_window, cache=TRUE, warning=FALSE, message=FALSE}
+```{r set_view_window, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 # Record start time
 a <- Sys.time()
 
@@ -246,7 +261,7 @@ v
 
 
 
-```{r extract_spectra, cache=TRUE, warning=FALSE, message=FALSE}
+```{r extract_spectra, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 # Record start time
 a <- Sys.time()
 
@@ -281,7 +296,7 @@ head(x)
 
 
 
-```{r make_raster_cube, cache=TRUE, warning=FALSE, message=FALSE}
+```{r make_raster_cube, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 # Record start time
 a <- Sys.time()
 
@@ -300,7 +315,7 @@ difftime(b, a)
 ```
 
 
-```{r make_STARS_cube, cache=TRUE, warning=FALSE, message=FALSE}
+```{r make_STARS_cube, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 # Record start time
 a <- Sys.time()
 
@@ -319,7 +334,7 @@ y
  
 
 
-```{r time_series_cube, cache=TRUE, warning=FALSE, message=FALSE}
+```{r time_series_cube, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 
 # Record start time
 a <- Sys.time()
@@ -359,10 +374,22 @@ y
 
 
 
+Saving Data Cubes to Local Storage
+There are occasions when we need to manipulate data cubes using other software. For such purposes, we can save data cubes to our local disk as individual netCDF files or as a series of GeoTIFF files. In the case of the latter, each temporal segment of the cube is saved as a separate (multiband) GeoTIFF file.
+
+Both netCDF and GeoTIFF formats allow for file size reduction through compression and data packing. This process involves transforming double precision numbers into smaller integer values using a scale and offset, which can be particularly useful for managing disk space (for more details, refer to the ?write_ncdf and ?write_tif documentation).
 
 
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
+gdalcubes_options(ncdf_compression_level = 1)
+write_ncdf(cube, file.path("~/Desktop", basename(tempfile(fileext = ".nc"))))
+gdalcubes_options(ncdf_compression_level = 0)
 
-```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+```
+
+write_tif() and write_ncdf() both return the path(s) to created file(s) as a character vector.
+
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 items_2020 <- s |>
     stac_search(collections = "sentinel-s2-l2a-cogs",
                 bbox = c(-105.694362,	39.912886,	-105.052774,	40.262785),
@@ -410,7 +437,7 @@ names(difference) <- "Difference of max NDVI (2020 - 2019)"
 
 
 
-```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_shapefile.zip/GloRiC_v10_shapefile/GloRiC_v10.shp") |>
   st_read() |>
   st_as_sf(coords = c("lon","lat"))
@@ -419,7 +446,7 @@ flood_polygon_data3
 ```
 
 
-```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE, collapse=TRUE}
 #st_read("/Users/ty/Downloads/GloRiC_v10_geodatabase/GloRiC_v10.gdb")
 
 flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_v10_geodatabase.zip/GloRiC_v10_geodatabase/GloRiC_v10.gdb") |>
