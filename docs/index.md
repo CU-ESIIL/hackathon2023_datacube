@@ -73,7 +73,8 @@ Session 3 will run from **9am - 12pm Mountain Daylight Time** and will meet _vir
 
 
 ## Week 3 -- Environmental MosAIc Data Library & Artificial Intelligence (Thursday November 9th)
-## **Please [connect your Cyverse account to GitHub](https://cu-esiil.github.io/hackathon2023_datacube/1_GIT_on_the_Cloud/github_cyverse/) prior to this training**
+
+> ### <a href="https://www.youtube.com/watch?v=gnseBLR7Bqs" target="_blank">**Watch this training**</a> or <a href="./assets/Hackathon_CI_Training_Transcript.pdf" target="_blank">**read the transcript**</a>
 
 >   * **Session overview:** Nate Quarderer, ESIIL Education Director
 
