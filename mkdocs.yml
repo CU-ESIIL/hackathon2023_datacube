@@ -38,7 +38,7 @@ nav:
     - US Census: code_for_building_cube/US_Census.md
     - Remote sensing: code_for_building_cube/Pull_Sentinal2_l2_data.md
   - Analytics: 
-    - Artificial Intelligence (AI) for Environmental Data Science: 4_Artificial_Intelligence/artificial_intelligence_md.md
+    - What is AI?: 4_Artificial_Intelligence/What is AI?.md
 
 # Configuration
 theme:
