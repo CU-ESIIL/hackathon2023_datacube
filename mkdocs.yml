@@ -39,6 +39,7 @@ nav:
     - Remote sensing: code_for_building_cube/Pull_Sentinal2_l2_data.md
   - Analytics: 
     - What is AI?: 4_Artificial_Intelligence/What is AI?.md
+    - Scientific questions as AI problems: 4_Artificial_Intelligence/AI in EDS.md
 
 # Configuration
 theme:
