@@ -1,4 +1,4 @@
-##**How do I frame a scientific question as an Artificial Intelligence problem?**
+# **How do I frame a scientific question as an Artificial Intelligence problem?**
 
 Virginia Iglesias - Earth Lab Research Scientist
 
