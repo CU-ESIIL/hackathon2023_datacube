@@ -1,4 +1,4 @@
-**How do I choose an AI algorithm?**
+# **How do I choose an AI algorithm?**
 
 Virginia Iglesias - Earth Lab Research Scientist
 
