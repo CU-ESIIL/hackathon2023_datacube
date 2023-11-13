@@ -1,4 +1,4 @@
-**What is AI?**
+# **What is AI?**
 
 Virginia Iglesias - Earth Lab Research Scientist
 
