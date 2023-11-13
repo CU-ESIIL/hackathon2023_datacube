@@ -1,0 +1,50 @@
+**How do I frame a scientific question as an Artificial Intelligence problem?**
+
+Virginia Iglesias - Earth Lab Research Scientist
+
+AI algorithms are often employed in environmental data science (EDS) to analyze complex environmental data sets, model environmental processes, and inform decision-making. Framing a scientific question as an AI problem involves translating the scientific inquiry into a structured format suitable for applying AI techniques. Here are steps you can follow:
+
+1) [Define the scientific question]{.underline}: Clearly articulate the scientific question or problem you want to address. Be specific about what information or insights you are seeking from the data.
+
+2) [Identify the variables]{.underline}: Identify the variables involved in the scientific question. These could be input features that influence the outcome or target variables that you want to predict.
+
+3) [Formulate your hypothesis]{.underline}: Develop a hypothesis based on your scientific question. Consider how different variables may be related and how they contribute to the observed phenomenon.
+
+4) [Define the input data]{.underline}: Specify the type of data needed to address the scientific question. This may include structured data (tabular), unstructured data (text, images), or time-series data.
+
+5) [Determine the type of AI problem]{.underline}: Identify the AI task that aligns with your scientific question. Common AI tasks include:
+
+-   Clustering: Clustering algorithms aim to group similar instances together based on their inherent similarities or relationships in the feature space. The algorithm tries to identify natural clusters in the data without being explicitly told what those clusters should be. The most common objective is to minimize the intra-cluster distance (distance between members of the same cluster) and maximize the inter-cluster distance (distance between members of different clusters). Clustering can be used to (i) group pixels in satellite or aerial imagery based on similar spectral characteristics; (ii) delineate ecological zones based on environmental variables such as temperature, precipitation, and soil types; (iii) identify areas with similar environmental conditions to model the distribution of species; (iv) group water samples based on similar chemical or physical characteristics, helping in the assessment of water quality and the identification of pollution sources; (v) group locations with similar air quality measurements, aiding in the identification of pollution hotspots and spatial patterns of air quality; (vi) recognize spatial patterns in climate data, helping researchers identify regions with similar climate conditions; (vii) identify anomalous patterns or outliers in environmental data, which may indicate unusual events or conditions that require further investigation; etc..
+
+```{=html}
+<!-- -->
+```
+-   Classification: A classification problem in machine learning involves assigning a label or category to a given input based on its features. The goal is to build a model that can learn the mapping between the input features and the corresponding class labels. In other words, the model learns to classify inputs into predefined categories. The categories, or classes, are often discrete and mutually exclusive. Classification models can be used to classify (i) satellite or aerial imagery into different land cover types, such as forests, urban areas, water bodies, and agricultural land; (ii) species based on features such as images, sounds, or genetic data; (iii) areas within urban environments as "heat islands" or "non-heat islands"; or (iv) crops as healthy or infected based on features like images or sensor data; (v) identify areas affected by oil spills in satellite imagery; (vi) predict air quality levels and assign them to categories such as "Good," "Moderate," "Unhealthy;" etc.
+
+-   Image recognition; Image recognition is a field within computer vision that involves training a computer to interpret and understand visual information in images. The goal is to enable machines to recognize and classify objects, scenes, or patterns within images, much like the human visual system. Image recognition helps (i) identify changes in land cover over time, allowing for the detection of deforestation or forest degradation; (ii) analyze remote sensing data, including multispectral or hyperspectral imagery, to assess the health and condition of vegetation; (iii) identify and track wildlife in camera trap images; (iv) analyze underwater imagery to assess the health and diversity of coral reefs; (v) identify features in images from satellites or drones such as algal blooms, sedimentation, and pollution, providing valuable information for water-quality monitoring; (vi) assess crop health, identify pest infestations, and optimize agricultural practices; and (vii) analyze satellite images to monitor changes in glaciers, which includes tracking glacier retreat, assessing ice mass balance, and studying the impact of climate change on glacial landscapes; etc.
+
+-   Regression: Regression analysis involves using AI methods to model the relationships between variables and make predictions. The main goal is to understand how one or more independent variables (features) influence a dependent variable (response). Regression models can be employed to predict (i) temperature or precipitation based on factors such as geographical location, elevation, and time of year; (ii) air quality indices based on meteorological factors, emissions data, and geographical features; (iii) water quality parameters such as pH, dissolved oxygen, and nutrient concentrations based on various environmental factors; (iv) changes in land use or land cover over time; (v) soil properties such as nutrient content, moisture levels, and pH based on factors like vegetation cover, land use, and climate conditions; (vi) the distribution of species based on environmental variables; (vi) crop yields based on environmental variables such as temperature, precipitation, and soil quality; etc.
+
+-   Time series analysis: Time series analysis is a series of AI techniques that deal with observations collected over time, such as hourly, daily, monthly, or yearly measurements. It involves examining and modeling temporal patterns to make predictions, infer underlying trends, or understand the structure of the time-dependent data. Machine learning models can (i) be applied to time series data of temperature, precipitation, and other climate variables to predict future climate conditions; (ii) help predict air quality levels over time by considering historical pollution data, meteorological conditions, and other relevant factors; (iii) be used to predict water flow in rivers or streams based on historical data, rainfall patterns, and land use; (iv) monitor changes in precipitation, soil moisture, and streamflow to identify and predict drought conditions; (v) analyze vegetation indices, land cover changes, and other ecological parameters to understand the dynamics of ecosystems over time; (vi) predict energy consumption patterns based on historical data, weather conditions, and other relevant variables; and (vii) analyze and predict trends in data collected from environmental monitoring networks, such as sensor networks measuring air quality, water quality, or biodiversity.
+
+6) [Choose the AI task]{.underline}: Determine whether your problem is a supervised, unsupervised, or reinforcement learning task. In supervised learning, the model learns from labeled examples. In unsupervised learning, the model explores patterns without labeled data. Reinforcement learning involves training a model to make sequences of decisions to maximize a reward.
+
+7) [Collect and preprocess data]{.underline}: Gather relevant data for your problem. Ensure the data are in a format suitable for AI, clean, and preprocess them if necessary (handling missing values, normalization, augmenting the data, etc.).
+
+8) [Label data (if applicable)]{.underline}: For supervised learning problems, label the data if you are working on a classification or regression task. This involves associating each data point with the corresponding outcome or target variable.
+
+9) [Split data for training and testing]{.underline}: Divide the data set into training and testing sets. The training set is used to train the AI model, and the testing set is used to evaluate its performance.
+
+10) [Feature engineering]{.underline}: Identify relevant features that can be used to train the model. This may involve creating new features, transforming existing ones, or selecting the most informative features.
+
+11) [Select AI algorithm]{.underline}: Choose an appropriate AI algorithm based on the nature of the problem.
+
+12) [Define evaluation metrics]{.underline}: Establish metrics to evaluate the performance of your model. These could include accuracy, precision, recall, F1 score, mean squared error, or other domain-specific metrics.
+
+13) [Train and evaluate the model]{.underline}: Train the model using the training data and evaluate its performance on the testing data. Iteratively refine the model based on the evaluation results.
+
+14) [Interpret results]{.underline}: Interpret the results in the context of your scientific question. Consider how well the model addresses the scientific inquiry and what insights can be gained.
+
+15) [Iterate and refine]{.underline}: Iterate on the model and experiment with different features, algorithms, and parameters to improve performance. Consider feedback from the scientific context and refine the approach accordingly.
+
+By following these steps, you can bridge the gap between a scientific question and an AI problem, allowing you to leverage the power of machine learning to gain insights and make predictions based on your scientific inquiry.
