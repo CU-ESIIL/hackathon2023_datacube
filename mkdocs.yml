@@ -40,6 +40,7 @@ nav:
   - Analytics: 
     - What is AI?: 4_Artificial_Intelligence/What is AI?.md
     - Scientific questions as AI problems: 4_Artificial_Intelligence/AI in EDS.md
+    - Choosing an AI algorithm: 4_Artificial_Intelligence/choosing algorithm.md
 
 # Configuration
 theme:
