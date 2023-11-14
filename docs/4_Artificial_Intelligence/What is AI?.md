@@ -4,9 +4,9 @@ Virginia Iglesias - Earth Lab Research Scientist
 
 AI stands for Artificial Intelligence. It refers to the simulation of human intelligence in machines that are programmed to think and learn like humans. AI is a broad field that encompasses various subfields and approaches, including machine learning (ML) , natural language processing (NLP), computer vision, and robotics. AI applications are widespread and impact various aspects of our daily lives, from voice assistants and recommendation systems to healthcare diagnostics and autonomous vehicles. The field of AI continues to advance rapidly, with ongoing research and development pushing the boundaries of what machines can achieve.
 
-In our training, we used AI to classify images of cats and dogs, predict college acceptance, and play a game, but **how can we use AI in scientific research?**
+In our training, we used AI to classify images of cats and dogs, predict college acceptance, and play a game, but **how can we use AI in Environmental Data Science?**
 
--   **Machine learning (ML)** algorithms can be used to identify patterns and trends in large data sets (**pattern recognition**) or to predict outcomes based on historical data (**predictive modeling**).
+-   **Machine learning (ML)** algorithms can be used to identify patterns and trends in large data sets (**pattern recognition**) or to predict outcomes based on historical data (**predictive modeling)**
 
 -   **Computer vision** techniques can be applied to classify, analyze and interpret images.
 
