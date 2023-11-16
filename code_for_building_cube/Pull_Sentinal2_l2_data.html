@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Pulling Sentinal 2 data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Pull_Sentinal2_l2_data_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Pull_Sentinal2_l2_data_files/libs/quarto-html/quarto.js"></script>
+<script src="Pull_Sentinal2_l2_data_files/libs/quarto-html/popper.min.js"></script>
+<script src="Pull_Sentinal2_l2_data_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Pull_Sentinal2_l2_data_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Pull_Sentinal2_l2_data_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Pull_Sentinal2_l2_data_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Pull_Sentinal2_l2_data_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Pull_Sentinal2_l2_data_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Pull_Sentinal2_l2_data_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#set-java-options" id="toc-set-java-options" class="nav-link active" data-scroll-target="#set-java-options"> <span class="header-section-number">1</span> Set Java Options</a></li>
+  <li><a href="#r-libraries-and-global-setting." id="toc-r-libraries-and-global-setting." class="nav-link" data-scroll-target="#r-libraries-and-global-setting."> <span class="header-section-number">2</span> R libraries and global setting.</a></li>
+  <li><a href="#start-timer" id="toc-start-timer" class="nav-link" data-scroll-target="#start-timer"> <span class="header-section-number">3</span> Start timer</a></li>
+  <li><a href="#set-color-palette" id="toc-set-color-palette" class="nav-link" data-scroll-target="#set-color-palette"> <span class="header-section-number">4</span> Set color palette</a></li>
+  <li><a href="#load-area-of-interest" id="toc-load-area-of-interest" class="nav-link" data-scroll-target="#load-area-of-interest"> <span class="header-section-number">5</span> Load area of interest</a></li>
+  <li><a href="#arrange-stac-collection" id="toc-arrange-stac-collection" class="nav-link" data-scroll-target="#arrange-stac-collection"> <span class="header-section-number">6</span> Arrange STAC collection</a></li>
+  <li><a href="#define-view-window" id="toc-define-view-window" class="nav-link" data-scroll-target="#define-view-window"> <span class="header-section-number">7</span> Define view window</a></li>
+  <li><a href="#pull-data" id="toc-pull-data" class="nav-link" data-scroll-target="#pull-data"> <span class="header-section-number">8</span> Pull data</a></li>
+  <li><a href="#base-plot" id="toc-base-plot" class="nav-link" data-scroll-target="#base-plot"> <span class="header-section-number">9</span> Base plot</a></li>
+  <li><a href="#inlay-1---geographic-zone" id="toc-inlay-1---geographic-zone" class="nav-link" data-scroll-target="#inlay-1---geographic-zone"> <span class="header-section-number">10</span> Inlay 1 - geographic zone</a></li>
+  <li><a href="#inlay-2---date-text" id="toc-inlay-2---date-text" class="nav-link" data-scroll-target="#inlay-2---date-text"> <span class="header-section-number">11</span> Inlay 2 - date text</a></li>
+  <li><a href="#inlay-3---daylength" id="toc-inlay-3---daylength" class="nav-link" data-scroll-target="#inlay-3---daylength"> <span class="header-section-number">12</span> Inlay 3 - daylength</a></li>
+  <li><a href="#ensemble-map-assembly" id="toc-ensemble-map-assembly" class="nav-link" data-scroll-target="#ensemble-map-assembly"> <span class="header-section-number">13</span> Ensemble map assembly</a></li>
+  <li><a href="#save-map" id="toc-save-map" class="nav-link" data-scroll-target="#save-map"> <span class="header-section-number">14</span> Save map</a></li>
+  <li><a href="#end-timer" id="toc-end-timer" class="nav-link" data-scroll-target="#end-timer"> <span class="header-section-number">15</span> End timer</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Pulling Sentinal 2 data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="set-java-options" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Set Java Options</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run these Java options before anything else.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">java.parameters =</span> <span class="st">"-Xmx64G"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">timeout =</span> <span class="fu">max</span>(<span class="dv">600</span>, <span class="fu">getOption</span>(<span class="st">"timeout"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r-libraries-and-global-setting." class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> R libraries and global setting.</h1>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/load_libraries_4e7649c2587ead6da9a94cb79a644c5b">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(Rcpp)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gdalcubes)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstac)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gdalUtils)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(osmdata)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#library(glue)</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(colorspace)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geos)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#library(glue)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(osmdata)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">gdalcubes_options</span>(<span class="at">parallel =</span> <span class="dv">8</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>sf<span class="sc">::</span><span class="fu">sf_extSoftVersion</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          GEOS           GDAL         proj.4 GDAL_with_GEOS     USE_PROJ_H 
+      "3.11.0"        "3.5.3"        "9.1.0"         "true"         "true" 
+          PROJ 
+       "9.1.0" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gdalcubes_gdal_has_geos</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="start-timer" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Start timer</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>start <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="set-color-palette" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Set color palette</h1>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/color_settings_68b9fb8c53e6d618e1c95bc4ccae6078">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtern)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>our_yellow <span class="ot">&lt;-</span> <span class="fu">rgb2hex</span>(<span class="at">r =</span> <span class="dv">253</span>, <span class="at">g =</span> <span class="dv">201</span>, <span class="at">b =</span> <span class="dv">51</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>our_green <span class="ot">&lt;-</span> <span class="fu">rgb2hex</span>(<span class="at">r =</span> <span class="dv">10</span>, <span class="at">g =</span> <span class="dv">84</span>, <span class="at">b =</span> <span class="dv">62</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>our_grey <span class="ot">&lt;-</span> <span class="fu">rgb2hex</span>(<span class="at">r =</span> <span class="dv">92</span>, <span class="at">g =</span> <span class="dv">96</span>, <span class="at">b =</span> <span class="dv">95</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>our_white <span class="ot">&lt;-</span> <span class="fu">rgb2hex</span>(<span class="at">r =</span> <span class="dv">255</span>, <span class="at">g =</span> <span class="dv">255</span>, <span class="at">b =</span> <span class="dv">255</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="load-area-of-interest" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Load area of interest</h1>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/load_aoi_polygon_7643f3052a76731d1e735c81e660908c">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the shapefile into an sf object</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>aoi_total <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"/Users/ty/Documents/Github/Southern_California_Edison_Fire_Risk/SCE_Fire_Zone_V2/SCE_Fire_Zone_V2.shp"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `SCE_Fire_Zone_V2' from data source 
+  `/Users/ty/Documents/Github/Southern_California_Edison_Fire_Risk/SCE_Fire_Zone_V2/SCE_Fire_Zone_V2.shp' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 12 features and 5 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 176062.4 ymin: 3674043 xmax: 764123.1 ymax: 4254012
+Projected CRS: NAD83 / UTM zone 11N</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the entire spatial dataset</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aoi_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_Sentinal2_l2_data_files/figure-html/load_aoi_polygon-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset to obtain the geometry with OBJECTID 5</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>aoi <span class="ot">&lt;-</span> aoi_total <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(OBJECTID <span class="sc">==</span> <span class="dv">5</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain and plot the bounding box of the filtered geometry</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>shape_bbox <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(aoi)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aoi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_Sentinal2_l2_data_files/figure-html/load_aoi_polygon-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the filtered geometry to EPSG:4326 and store its bounding box</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>aoi <span class="sc">%&gt;%</span> <span class="fu">st_transform</span>(<span class="st">"EPSG:4326"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_bbox</span>() <span class="ot">-&gt;</span> bbox_4326</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the filtered geometry to EPSG:32618 and store its bounding box</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>aoi <span class="sc">%&gt;%</span> <span class="fu">st_transform</span>(<span class="st">"EPSG:32618"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_bbox</span>() <span class="ot">-&gt;</span> bbox_32618</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="arrange-stac-collection" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Arrange STAC collection</h1>
+<p>In this code chunk, the primary goal is to search for and obtain satellite imagery data. The data source being tapped into is a SpatioTemporal Asset Catalog (STAC) provided by an online service (earth-search by Element84). Here’s a breakdown:</p>
+<p>A connection is established with the STAC service, searching specifically within the “sentinel-s2-l2a-cogs” collection. -The search is spatially constrained to a bounding box (bbox_4326) and temporally limited to a range of one day, between May 15 and May 16, 2021. -Once the search is conducted, the desired assets or spectral bands from the returned satellite images are defined, ranging from Band 1 (B01) to Band 12 (B12) and including the Scene Classification Layer (SCL). -These bands are then organized into an image collection for further processing or analysis.</p>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/search_STAC_collection_09acf0114b26036044dcd2d99e2a1cdf">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize STAC connection</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="fu">stac</span>(<span class="st">"https://earth-search.aws.element84.com/v0"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for Sentinel-2 images within specified bounding box and date range</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>items <span class="ot">=</span> s <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stac_search</span>(<span class="at">collections =</span> <span class="st">"sentinel-s2-l2a-cogs"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">bbox =</span> <span class="fu">c</span>(bbox_4326[<span class="st">"xmin"</span>], </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                         bbox_4326[<span class="st">"ymin"</span>],</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                         bbox_4326[<span class="st">"xmax"</span>], </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                         bbox_4326[<span class="st">"ymax"</span>]), </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">datetime =</span> <span class="st">"2021-05-15/2021-05-16"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">post_request</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">items_fetch</span>(<span class="at">progress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of found items</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(items<span class="sc">$</span>features)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the assets for analysis</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gdalcubes)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>assets <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"B01"</span>, <span class="st">"B02"</span>, <span class="st">"B03"</span>, <span class="st">"B04"</span>, <span class="st">"B05"</span>, <span class="st">"B06"</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"B07"</span>, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>           <span class="st">"B08"</span>, <span class="st">"B8A"</span>, <span class="st">"B09"</span>, <span class="st">"B11"</span>, <span class="st">"B12"</span>, <span class="st">"SCL"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>s2_collection <span class="ot">=</span> <span class="fu">stac_image_collection</span>(items<span class="sc">$</span>features, <span class="at">asset_names =</span> assets)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the image collection</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>s2_collection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Image collection object, referencing 12 images with 13 bands
+Images:
+                      name      left      top   bottom     right
+1 S2B_11SNS_20210515_1_L2A -117.0002 33.43957 32.44372 -115.8191
+2 S2B_11SPS_20210515_1_L2A -115.9361 33.43490 32.42937 -114.7436
+3 S2B_11SQS_20210515_0_L2A -114.8732 33.42092 32.41918 -113.9566
+4 S2B_12STB_20210515_0_L2A -114.2244 33.40433 32.61015 -113.9559
+5 S2B_11SNT_20210515_0_L2A -117.0002 34.34164 33.34577 -115.8066
+6 S2B_11SPT_20210515_0_L2A -115.9253 34.33683 33.33091 -114.7198
+             datetime        srs
+1 2021-05-15T18:35:13 EPSG:32611
+2 2021-05-15T18:35:10 EPSG:32611
+3 2021-05-15T18:35:06 EPSG:32611
+4 2021-05-15T18:35:01 EPSG:32612
+5 2021-05-15T18:34:59 EPSG:32611
+6 2021-05-15T18:34:55 EPSG:32611
+[ omitted 6 images ] 
+
+Bands:
+   name offset scale unit nodata image_count
+1   B01      0     1                      12
+2   B02      0     1                      12
+3   B03      0     1                      12
+4   B04      0     1                      12
+5   B05      0     1                      12
+6   B06      0     1                      12
+7   B07      0     1                      12
+8   B08      0     1                      12
+9   B09      0     1                      12
+10  B11      0     1                      12
+11  B12      0     1                      12
+12  B8A      0     1                      12
+13  SCL      0     1                      12</code></pre>
+</div>
+</div>
+</section>
+<section id="define-view-window" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Define view window</h1>
+<p>In this code chunk, a ‘view’ on the previously obtained satellite image collection is being defined. Think of this as setting up a specific lens or perspective to look at the satellite data:</p>
+<p>-The view is set to the coordinate reference system EPSG:32618. -Spatial resolution is defined as 100x100 meters. -Temporal resolution is defined monthly (P1M), even though the actual range is only one day. -When there are multiple values in a grid cell or timeframe, they are aggregated using the median value. -If any resampling is needed, the nearest neighbor method is used (near). -The spatial and temporal extents are constrained to specific values. -By defining this view, it allows for consistent analysis and visualization of the image collection within the specified spatial and temporal resolutions and extents.</p>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/set_view_window_8a756f6f304b46aafbf65b05d58957a3">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a specific view on the satellite image collection</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">cube_view</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">srs =</span> <span class="st">"EPSG:32618"</span>, </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">dx =</span> <span class="dv">100</span>, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">dy =</span> <span class="dv">100</span>, </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">dt =</span> <span class="st">"P1M"</span>, </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">aggregation =</span> <span class="st">"median"</span>, </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">resampling =</span> <span class="st">"near"</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">extent =</span> <span class="fu">list</span>(</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">t0 =</span> <span class="st">"2021-05-15"</span>, </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">t1 =</span> <span class="st">"2021-05-16"</span>,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">left =</span> bbox_32618[<span class="st">"xmin"</span>], </span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">right =</span> bbox_32618[<span class="st">"xmax"</span>],</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">top =</span> bbox_32618[<span class="st">"ymax"</span>], </span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">bottom =</span> bbox_32618[<span class="st">"ymin"</span>]</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the defined view</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A data cube view object
+
+Dimensions:
+                low              high count pixel_size
+t        2021-05-01        2021-05-31     1        P1M
+y  4471226.41402451  4741326.41402451  2701        100
+x -3463720.00044994 -3191420.00044994  2723        100
+
+SRS: "EPSG:32618"
+Temporal aggregation method: "median"
+Spatial resampling method: "near"</code></pre>
+</div>
+</div>
+</section>
+<section id="pull-data" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Pull data</h1>
+<p>In this chunk, the primary aim is to transform and prepare satellite imagery data for analysis:</p>
+<p>-The current time is stored in variable a for tracking the time taken by the process. -The previously defined ‘view’ on the satellite imagery, v, is used to create a raster cube, a multi-dimensional array containing the satellite data. This raster cube contains spatial, spectral, and temporal data. -The desired spectral bands are selected. -The data is limited to a specific area of interest, aoi. -The band names are renamed to their respective wavelengths in nanometers for clarity. -A subset of the data, comprising 50,000 random samples, is selected. -Unwanted columns are removed, and the dataset is transformed into a long format, where each row represents a particular date and wavelength combination. -The entire process duration is computed by taking the difference between the end time (b) and the start time (a). -The transformed dataset y is then displayed.</p>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/pull_data_317a5c6fac103efa32195f9673f0e323">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Record start time</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the satellite image collection into a raster cube</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> s2_collection <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">raster_cube</span>(v) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select_bands</span>(<span class="fu">c</span>(<span class="st">"B01"</span>, <span class="st">"B02"</span>, <span class="st">"B03"</span>, <span class="st">"B04"</span>, </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"B05"</span>, <span class="st">"B06"</span>, <span class="st">"B07"</span>, <span class="st">"B08"</span>, </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"B8A"</span>, <span class="st">"B09"</span>, <span class="st">"B11"</span>, <span class="st">"B12"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract_geom</span>(aoi) <span class="sc">%&gt;%</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"time"</span> <span class="ot">=</span> <span class="st">"time"</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"443"</span> <span class="ot">=</span> <span class="st">"B01"</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"490"</span> <span class="ot">=</span> <span class="st">"B02"</span>,</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"560"</span> <span class="ot">=</span> <span class="st">"B03"</span>,</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"665"</span> <span class="ot">=</span> <span class="st">"B04"</span>,</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"705"</span> <span class="ot">=</span> <span class="st">"B05"</span>,</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"740"</span> <span class="ot">=</span> <span class="st">"B06"</span>,</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"783"</span> <span class="ot">=</span> <span class="st">"B07"</span>,</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"842"</span> <span class="ot">=</span> <span class="st">"B08"</span>,</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"865"</span> <span class="ot">=</span> <span class="st">"B8A"</span>,</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"940"</span> <span class="ot">=</span> <span class="st">"B09"</span>,</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"1610"</span> <span class="ot">=</span> <span class="st">"B11"</span>,</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"2190"</span> <span class="ot">=</span> <span class="st">"B12"</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample, transform and prepare data for analysis</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">%&gt;%</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">50000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>FID) <span class="sc">%&gt;%</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">!</span>time, <span class="at">names_to =</span> <span class="st">"wavelength_nm"</span>, <span class="at">values_to =</span> <span class="st">"reflectance"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">wavelength_nm =</span> <span class="fu">as.numeric</span>(wavelength_nm))</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Record end time and compute duration</span></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>processing_time <span class="ot">&lt;-</span> <span class="fu">difftime</span>(b, a)</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the processing time and transformed dataset</span></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>processing_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time difference of 3.847375 mins</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 600,000 × 3
+   time       wavelength_nm reflectance
+   &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;
+ 1 2021-05-01           443        1400
+ 2 2021-05-01           490        1583
+ 3 2021-05-01           560        2124
+ 4 2021-05-01           665        2800
+ 5 2021-05-01           705        3044
+ 6 2021-05-01           740        3117
+ 7 2021-05-01           783        3209
+ 8 2021-05-01           842        3314
+ 9 2021-05-01           865        3245
+10 2021-05-01           940        3631
+# ℹ 599,990 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="base-plot" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Base plot</h1>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/base_plot_63f60cca3cf8362d3746f66b13de4be8">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set custom colors for the plot</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>our_green <span class="ot">&lt;-</span> <span class="st">"#4CAF50"</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>our_white <span class="ot">&lt;-</span> <span class="st">"#FFFFFF"</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>our_yellow <span class="ot">&lt;-</span> <span class="st">"#FFEB3B"</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 2D density plot</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>day_density <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> y, <span class="fu">aes</span>(<span class="at">x =</span> wavelength_nm, <span class="at">y =</span> reflectance, <span class="at">group =</span> time)) <span class="sc">+</span> </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">color =</span> our_green, <span class="at">fill =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density2d</span>(<span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">bins =</span> <span class="dv">10</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(<span class="at">alpha =</span> ..level.., <span class="at">fill =</span> ..level..), </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">bins =</span> <span class="dv">10</span>, <span class="at">geom =</span> <span class="st">"polygon"</span>) <span class="sc">+</span> </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> our_white, <span class="at">high =</span> our_yellow) <span class="sc">+</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.00</span>, <span class="fl">0.8</span>), <span class="at">guide =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tufte</span>() <span class="sc">+</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"wavelength"</span>) <span class="sc">+</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"reflectance"</span>) <span class="sc">+</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">16000</span>) <span class="sc">+</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">aspect.ratio =</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">14</span>, </span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>, </span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>                               <span class="at">colour =</span> <span class="fu">c</span>(<span class="st">"darkblue"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"red"</span>, </span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"darkred"</span>, <span class="st">"darkred"</span>, <span class="st">"darkred"</span>, <span class="st">"darkred"</span>, </span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"darkred"</span>, <span class="st">"black"</span>, <span class="st">"black"</span>, <span class="st">"black"</span>, <span class="st">"black"</span>)),</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">30</span>, <span class="at">r =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">40</span>, <span class="at">l =</span> <span class="dv">18</span>)</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">443</span>, <span class="dv">490</span>, <span class="dv">560</span>, <span class="dv">665</span>, <span class="dv">705</span>, <span class="dv">740</span>, <span class="dv">783</span>, <span class="dv">842</span>, <span class="dv">865</span>, <span class="dv">940</span>, <span class="dv">1610</span>, <span class="dv">2190</span>))</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the plot</span></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>day_density</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_Sentinal2_l2_data_files/figure-html/base_plot-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="inlay-1---geographic-zone" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Inlay 1 - geographic zone</h1>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/aoi_inlay_7e533db03e5fb18571ad97cb6b9ab3ef">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>guide_map <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span> aoi_total) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">fill=</span>our_yellow, <span class="at">color=</span>our_white) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data=</span> aoi, <span class="at">fill=</span>our_green, <span class="at">color=</span>our_white) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tufte</span>()<span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Zone 5"</span>)<span class="sc">+</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>(), <span class="co">#remove x axis labels</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(), <span class="co">#remove x axis ticks</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y=</span><span class="fu">element_blank</span>(),  <span class="co">#remove y axis labels</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>()  <span class="co">#remove y axis ticks, bg=none</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.8</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">2</span>))</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>guide_map</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_Sentinal2_l2_data_files/figure-html/aoi_inlay-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="inlay-2---date-text" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Inlay 2 - date text</h1>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/display_date_89b5a52b07b472ea5b0e98a8a34f7742">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geosphere)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>aoi_total <span class="sc">|&gt;</span> <span class="fu">st_centroid</span>()  <span class="sc">|&gt;</span> <span class="fu">st_transform</span>(<span class="at">crs=</span><span class="st">"+proj=longlat"</span>) <span class="sc">|&gt;</span> <span class="fu">st_coordinates</span>() <span class="sc">|&gt;</span> <span class="fu">colMeans</span>() <span class="ot">-&gt;</span> lat_long</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>daylength_line <span class="ot">&lt;-</span> <span class="fu">daylength</span>(<span class="at">lat =</span> lat_long[<span class="dv">2</span>], <span class="dv">1</span><span class="sc">:</span><span class="dv">365</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>daylengths <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">365</span>, <span class="at">daylength =</span> daylength_line)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a template date object</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">as.POSIXlt</span>(<span class="st">"2021-05-15"</span>)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>doy <span class="ot">&lt;-</span> <span class="fu">format</span>(date, <span class="at">format =</span> <span class="st">"%j"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>display_date <span class="ot">&lt;-</span> <span class="fu">format</span>(date, <span class="at">format=</span><span class="st">"%e %B %Y   "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="inlay-3---daylength" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Inlay 3 - daylength</h1>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/date_inlay_3565ca4b1936e43f02b02ecc7e5e8a8c">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>date_inlay <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>daylengths) <span class="sc">+</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Daylength"</span>)<span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x=</span>time, <span class="at">ymin=</span>daylength, <span class="at">ymax=</span><span class="dv">15</span>), <span class="at">fill=</span>our_grey, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x=</span>time, <span class="at">ymax=</span>daylength, <span class="at">ymin=</span><span class="dv">9</span>), <span class="at">fill=</span>our_yellow, <span class="at">alpha=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">12</span>, <span class="at">color=</span>our_white) <span class="sc">+</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_vline</span>(<span class="at">xintercept=</span>doy, <span class="at">color=</span>our_green, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tufte</span>() <span class="sc">+</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">9</span>,<span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>()) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="dv">0</span>))</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>date_inlay</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_Sentinal2_l2_data_files/figure-html/date_inlay-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="ensemble-map-assembly" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Ensemble map assembly</h1>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/map_assembly_25ac9fd52a8463de3d82e7f3c7f2a6cb">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>map_overlay <span class="ot">&lt;-</span> <span class="fu">ggdraw</span>(day_density) <span class="sc">+</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot</span>(guide_map, <span class="at">x =</span> <span class="fl">1.08</span>, <span class="at">y =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">height =</span> <span class="fl">0.3</span>)<span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot</span>(date_inlay, <span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">0.35</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">height =</span> <span class="fl">0.25</span>)<span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="fl">0.08</span>, <span class="at">label=</span>display_date, <span class="at">hjust =</span> <span class="dv">1</span>), <span class="at">color=</span>our_grey, <span class="at">cex=</span><span class="dv">3</span>, <span class="at">fontface=</span><span class="st">'bold'</span>) <span class="sc">+</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># draw_image("Ty_powerline_plots/Southern_California_Edison_Logo.png", x = -0.24, y = 0.38, scale=.3)+</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a> <span class="co"># draw_image("Ty_powerline_plots/earthlab_logo.png", x = -0.38, y = 0.38, scale=.25)+</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fl">0.4</span>, <span class="at">y=</span>.<span class="dv">9</span>, <span class="at">label=</span><span class="st">"Spectral library - Monthly average"</span>), <span class="at">color=</span>our_green, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">cex=</span><span class="dv">8</span>, <span class="at">fontface=</span><span class="st">'bold'</span>) <span class="sc">+</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fl">0.01</span>, <span class="at">y=</span>.<span class="dv">04</span>, </span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">label=</span><span class="st">"Created by ESIIL (T. Tuff) for Fall Hackathon -- October 2023. Sentinel 2 Data from 'https://earth-search.aws.element84.com/v0'"</span>), <span class="at">color=</span>our_grey, <span class="at">hjust  =</span> <span class="dv">0</span>, <span class="at">cex=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fl">0.4</span>, <span class="at">y=</span>.<span class="dv">1</span>, <span class="at">label=</span><span class="st">"wavelength (nm)"</span>), <span class="at">color=</span>our_grey, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">cex=</span><span class="dv">4</span>, <span class="at">fontface=</span><span class="st">'bold'</span>) <span class="sc">+</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fl">0.01</span>, <span class="at">y=</span>.<span class="dv">5</span>,<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">label=</span><span class="st">"reflectance"</span>), <span class="at">color=</span>our_grey, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">cex=</span><span class="dv">4</span>, <span class="at">fontface=</span><span class="st">'bold'</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>map_overlay</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_Sentinal2_l2_data_files/figure-html/map_assembly-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="save-map" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Save map</h1>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/save_map_6f966286851fae2df9f5557f8bf7131a">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(map_overlay, <span class="at">file=</span><span class="st">"day_density_15_May_2021_zone_5.png"</span>, <span class="at">bg=</span><span class="st">"white"</span>, <span class="at">dpi =</span> <span class="dv">600</span>, <span class="at">width =</span> <span class="dv">12</span>,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="end-timer" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> End timer</h1>
+<div class="cell" data-hash="Pull_Sentinal2_l2_data_cache/html/end_timer_79865604635e9d3196f196fc75e66801">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>end <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(end,start)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time difference of 4.4868 mins</code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,1568 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Instructional material for ESIIL Hackathon 2023">
+      
+      
+        <meta name="author" content="ESIIL CI team (lead = Ty Tuff)">
+      
+      
+        <link rel="canonical" href="https://cu-esiil.github.io/hackathon2023_datacube/code_for_building_cube/Pull_flood_data/">
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Flood event inventory - ESIIL Pre-Hackathon Training Sessions 2023</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pull-flood-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ESIIL Pre-Hackathon Training Sessions 2023" class="md-header__button md-logo" aria-label="ESIIL Pre-Hackathon Training Sessions 2023" data-md-component="logo">
+      
+  <img src="../../assets/ESIIL_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ESIIL Pre-Hackathon Training Sessions 2023
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Flood event inventory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: white)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://cu-esiil.github.io/hackathon2023_datacube" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hackathon2023_datacube
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ESIIL Pre-Hackathon Training Sessions 2023" class="md-nav__button md-logo" aria-label="ESIIL Pre-Hackathon Training Sessions 2023" data-md-component="logo">
+      
+  <img src="../../assets/ESIIL_logo.png" alt="logo">
+
+    </a>
+    ESIIL Pre-Hackathon Training Sessions 2023
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://cu-esiil.github.io/hackathon2023_datacube" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hackathon2023_datacube
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assets/Behavior%20poster%20v3.png" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Our%20Team/Our%20Team/" class="md-nav__link">
+        Our team
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Collaboration in the Cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Collaboration in the Cloud" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Collaboration in the Cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_GIT_on_the_Cloud/github_lesson/" class="md-nav__link">
+        GitHub essentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_GIT_on_the_Cloud/collaboration/" class="md-nav__link">
+        CyVerse Discovery Environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_GIT_on_the_Cloud/github_cyverse/" class="md-nav__link">
+        Connecting Cyverse to Github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stac_mount_save/" class="md-nav__link">
+        Environmental Data Science in the Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_EDS_Data_Cube/translate_vsi_to_python/" class="md-nav__link">
+        Environmental Data Science in the Cloud (Python)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Data Cubes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Cubes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Data Cubes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Why%20data%20cubes/Why%20data%20cubes/" class="md-nav__link">
+        Why Data Cubes?
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Flood event inventory
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pull_flood_polygons/" class="md-nav__link">
+        Flood event area (polygons)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pull_river_vector_data/" class="md-nav__link">
+        River geography
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pull_hydrobasins/" class="md-nav__link">
+        River and Basin features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neon_and_lter/" class="md-nav__link">
+        NEON Lakes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neon_aquatic/" class="md-nav__link">
+        NEON Rivers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../epa_water_quality/" class="md-nav__link">
+        EPA water quality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usgs_water_services/" class="md-nav__link">
+        USGS Water Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iNaturalist.md" class="md-nav__link">
+        Global Species Occurrence
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neon_lidar_and_organismal/" class="md-nav__link">
+        NEON LIDAR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neon/" class="md-nav__link">
+        NEON biogeochemistry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osm/" class="md-nav__link">
+        Open Street Map
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../US_Census/" class="md-nav__link">
+        US Census
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pull_Sentinal2_l2_data/" class="md-nav__link">
+        Remote sensing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Analytics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Analytics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Analytics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_Artificial_Intelligence/What%20is%20AI%3F/" class="md-nav__link">
+        What is AI?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_Artificial_Intelligence/AI%20in%20EDS/" class="md-nav__link">
+        Scientific questions as AI problems
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_Artificial_Intelligence/choosing%20algorithm/" class="md-nav__link">
+        Choosing an AI algorithm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://cu-esiil.github.io/hackathon2023_datacube/edit/main/docs/code_for_building_cube/Pull_flood_data.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="pull-flood-data">Pull flood data</h1>
+<p>Ty Tuff, ESIIL Data Scientist
+2023-10-27</p>
+<p><a href="https://floodobservatory.colorado.edu/Archives/index.html">Global Active Archive of Large Flood Events,
+1985-Present</a></p>
+<p>Housed at the Dartmouth Flood Observatory (DFO) and maintained by the
+University of Colorado, the Global Active Archive of Large Flood Events
+is a comprehensive repository that records significant flood events from
+1985 to the present day. This dynamic and “active” archive continually
+incorporates data from contemporary flood events, ensuring the
+information remains current and relevant.</p>
+<p>Key Features:</p>
+<ul>
+<li>
+<p>Diverse Data Sources: The information within the archive is
+    meticulously collated from a wide array of sources, including news
+    reports, governmental agencies, instrumental measurements, and
+    satellite remote sensing.</p>
+</li>
+<li>
+<p>Granular Event Details: Each recorded flood event within the archive
+    is distinct, and its associated details are presented in an “area
+    affected” map. Despite the discrete nature of these records, it’s
+    acknowledged that certain regions experience recurrent flooding,
+    which may necessitate a nuanced approach in classifying such events.</p>
+</li>
+<li>
+<p>Comprehensive Coverage: The archive boasts a global purview,
+    capturing the magnitude and impact of significant flood events
+    worldwide. It’s noteworthy that while death and displacement
+    estimates from tropical storms encompass all causative factors,
+    storms devoid of notable river flooding aren’t incorporated.</p>
+</li>
+<li>
+<p>Accessible Formats: The archive is versatile in its presentation:</p>
+<ul>
+<li>An online table enumerates recent flood events.</li>
+<li>Detailed records from 1985 onwards are accessible in both Excel
+    (.xlsx and .xml) formats. These are periodically updated.</li>
+<li>GIS users can tap into zip-compressed MapInfo and Shp format
+    files that elucidate flood catalog numbers, centroids, and other
+    salient attribute details.</li>
+</ul>
+</li>
+<li>
+<p>Satellite Imaging: A considerable number of flood events have been
+    vividly captured through satellite imaging. These have been further
+    processed by the DFO to generate detailed maps delineating
+    inundation extents. An index of these maps is accessible via the DFO
+    Flood Maps Index.</p>
+<ul>
+<li>For those interested in understanding the methodology behind the
+    creation of these invaluable maps and tables, additional notes
+    and insights are available within the archive.</li>
+</ul>
+</li>
+</ul>
+<p>The Global Active Archive, given its academic and research-oriented
+nature, is generously made available at no charge for scholarly pursuits
+and educational endeavors.</p>
+<p>Sample Citation: G.R. Brakenridge. Global Active Archive of Large Flood
+Events. Dartmouth Flood Observatory, University of Colorado, USA.</p>
+<p><a href="/Users/ty/Documents/Github/hackathon2023_datacube/code_for_building_cube/file_types_for_flood_data.png">Flood data file types available for
+download</a></p>
+<p><a href="https://floodobservatory.colorado.edu/FloodMapIndex.htm">Here is arial imagery for some
+floods</a></p>
+<h1 id="load-libraries">Load Libraries</h1>
+<p>The code chunk provided is written in R and is used for loading multiple
+libraries/packages. These libraries contain functions and tools that
+extend the capabilities of R for various tasks. Specifically:</p>
+<p>glue: Provides tools to format R strings with embedded code. sf: Used
+for handling and analyzing spatial data. terra: Offers tools for spatial
+data handling and analysis. ggplot2: A popular data visualization
+package in R. dplyr: Part of the tidyverse and is used for data
+manipulation. ggthemes: Adds extra themes, geoms, and scales to ggplot2.
+forecast: Used for time series forecasting.</p>
+<p>When executed, this code will make the functions and tools from these
+libraries available for use in the R session.</p>
+<pre><code class="language-r">library(glue)
+library(sf)
+</code></pre>
+<pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE
+</code></pre>
+<pre><code class="language-r">library(terra)
+</code></pre>
+<pre><code>terra 1.7.39
+
+
+Attaching package: 'terra'
+
+The following object is masked from 'package:glue':
+
+    trim
+</code></pre>
+<pre><code class="language-r">library(ggplot2)
+library(dplyr)
+</code></pre>
+<pre><code>Attaching package: 'dplyr'
+
+The following objects are masked from 'package:terra':
+
+    intersect, union
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+</code></pre>
+<pre><code class="language-r">library(ggthemes)
+library(forecast)
+</code></pre>
+<pre><code>Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo
+</code></pre>
+<pre><code class="language-r">library(lubridate)
+</code></pre>
+<pre><code>Attaching package: 'lubridate'
+
+The following objects are masked from 'package:terra':
+
+    intersect, union
+
+The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union
+</code></pre>
+<pre><code class="language-r">library(ggfortify)
+</code></pre>
+<pre><code>Registered S3 methods overwritten by 'ggfortify':
+  method                 from    
+  autoplot.Arima         forecast
+  autoplot.acf           forecast
+  autoplot.ar            forecast
+  autoplot.bats          forecast
+  autoplot.decomposed.ts forecast
+  autoplot.ets           forecast
+  autoplot.forecast      forecast
+  autoplot.stl           forecast
+  autoplot.ts            forecast
+  fitted.ar              forecast
+  fortify.ts             forecast
+  residuals.ar           forecast
+</code></pre>
+<pre><code class="language-r">library(changepoint)
+</code></pre>
+<pre><code>Loading required package: zoo
+
+
+Attaching package: 'zoo'
+
+The following object is masked from 'package:terra':
+
+    time&lt;-
+
+The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric
+
+Successfully loaded changepoint package version 2.2.4
+ See NEWS for details of changes.
+</code></pre>
+<h1 id="connect-to-api"><a href="https://floodobservatory.colorado.edu/temp/">Connect to api</a></h1>
+<p>The R code provided is designed to retrieve and preprocess flood data
+from a public API. Here’s a step-by-step breakdown:</p>
+<ul>
+<li>Using the glue function, a URL is created that points to an Excel
+    file (FloodArchive.xlsx) hosted on the Flood Observatory website.</li>
+<li>vect() reads this URL, which is effectively an Excel file, treating
+    it as a spatial vector.</li>
+<li>as.data.frame() is used to convert the spatial vector to a
+    dataframe.</li>
+<li>st_as_sf() converts the dataframe to a spatial dataframe with
+    longitude and latitude coordinates.</li>
+<li>The following mutate() functions are utilized: Convert the ‘Began’
+    and ‘Ended’ columns into POSIXct date-time format.</li>
+<li>Convert ‘Validation’ and ‘MainCause’ columns into factors.</li>
+<li>Compute the logarithm (base 10) of the ‘Dead’ and ‘Displaced’
+    columns and store them as ‘log_dead’ and ‘log_displaced’,
+    respectively.</li>
+<li>Finally, the select() function keeps only specific columns from the
+    dataframe, providing a cleaner, more focused dataset.</li>
+</ul>
+<p>After processing, the flood_point_data dataframe is displayed, showing
+the cleaned and transformed flood data.</p>
+<pre><code class="language-r"># Connect to API: https://floodobservatory.colorado.edu/temp/
+
+flood_point_data &lt;- glue(&quot;/vsicurl/https://floodobservatory.colorado.edu/temp/FloodArchive.xlsx&quot;) %&gt;%
+  vect() %&gt;%
+  as.data.frame() %&gt;%
+  st_as_sf(coords = c(&quot;long&quot;,&quot;lat&quot;)) %&gt;%
+  mutate(Began = as.POSIXct(strptime(Began, format=&quot;%y/%m/%d&quot;))) %&gt;%
+  mutate(Ended = as.POSIXct(strptime(Ended, format=&quot;%y/%m/%d&quot;))) %&gt;%
+  mutate(Validation = as.factor(Validation)) %&gt;%
+  mutate(MainCause = as.factor(MainCause)) %&gt;%
+  mutate(log_dead = log10(Dead)) %&gt;%
+  mutate(log_displaced = log10(Displaced)) %&gt;%
+  mutate(log_area = log10(Area)) %&gt;%
+  select(Began, Ended, ID, GlideNumber, Country,   
+         OtherCountry, Area, Validation, Dead, Displaced,   
+         MainCause, Severity, log_dead, log_displaced,log_area, geometry)
+
+flood_point_data
+</code></pre>
+<pre><code>Simple feature collection with 5130 features and 15 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -173.454 ymin: -52.9076 xmax: 179.651 ymax: 68.1591
+CRS:           NA
+First 10 features:
+   Began Ended ID GlideNumber         Country OtherCountry      Area Validation
+1   &lt;NA&gt;  &lt;NA&gt;  1           0         Algeria            0  92615.67       News
+2   &lt;NA&gt;  &lt;NA&gt;  2           0          Brazil            0 678498.82       News
+3   &lt;NA&gt;  &lt;NA&gt;  3           0     Phillipines            0  12846.03       News
+4   &lt;NA&gt;  &lt;NA&gt;  4           0       Indonesia            0  16542.12       News
+5   &lt;NA&gt;  &lt;NA&gt;  5           0      Mozambique            0  20082.21       News
+6   &lt;NA&gt;  &lt;NA&gt;  6           0 Comoros islands            0   1035.61       News
+7   &lt;NA&gt;  &lt;NA&gt;  7           0     New Zealand            0   7871.37       News
+8   &lt;NA&gt;  &lt;NA&gt;  8           0       Indonesia            0  77091.11       News
+9   &lt;NA&gt;  &lt;NA&gt;  9           0             USA            0 210527.96       News
+10  &lt;NA&gt;  &lt;NA&gt; 10           0         Bolivia            0  69706.89       News
+   Dead Displaced         MainCause Severity log_dead log_displaced log_area
+1    26      3000        Heavy rain        1 1.414973      3.477121 4.966684
+2   229     80000        Heavy rain        2 2.359835      4.903090 5.831549
+3    43       444   Torrential rain        1 1.633468      2.647383 4.108769
+4    21       300   Torrential rain        1 1.322219      2.477121 4.218591
+5    19         0        Heavy rain        2 1.278754          -Inf 4.302812
+6     2     35000  Tropical cyclone        1 0.301030      4.544068 3.015196
+7     4       200        Heavy rain        1 0.602060      2.301030 3.896050
+8    10      2000        Heavy rain        1 1.000000      3.301030 4.887004
+9     7      2250 Rain and snowmelt        2 0.845098      3.352183 5.323310
+10    2      1000        Heavy Rain        1 0.301030      3.000000 4.843276
+                    geometry
+1    POINT (5.23026 35.8142)
+2  POINT (-45.3489 -18.7111)
+3    POINT (122.974 10.0207)
+4    POINT (124.606 1.01489)
+5   POINT (32.3491 -25.8693)
+6     POINT (43.36 -11.6516)
+7   POINT (175.734 -37.2305)
+8    POINT (108.14 -7.04008)
+9   POINT (-85.1742 40.6691)
+10 POINT (-63.2887 -21.2244)
+</code></pre>
+<pre><code class="language-r">ggplot(data=flood_point_data, aes(color=Severity)) +
+  geom_sf(cex=0.01) + 
+  theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/plot_flood_point_severity-1.png" /></p>
+<ul>
+<li>ggplot(data=flood_point_data, aes(color=Severity)): This initializes
+    a ggplot object using the flood_point_data dataframe. It also sets
+    the aesthetic color based on the ‘Severity’ column. This means that
+    different severities will be represented by different colors.</li>
+<li>geom_sf(size=0.01): Adds spatial data points to the plot. The
+    size=0.01 argument reduces the size of these points, making them
+    small dots on the plot. The original code used cex=0.01, which isn’t
+    a valid argument for geom_sf in ggplot2. Instead, the correct
+    argument to control the size of the points is size.</li>
+</ul>
+<p>The resulting plot would visualize the spatial distribution of flood
+points, with colors indicating the severity of each flood. Adjusting the
+size parameter can make the dots larger or smaller based on preference.</p>
+<pre><code class="language-r">ggplot(data=flood_point_data, aes(color=MainCause))  +geom_sf(cex=0.01) + 
+  theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/plot_flood_point_MainCause-1.png" /></p>
+<pre><code class="language-r">ggplot(data=flood_point_data, aes(color=log_displaced))  +geom_sf(cex=0.01) + 
+  theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/plot_flood_point_displaced-1.png" /></p>
+<pre><code class="language-r">ggplot(data=flood_point_data, aes(color=log_dead))  +geom_sf(cex=0.01) + 
+  theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/plot_flood_point_Dead-1.png" /></p>
+<pre><code class="language-r">ggplot(data=flood_point_data, aes(color=Validation))  +geom_sf(cex=0.01) + 
+  theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/plot_flood_point_Validation-1.png" /></p>
+<pre><code class="language-r">ggplot(data=flood_point_data, aes(color=Began))+ geom_sf(cex=0.01) + 
+  theme_tufte()
+</code></pre>
+<pre><code class="language-r">ggplot(data=flood_point_data, aes(color=Area))  +
+  geom_sf(cex=0.01) + 
+  theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/plot_flood_point_Area-1.png" /></p>
+<pre><code class="language-r">ggplot(data=flood_point_data)  +
+  geom_point(aes(x=Began ,y=log_dead), color=&quot;grey90&quot;, alpha=0.8) +
+  geom_density_2d(aes(x=Began ,y=log_dead), color=&quot;cornflowerblue&quot;) + 
+  theme_tufte()
+</code></pre>
+<ul>
+<li>ggplot(data=flood_point_data): Initializes a ggplot object using the
+    flood_point_data dataframe.</li>
+<li>geom_point(aes(x=Began ,y=log_dead), color=“grey90”, alpha=0.8):
+    Adds scatter plot points to the ggplot object, with the x-axis
+    representing the date the flood began (Began) and the y-axis
+    representing the logarithm of the death toll (log_dead). The points
+    are colored light gray (grey90) with a transparency of 0.8, making
+    them slightly see-through.</li>
+<li>geom_density_2d(aes(x=Began ,y=log_dead), color=“cornflowerblue”):
+    This adds a 2D density estimation to the plot. The density
+    estimation essentially provides a visual representation of where
+    most of the data points cluster, helping identify patterns in the
+    scatter plot. The density lines are colored cornflower blue.</li>
+<li>theme_tufte(): Applies the Tufte theme to the plot, which is a
+    minimalist theme based on the design principles of Edward Tufte, a
+    pioneer in the field of data visualization. This theme helps reduce
+    non-data ink, thereby enhancing the clarity of the visualization.</li>
+</ul>
+<p>The resulting plot would visually represent the relationship between the
+date floods started and the logarithm of the associated death toll, with
+additional visual cues indicating areas of high density (many events
+with similar characteristics).</p>
+<pre><code class="language-r">ggplot(data=flood_point_data)  +
+  geom_point(aes(x=Began ,y=log_displaced), color=&quot;grey90&quot;, alpha=0.8)+
+  geom_density_2d(aes(x=Began ,y=log_displaced), color=&quot;cornflowerblue&quot;) + 
+  theme_tufte()
+</code></pre>
+<pre><code class="language-r">ggplot(data=flood_point_data)  +
+  geom_point(aes(x=log_dead ,y=log_displaced), color=&quot;grey90&quot;, alpha=0.8)+
+  geom_density_2d(aes(x=log_dead ,y=log_displaced), color=&quot;cornflowerblue&quot;) + 
+  theme_tufte()
+</code></pre>
+<pre><code>Warning: Removed 2526 rows containing non-finite values (`stat_density2d()`).
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-3-1.png" /></p>
+<pre><code class="language-r">ggplot(data=flood_point_data)  +
+  geom_point(aes(x=log_area ,y=log_displaced), color=&quot;grey90&quot;, alpha=0.8)+
+  geom_density_2d(aes(x=log_area ,y=log_displaced), color=&quot;cornflowerblue&quot;) + 
+  theme_tufte()
+</code></pre>
+<pre><code>Warning: Removed 1525 rows containing non-finite values (`stat_density2d()`).
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-4-1.png" /></p>
+<pre><code class="language-r">ggplot(data=flood_point_data)  +
+  geom_point(aes(x=log_area ,y=log_dead), color=&quot;grey90&quot;, alpha=0.8)+
+  geom_density_2d(aes(x=log_area ,y=log_dead), color=&quot;cornflowerblue&quot;) + 
+  theme_tufte()
+</code></pre>
+<pre><code>Warning: Removed 1554 rows containing non-finite values (`stat_density2d()`).
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-5-1.png" /></p>
+<pre><code class="language-r">ggplot(data=flood_point_data)  +
+  geom_point(aes(x=Severity ,y=log_displaced), color=&quot;grey90&quot;, alpha=0.8)+
+  geom_density_2d(aes(x=Severity ,y=log_displaced), color=&quot;cornflowerblue&quot;) + 
+  theme_tufte()
+</code></pre>
+<pre><code>Warning: Removed 1525 rows containing non-finite values (`stat_density2d()`).
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-6-1.png" /></p>
+<pre><code class="language-r">ggplot(data=flood_point_data)  +
+  geom_point(aes(x=Severity ,y=log_dead), color=&quot;grey90&quot;, alpha=0.8)+
+  geom_density_2d(aes(x=Severity ,y=log_dead), color=&quot;cornflowerblue&quot;) + 
+  theme_tufte()
+</code></pre>
+<pre><code>Warning: Removed 1554 rows containing non-finite values (`stat_density2d()`).
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-7-1.png" /></p>
+<pre><code class="language-r">head(flood_point_data)
+</code></pre>
+<pre><code>Simple feature collection with 6 features and 15 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -45.3489 ymin: -25.8693 xmax: 124.606 ymax: 35.8142
+CRS:           NA
+  Began Ended ID GlideNumber         Country OtherCountry      Area Validation
+1  &lt;NA&gt;  &lt;NA&gt;  1           0         Algeria            0  92615.67       News
+2  &lt;NA&gt;  &lt;NA&gt;  2           0          Brazil            0 678498.82       News
+3  &lt;NA&gt;  &lt;NA&gt;  3           0     Phillipines            0  12846.03       News
+4  &lt;NA&gt;  &lt;NA&gt;  4           0       Indonesia            0  16542.12       News
+5  &lt;NA&gt;  &lt;NA&gt;  5           0      Mozambique            0  20082.21       News
+6  &lt;NA&gt;  &lt;NA&gt;  6           0 Comoros islands            0   1035.61       News
+  Dead Displaced        MainCause Severity log_dead log_displaced log_area
+1   26      3000       Heavy rain        1 1.414973      3.477121 4.966684
+2  229     80000       Heavy rain        2 2.359835      4.903090 5.831549
+3   43       444  Torrential rain        1 1.633468      2.647383 4.108769
+4   21       300  Torrential rain        1 1.322219      2.477121 4.218591
+5   19         0       Heavy rain        2 1.278754          -Inf 4.302812
+6    2     35000 Tropical cyclone        1 0.301030      4.544068 3.015196
+                   geometry
+1   POINT (5.23026 35.8142)
+2 POINT (-45.3489 -18.7111)
+3   POINT (122.974 10.0207)
+4   POINT (124.606 1.01489)
+5  POINT (32.3491 -25.8693)
+6    POINT (43.36 -11.6516)
+</code></pre>
+<pre><code class="language-r">non_spatial_version_data &lt;- as.data.frame(flood_point_data)
+first_date &lt;- min(non_spatial_version_data[,1])
+last_date &lt;- max(non_spatial_version_data[,1])
+</code></pre>
+<ul>
+<li>non_spatial_version_data \&lt;- as.data.frame(flood_point_data): The
+    spatial data flood_point_data is converted to a regular non-spatial
+    dataframe, and stored in the variable non_spatial_version_data.</li>
+<li>first_date \&lt;- min(non_spatial_version_data[,1]): It’s assumed
+    that the first column of non_spatial_version_data contains the date
+    data. The minimum date (earliest date) in this column is identified
+    and stored in the variable first_date.</li>
+<li>last_date \&lt;- max(non_spatial_version_data[,1]): Similarly, the
+    maximum date (most recent date) in the first column is identified
+    and stored in the variable last_date.</li>
+</ul>
+<p>This code effectively extracts the range of dates present in the
+flood_point_data. However, a more robust approach might be to use column
+names rather than column indices for clarity and to avoid potential
+errors if the structure of the dataframe changes in the future.</p>
+<h1 id="death-time-series">Death time series</h1>
+<pre><code class="language-r">death_series &lt;- ts(st_drop_geometry(flood_point_data$Dead), frequency = 365, start = c(1985, 1), end = c(2021,311))
+head(death_series)
+</code></pre>
+<pre><code>Time Series:
+Start = c(1985, 1) 
+End = c(1985, 6) 
+Frequency = 365 
+[1]  26 229  43  21  19   2
+</code></pre>
+<ul>
+<li>st_drop_geometry(flood_point_data[,9]): Before creating the time
+    series, you’re using the st_drop_geometry function from the sf
+    package to drop spatial information from the data. You’re then
+    selecting the 9th column, which presumably contains death data
+    (based on our prior discussions). However, it would be more robust
+    to reference the column by name instead of its index to ensure the
+    correct data is being selected.</li>
+<li>ts(…, frequency = 365, start = c(1985, 1), end = c(2021,300)): This
+    initializes a time series (ts) object. The frequency argument is set
+    to 365, suggesting that the data is daily. The start argument
+    specifies that the series begins in January 1985. The end argument,
+    however, seems to have an oversight; the day value of 300 is out of
+    range for typical calendar days. Perhaps you meant to represent the
+    300th day of 2021, but typically, the ts function expects the format
+    c(year, frequency_value), with the frequency value not exceeding the
+    specified frequency (in this case, 365).</li>
+<li>death_series: Displays the created time series object.</li>
+</ul>
+<pre><code class="language-r">death_series %&gt;%
+  decompose() %&gt;%
+  autoplot() + theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-11-1.png" /></p>
+<ul>
+<li>death_series %&gt;% decompose(): The decompose() function from the
+    base R stats package breaks a time series into its component parts:
+    trend, seasonal, and random (also called “remainder” or “error”).
+    This allows for a clearer understanding of the underlying patterns
+    in the data.</li>
+<li>autoplot(): This function from the forecast package provides
+    automatic ggplot2-based visualization of time series objects. When
+    used on the output of decompose(), it generates a multipanel plot
+    showing the observed, trend, seasonal, and remainder components of
+    the time series.</li>
+<li>theme_tufte(): This adds the Tufte theme (from the ggthemes package)
+    to the plot. As previously mentioned, Edward Tufte’s design
+    principles prioritize clarity and minimalism, and this theme helps
+    enhance the readability of the plot by reducing non-data ink.</li>
+</ul>
+<pre><code class="language-r">death_series %&gt;%
+ stl(s.window = &quot;periodic&quot;) %&gt;%
+  autoplot() + theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-12-1.png" /></p>
+<ul>
+<li>death_series %&gt;% stl(s.window = “periodic”): The stl() function
+    decomposes the time series using LOESS. It’s a more flexible method
+    compared to the traditional decompose() function, especially when
+    dealing with non-linear trends or changing seasonal patterns. The
+    s.window = “periodic” argument indicates that the seasonal component
+    should be treated as periodic, implying a stable seasonal pattern
+    throughout the series.</li>
+<li>autoplot(): Again, this function from the forecast package provides
+    an automatic ggplot2-based visualization of time series objects.
+    When applied to the output of stl(), it creates a multipanel plot
+    displaying the observed series, trend component, seasonal component,
+    and remainder (sometimes termed “noise” or “error”).</li>
+<li>theme_tufte(): This overlays the Tufte theme on the plot, providing
+    a minimalist design that emphasizes the data. In essence, this code
+    decomposes the death_series time series using the STL method and
+    visualizes the observed series, its trend, its seasonal patterns,
+    and the remainder, all presented in a clear and minimalist style
+    courtesy of the theme_tufte(). This visualization can be immensely
+    valuable in understanding underlying patterns and variations within
+    time series data.</li>
+</ul>
+<pre><code class="language-r">seasonally_adjusted_log_dead &lt;- death_series %&gt;% stl(s.window='periodic') %&gt;% seasadj() 
+</code></pre>
+<pre><code class="language-r">death_series %&gt;%
+ stl(s.window = &quot;periodic&quot;) %&gt;%
+  autoplot() + theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-14-1.png" /></p>
+<pre><code class="language-r">arima_max_temp &lt;- auto.arima(seasonally_adjusted_log_dead)
+arima_max_temp
+</code></pre>
+<pre><code>Series: seasonally_adjusted_log_dead 
+ARIMA(0,0,0) with non-zero mean
+
+Coefficients:
+          mean
+      139.4731
+s.e.   29.0378
+
+sigma^2 = 11343057:  log likelihood = -128335.4
+AIC=256674.9   AICc=256674.9   BIC=256689.9
+</code></pre>
+<pre><code class="language-r">autoplot(cpt.meanvar(seasonally_adjusted_log_dead), cpt.colour = 'blue', cpt.linetype = 'solid')
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-16-1.png" /></p>
+<pre><code class="language-r">arima_max_temp %&gt;% forecast(h=10000) %&gt;% autoplot()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-17-1.png" /></p>
+<h1 id="displaced-time-series">Displaced time series</h1>
+<pre><code class="language-r">death_series &lt;- ts(st_drop_geometry(flood_point_data$Displaced), frequency = 365, start = c(1985, 1), end = c(2021,300))
+head(death_series)
+</code></pre>
+<pre><code>Time Series:
+Start = c(1985, 1) 
+End = c(1985, 6) 
+Frequency = 365 
+[1]  3000 80000   444   300     0 35000
+</code></pre>
+<ul>
+<li>st_drop_geometry(flood_point_data[,9]): Before creating the time
+    series, you’re using the st_drop_geometry function from the sf
+    package to drop spatial information from the data. You’re then
+    selecting the 9th column, which presumably contains death data
+    (based on our prior discussions). However, it would be more robust
+    to reference the column by name instead of its index to ensure the
+    correct data is being selected.</li>
+<li>ts(…, frequency = 365, start = c(1985, 1), end = c(2021,300)): This
+    initializes a time series (ts) object. The frequency argument is set
+    to 365, suggesting that the data is daily. The start argument
+    specifies that the series begins in January 1985. The end argument,
+    however, seems to have an oversight; the day value of 300 is out of
+    range for typical calendar days. Perhaps you meant to represent the
+    300th day of 2021, but typically, the ts function expects the format
+    c(year, frequency_value), with the frequency value not exceeding the
+    specified frequency (in this case, 365).</li>
+<li>death_series: Displays the created time series object.</li>
+</ul>
+<pre><code class="language-r">death_series %&gt;%
+  decompose() %&gt;%
+  autoplot() + theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-19-1.png" /></p>
+<ul>
+<li>death_series %&gt;% decompose(): The decompose() function from the
+    base R stats package breaks a time series into its component parts:
+    trend, seasonal, and random (also called “remainder” or “error”).
+    This allows for a clearer understanding of the underlying patterns
+    in the data.</li>
+<li>autoplot(): This function from the forecast package provides
+    automatic ggplot2-based visualization of time series objects. When
+    used on the output of decompose(), it generates a multipanel plot
+    showing the observed, trend, seasonal, and remainder components of
+    the time series.</li>
+<li>theme_tufte(): This adds the Tufte theme (from the ggthemes package)
+    to the plot. As previously mentioned, Edward Tufte’s design
+    principles prioritize clarity and minimalism, and this theme helps
+    enhance the readability of the plot by reducing non-data ink.</li>
+</ul>
+<pre><code class="language-r">death_series %&gt;%
+ stl(s.window = &quot;periodic&quot;) %&gt;%
+  autoplot() + theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-20-1.png" /></p>
+<ul>
+<li>death_series %&gt;% stl(s.window = “periodic”): The stl() function
+    decomposes the time series using LOESS. It’s a more flexible method
+    compared to the traditional decompose() function, especially when
+    dealing with non-linear trends or changing seasonal patterns. The
+    s.window = “periodic” argument indicates that the seasonal component
+    should be treated as periodic, implying a stable seasonal pattern
+    throughout the series.</li>
+<li>autoplot(): Again, this function from the forecast package provides
+    an automatic ggplot2-based visualization of time series objects.
+    When applied to the output of stl(), it creates a multipanel plot
+    displaying the observed series, trend component, seasonal component,
+    and remainder (sometimes termed “noise” or “error”).</li>
+<li>theme_tufte(): This overlays the Tufte theme on the plot, providing
+    a minimalist design that emphasizes the data. In essence, this code
+    decomposes the death_series time series using the STL method and
+    visualizes the observed series, its trend, its seasonal patterns,
+    and the remainder, all presented in a clear and minimalist style
+    courtesy of the theme_tufte(). This visualization can be immensely
+    valuable in understanding underlying patterns and variations within
+    time series data.</li>
+</ul>
+<pre><code class="language-r">seasonally_adjusted_log_dead &lt;- death_series %&gt;% stl(s.window='periodic') %&gt;% seasadj() 
+</code></pre>
+<pre><code class="language-r">death_series %&gt;%
+ stl(s.window = &quot;periodic&quot;) %&gt;%
+  autoplot() + theme_tufte()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-22-1.png" /></p>
+<pre><code class="language-r">arima_max_temp &lt;- auto.arima(seasonally_adjusted_log_dead)
+arima_max_temp
+</code></pre>
+<pre><code>Series: seasonally_adjusted_log_dead 
+ARIMA(0,0,0) with non-zero mean
+
+Coefficients:
+           mean
+      139494.46
+s.e.   10570.21
+
+sigma^2 = 1.455e+12:  log likelihood = -207268.4
+AIC=414540.7   AICc=414540.7   BIC=414555.7
+</code></pre>
+<pre><code class="language-r">autoplot(cpt.meanvar(seasonally_adjusted_log_dead), cpt.colour = 'blue', cpt.linetype = 'solid')
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-24-1.png" /></p>
+<pre><code class="language-r">arima_max_temp %&gt;% forecast(h=10000) %&gt;% autoplot()
+</code></pre>
+<p><img alt="" src="../Pull_flood_data_files/figure-gfm/unnamed-chunk-25-1.png" /></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2023-11-16
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../Why%20data%20cubes/Why%20data%20cubes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Why Data Cubes?" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Why Data Cubes?
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Pull_flood_polygons/" class="md-footer__link md-footer__link--next" aria-label="Next: Flood event area (polygons)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Flood event area (polygons)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 University of Colorado Boulder
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/cu-esiil/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.top", "toc.integrate", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>

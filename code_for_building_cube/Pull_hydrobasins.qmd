@@ -1,0 +1,220 @@
+---
+title: "HydroBASINS"
+author: "Ty Tuff, ESIIL Data Scientist"
+date: "2023-10-27"
+format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+Lehner, B., Grill G. (2013). Global river hydrography and network routing: baseline data and new approaches to study the world’s large river systems. Hydrological Processes, 27(15): 2171–2186. https://doi.org/10.1002/hyp.9740
+
+https://www.hydrosheds.org/products/hydrobasins
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+library(dplyr)
+library(sf)
+library(terra)
+library(tidyterra)
+library(glue)
+library(ggplot2)
+library(ggthemes)
+library(stars)
+```
+
+
+```{r river_basins, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/HydroBASINS/standard/hybas_na_lev06_v1c.zip") %>%
+  vect() %>%
+  st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data
+```
+
+
+```{r plot_river_basins, cache=TRUE, warning=FALSE, message=FALSE}
+ggplot(data=flood_polygon_data, aes(fill=ORDER)) +
+  geom_sf() + 
+  theme_tufte()
+```
+
+
+https://figshare.com/ndownloader/files/20087237
+
+
+
+
+```{r DEM, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-dem/hyd_na_dem_15s.zip/hyd_na_dem_15s.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data
+```
+
+
+```{r DEM_plot, cache=TRUE, warning=FALSE, message=FALSE}
+
+ggplot() +
+  geom_spatraster(data=flood_polygon_data) +
+  theme_tufte()
+```
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-con/na_con_3s/n20w110_con.zip/n20w110_con.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data
+```
+
+```{r}
+flood_polygon_data2 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-con/na_con_3s/n20w120_con.zip/n20w120_con.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data2
+```
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-con/na_con_3s/n40w080_con.zip/n40w080_con.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data3
+```
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE }
+
+ggplot() +
+  geom_spatraster(data=flood_polygon_data) +
+  geom_spatraster(data=flood_polygon_data2) +
+  geom_spatraster(data=flood_polygon_data3) +
+  theme_tufte()
+```
+
+
+
+
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-dir/na_dir_3s/n50w100_dir.zip/n50w100_dir.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data
+```
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data2 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-dir/na_dir_3s/n50w110_dir.zip/n50w110_dir.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data2
+```
+
+```{r flow_direction, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-dir/na_dir_3s/n50w120_dir.zip/n50w120_dir.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data3
+```
+
+```{r plot_flow_direction, cache=TRUE, warning=FALSE, message=FALSE}
+
+ggplot() +
+  geom_spatraster(data=flood_polygon_data) +
+  geom_spatraster(data=flood_polygon_data2) +
+  geom_spatraster(data=flood_polygon_data3) +
+  theme_tufte()
+```
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-aca/hyd_na_aca_15s.zip/hyd_na_aca_15s.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data3
+```
+
+```{r , cache=TRUE, warning=FALSE, message=FALSE}
+
+ggplot() +
+
+  geom_spatraster(data=flood_polygon_data3) +
+  theme_tufte()
+```
+
+
+```{r upstream_distance, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-ldn/hyd_na_ldn_15s.zip/hyd_na_ldn_15s.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data3
+```
+
+```{r plot_upstream_distance, cache=TRUE, warning=FALSE, message=FALSE}
+
+ggplot() +
+
+  geom_spatraster(data=flood_polygon_data3) +
+  theme_tufte()
+```
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-v1-msk/hyd_na_msk_15s.zip/hyd_na_msk_15s.tif") %>%
+  rast() #%>%
+  #st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data3
+```
+
+```{r , cache=TRUE, warning=FALSE, message=FALSE}
+
+ggplot() +
+
+  geom_spatraster(data=flood_polygon_data3) +
+  theme_tufte()
+```
+
+
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data3 <- glue("/vsizip/vsicurl/ /GloRiC_v10_shapefile-2/GloRiC_v10_shapefile/GloRiC_v10.shp") %>%
+  st_read() %>%
+  st_as_sf(coords = c("lon","lat"))
+
+flood_polygon_data3
+```
+
+```{r , eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+
+ggplot() +
+
+  geom_spatraster(data=flood_polygon_data3) +
+  theme_tufte()
+```
+
+https://figshare.com/ndownloader/files/31910714
+
+https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_Canada_v10_shapefile.zip
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+flood_polygon_data3 <- glue("/vsizip/vsicurl/https://data.hydrosheds.org/file/hydrosheds-associated/gloric/GloRiC_Canada_v10_shapefile.zip/GloRiC_Canada_v10_shapefile.csv") %>%
+  vect()
+flood_polygon_data3
+```
+
+```{r , eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+
+ggplot() +
+
+  geom_spatraster(data=flood_polygon_data3) +
+  theme_tufte()
+```

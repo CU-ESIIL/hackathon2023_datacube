@@ -1,0 +1,1202 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Instructional material for ESIIL Hackathon 2023">
+      
+      
+        <meta name="author" content="ESIIL CI team (lead = Ty Tuff)">
+      
+      
+        <link rel="canonical" href="https://cu-esiil.github.io/hackathon2023_datacube/">
+      
+      <link rel="icon" href="assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>ESIIL Pre-Hackathon Training Sessions 2023</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#virtual-training-for-collaboration-in-environmental-data-science" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="ESIIL Pre-Hackathon Training Sessions 2023" class="md-header__button md-logo" aria-label="ESIIL Pre-Hackathon Training Sessions 2023" data-md-component="logo">
+      
+  <img src="assets/ESIIL_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ESIIL Pre-Hackathon Training Sessions 2023
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: white)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://cu-esiil.github.io/hackathon2023_datacube" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hackathon2023_datacube
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="ESIIL Pre-Hackathon Training Sessions 2023" class="md-nav__button md-logo" aria-label="ESIIL Pre-Hackathon Training Sessions 2023" data-md-component="logo">
+      
+  <img src="assets/ESIIL_logo.png" alt="logo">
+
+    </a>
+    ESIIL Pre-Hackathon Training Sessions 2023
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://cu-esiil.github.io/hackathon2023_datacube" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hackathon2023_datacube
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Home
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    Agenda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-1-collaborating-in-the-cloud-thursday-october-26th" class="md-nav__link">
+    Week 1 -- Collaborating in the Cloud (Thursday October 26th)
+  </a>
+  
+    <nav class="md-nav" aria-label="Week 1 -- Collaborating in the Cloud (Thursday October 26th)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#watch-this-training-or-read-the-transcript" class="md-nav__link">
+    Watch this training or read the transcript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-github-and-the-cyverse-discovery-environment" class="md-nav__link">
+    Introduction to Github and the CyVerse Discovery Environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-drive" class="md-nav__link">
+    Test drive
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-readings-from-our-earth-data-science-textbook" class="md-nav__link">
+    Additional Readings from our Earth Data Science Textbook!
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-2-environmental-data-science-and-environmental-mosaics-data-library-thursday-november-2nd" class="md-nav__link">
+    Week 2 -- Environmental Data Science and Environmental MosAIc's Data Library (Thursday November 2nd)
+  </a>
+  
+    <nav class="md-nav" aria-label="Week 2 -- Environmental Data Science and Environmental MosAIc's Data Library (Thursday November 2nd)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#watch-this-training-or-read-the-transcript_1" class="md-nav__link">
+    Watch this training or read the transcript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cyverse-discovery-environment" class="md-nav__link">
+    Cyverse Discovery Environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-library" class="md-nav__link">
+    Data Library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-readings" class="md-nav__link">
+    Recommended Readings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-3-environmental-mosaic-data-library-artificial-intelligence-thursday-november-9th" class="md-nav__link">
+    Week 3 -- Environmental MosAIc Data Library &amp; Artificial Intelligence (Thursday November 9th)
+  </a>
+  
+    <nav class="md-nav" aria-label="Week 3 -- Environmental MosAIc Data Library &amp; Artificial Intelligence (Thursday November 9th)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#watch-this-training-or-read-the-transcript_2" class="md-nav__link">
+    Watch this training or read the transcript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmental-mosaic-data-library" class="md-nav__link">
+    Environmental MosAIc Data Library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artificial-intelligence" class="md-nav__link">
+    Artificial Intelligence
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="assets/Behavior%20poster%20v3.png" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Our%20Team/Our%20Team/" class="md-nav__link">
+        Our team
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Collaboration in the Cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Collaboration in the Cloud" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Collaboration in the Cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_GIT_on_the_Cloud/github_lesson/" class="md-nav__link">
+        GitHub essentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_GIT_on_the_Cloud/collaboration/" class="md-nav__link">
+        CyVerse Discovery Environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_GIT_on_the_Cloud/github_cyverse/" class="md-nav__link">
+        Connecting Cyverse to Github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/stac_mount_save/" class="md-nav__link">
+        Environmental Data Science in the Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_EDS_Data_Cube/translate_vsi_to_python/" class="md-nav__link">
+        Environmental Data Science in the Cloud (Python)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Data Cubes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Cubes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Data Cubes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Why%20data%20cubes/Why%20data%20cubes/" class="md-nav__link">
+        Why Data Cubes?
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/Pull_flood_data/" class="md-nav__link">
+        Flood event inventory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/Pull_flood_polygons/" class="md-nav__link">
+        Flood event area (polygons)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/Pull_river_vector_data/" class="md-nav__link">
+        River geography
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/Pull_hydrobasins/" class="md-nav__link">
+        River and Basin features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/neon_and_lter/" class="md-nav__link">
+        NEON Lakes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/neon_aquatic/" class="md-nav__link">
+        NEON Rivers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/epa_water_quality/" class="md-nav__link">
+        EPA water quality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/usgs_water_services/" class="md-nav__link">
+        USGS Water Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/iNaturalist.md" class="md-nav__link">
+        Global Species Occurrence
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/neon_lidar_and_organismal/" class="md-nav__link">
+        NEON LIDAR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/neon/" class="md-nav__link">
+        NEON biogeochemistry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/osm/" class="md-nav__link">
+        Open Street Map
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/US_Census/" class="md-nav__link">
+        US Census
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code_for_building_cube/Pull_Sentinal2_l2_data/" class="md-nav__link">
+        Remote sensing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Analytics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Analytics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Analytics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Artificial_Intelligence/What%20is%20AI%3F/" class="md-nav__link">
+        What is AI?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Artificial_Intelligence/AI%20in%20EDS/" class="md-nav__link">
+        Scientific questions as AI problems
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Artificial_Intelligence/choosing%20algorithm/" class="md-nav__link">
+        Choosing an AI algorithm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://cu-esiil.github.io/hackathon2023_datacube/edit/main/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<p><img alt="header" src="assets/pre-summit-training-header.png" /></p>
+<h1 id="virtual-training-for-collaboration-in-environmental-data-science">Virtual Training for Collaboration in Environmental Data Science</h1>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<p>Welcome to the Environmental Data Science Innovation &amp; Inclusion Lab (<a href="https://esiil.org/" target="_blank"><strong>ESIIL</strong></a>)! These training sessions are intended to provide attendees to the <a href="https://esiil.org/virtual-hackathon" target="_blank"><strong>ESIIL Virtual Hackathon - Environmental MosAIc</strong></a> with some technical background to help foster innovation and collaboartion during the hackathon. Through this training, attendees will learn how to access and engage with cloud-based communication and computational tools that will be relied on throughout the hackathon, fundamental Environmental Data Science (EDS) skills using <a href="https://www.r-project.org/" target="_blank"><strong>R</strong></a> and <a href="https://www.python.org/" target="_blank"><strong>Python</strong></a>, and fundamentals of AI. These sessions are being recorded and published on our YouTube channel for anyone who is unable to attend, or for those who would like to go back and revisit these lessons. Finally, we will have super fun virtual help desks set up during the hackathon as questions come up and for anyone who would like help troubleshooting.</p>
+<h2 id="agenda">Agenda</h2>
+<p>Sessions 1 and 2 will run from <strong>10am - 12pm Mountain Daylight Time</strong> and will meet <em>virtually</em> over <strong>Zoom</strong>.</p>
+<p>Session 3 will run from <strong>9am - 12pm Mountain Daylight Time</strong> and will meet <em>virtually</em> over <strong>Zoom</strong>.</p>
+<div style="text-align:center;padding:1em 0;"> <h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/en/city/5574991"><span style="color:gray;">Current local time in</span><br />Boulder, United States</a></h4> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=America%2FDenver" width="100%" height="90" frameborder="0" seamless></iframe> </div>
+
+<h2 id="week-1-collaborating-in-the-cloud-thursday-october-26th">Week 1 -- Collaborating in the Cloud (Thursday October 26th)</h2>
+<blockquote>
+<h3 id="watch-this-training-or-read-the-transcript"><a href="https://www.youtube.com/watch?v=scmmjnhBaTs" target="_blank"><strong>Watch this training</strong></a> or <a href="./assets/Hackathon_CI_Training_Transcript.pdf" target="_blank"><strong>read the transcript</strong></a></h3>
+<ul>
+<li><strong>Opening remarks:</strong> Jennifer Balch, ESIIL Director</li>
+<li><strong>Session overview:</strong> Nate Quarderer, ESIIL Education Director</li>
+</ul>
+<h3 id="introduction-to-github-and-the-cyverse-discovery-environment"><strong><em>Introduction to Github and the CyVerse Discovery Environment</em></strong></h3>
+<ul>
+<li><strong>Instructors:</strong> Culler, Verleye</li>
+<li><a href="https://github.com/" target="_blank"><strong>GitHub</strong></a> for Collaboration 🤝<ul>
+<li>Why GitHub?</li>
+<li>A brief overview of GitHub collaboration features</li>
+<li>Pair programming, or How we suggest you use GitHub for the Hackathon</li>
+</ul>
+</li>
+<li>Navigating the Constellation of Cyberinfrastructure <ul>
+<li><a href="https://de.cyverse.org/" target="_blank"><strong>CyVerse Discovery Environment</strong></a> ✨</li>
+<li><a href="https://jetstream-cloud.org/" target="_blank"><strong>JetStream2</strong></a> 🚀</li>
+</ul>
+</li>
+</ul>
+<h3 id="test-drive"><strong><em>Test drive</em></strong></h3>
+<ul>
+<li><strong>Instructors:</strong> Culler, Verleye, Tuff, Swetnam</li>
+<li>Activity:</li>
+<li>Split into groups of 2 (randomly assigned). Each group will go to a breakout room and have 10 minutes to:<ol>
+<li>One person ONLY accepts the <a href="https://classroom.github.com/a/9DWNrNFh">GitHub Classroom assignment by clicking this link</a>. This will create a GitHub repository that contains two notebooks for both team members to collaborate on. One notebook is for creating a file with annual LA temperature data, and the other notebook uses it to fit a linear model and plot the data.</li>
+<li>Both team members clone the GitHub repository into Cyverse using either Jupyter Lab or RStudio. If you have trouble with this, don't worry - we'll go over it later. Please <strong>make sure that both team members have the URL to their GitHub repository!</strong></li>
+<li>Choose which person will work on which notebook.</li>
+<li>Plan what your intermediate data file (annual temperatures in LA) will look like. There is a spot in both notebooks for writing down the plan.</li>
+</ol>
+</li>
+<li>Everyone comes back to the main room</li>
+<li>We split into two breakout rooms by notebook - there should be one member from each group in each room. Each room will walk through completing the notebook and pushing your results up to GitHub.</li>
+<li>Return to your group of 2, and see if you can get your code to work together!</li>
+<li>When you are in a room with your group of 2, you can always get someone to come look at your code using the Ask For Help feature.</li>
+</ul>
+<h3 id="additional-readings-from-our-earth-data-science-textbook"><strong><em>Additional Readings from our Earth Data Science Textbook!</em></strong></h3>
+<ul>
+<li><a href="https://www.earthdatascience.org/courses/earth-analytics/time-series-data/date-class-in-r/" target="_blank"><strong>Time Series Data in R</strong></a></li>
+<li><a href="https://www.earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/" target="_blank"><strong>Time Series Data in Python</strong></a></li>
+<li><a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/" target="_blank"><strong>Spatial Data in R</strong></a></li>
+<li><a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-vector-data-python/" target="_blank"><strong>Introduction to Vector Data in Python</strong></a></li>
+<li><a href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-raster-data-python/" target="_blank"><strong>Introduction to Raster Data in Python</strong></a></li>
+</ul>
+</blockquote>
+<h2 id="week-2-environmental-data-science-and-environmental-mosaics-data-library-thursday-november-2nd">Week 2 -- Environmental Data Science and Environmental MosAIc's Data Library (Thursday November 2nd)</h2>
+<h3 id="watch-this-training-or-read-the-transcript_1"><a href="https://www.youtube.com/watch?v=6GILw5QrBSw"><strong>Watch this training</strong></a> or <a href="./assets/Transcript_hackathon_training2.pdf" target="_blank"><strong>read the transcript</strong></a></h3>
+<blockquote>
+<ul>
+<li><strong>Session overview:</strong> Nate Quarderer, ESIIL Education Director</li>
+</ul>
+<h3 id="cyverse-discovery-environment"><strong><em>Cyverse Discovery Environment</em></strong></h3>
+<ul>
+<li><strong>Instructors:</strong> Culler, Verleye<ul>
+<li>Review </li>
+</ul>
+</li>
+</ul>
+<h3 id="data-library"><strong><em>Data Library</em></strong></h3>
+<ul>
+<li><strong>Instructors:</strong> Tuff, Amaral<ul>
+<li>The Data Library</li>
+<li>Accessing data with an API</li>
+<li>Saving your own data cube</li>
+</ul>
+</li>
+</ul>
+<h3 id="recommended-readings"><strong><em>Recommended Readings</em></strong></h3>
+<ul>
+<li><a href="https://www.nature.com/articles/sdata201618" target="_blank">The FAIR guiding principles for scientific data management and stewardship</a></li>
+<li><a href="https://www.gida-global.org/care" target="_blank">CARE principles for Indigenous data governance</a></li>
+</ul>
+</blockquote>
+<h2 id="week-3-environmental-mosaic-data-library-artificial-intelligence-thursday-november-9th">Week 3 -- Environmental MosAIc Data Library &amp; Artificial Intelligence (Thursday November 9th)</h2>
+<blockquote>
+<h3 id="watch-this-training-or-read-the-transcript_2"><a href="https://www.youtube.com/watch?v=gnseBLR7Bqs" target="_blank"><strong>Watch this training</strong></a> or <a href="./assets/ESIIL_HackathonTraining_Transcript3.pdf" target="_blank"><strong>read the transcript</strong></a></h3>
+<ul>
+<li><strong>Session overview:</strong> Nate Quarderer, ESIIL Education Director</li>
+</ul>
+<h3 id="environmental-mosaic-data-library"><strong><em>Environmental MosAIc Data Library</em></strong></h3>
+<ul>
+<li><strong>Instructor:</strong> Tuff<ul>
+<li>The Data Library</li>
+<li>Accessing data with an API</li>
+<li>Saving your own data cube</li>
+</ul>
+</li>
+</ul>
+<h3 id="artificial-intelligence"><strong><em>Artificial Intelligence</em></strong></h3>
+<ul>
+<li><strong>Instructor:</strong> Ghriss<ul>
+<li>AI and Machine Learning algorithms </li>
+<li>Examples of Machine Learning techniques</li>
+<li>Interacting with a machine learning model</li>
+<li>Fairness and ethical use of AI</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="links">Links</h2>
+<p><strong>GitHub repository:</strong> <a href="https://github.com/CU-ESIIL/hackathon2023_datacube" target="_blank"><strong>https://github.com/CU-ESIIL/hackathon2023_datacube</strong></a></p>
+<p><strong>CyVerse User Portal:</strong> <a href="https://user.cyverse.org" target="_blank"><strong>https://user.cyverse.org</strong></a></p>
+<p><strong>Open Earth Data Science Textbook:</strong> <a href="https://www.earthdatascience.org/" target="_blank"><strong>https://www.earthdatascience.org/</strong></a></p>
+<p><strong>ESIIL Data Library:</strong> <a href="https://data-library.esiil.org/" target="_blank"><strong>https://data-library.esiil.org/</strong></a></p>
+<hr />
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2023-11-16
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+      
+        
+        <a href="assets/Behavior%20poster%20v3.png" class="md-footer__link md-footer__link--next" aria-label="Next: Code of Conduct" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Code of Conduct
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 University of Colorado Boulder
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/cu-esiil/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.top", "toc.integrate", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>

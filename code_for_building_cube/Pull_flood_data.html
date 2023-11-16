@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Pull flood data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Pull_flood_data_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Pull_flood_data_files/libs/quarto-html/quarto.js"></script>
+<script src="Pull_flood_data_files/libs/quarto-html/popper.min.js"></script>
+<script src="Pull_flood_data_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Pull_flood_data_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Pull_flood_data_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Pull_flood_data_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Pull_flood_data_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Pull_flood_data_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Pull_flood_data_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link active" data-scroll-target="#load-libraries"> <span class="header-section-number">1</span> Load Libraries</a></li>
+  <li><a href="#connect-to-api" id="toc-connect-to-api" class="nav-link" data-scroll-target="#connect-to-api"> <span class="header-section-number">2</span> <span>Connect to api</span></a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Pull flood data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p><a href="https://floodobservatory.colorado.edu/Archives/index.html">Global Active Archive of Large Flood Events, 1985-Present</a></p>
+<p>Housed at the Dartmouth Flood Observatory (DFO) and maintained by the University of Colorado, the Global Active Archive of Large Flood Events is a comprehensive repository that records significant flood events from 1985 to the present day. This dynamic and “active” archive continually incorporates data from contemporary flood events, ensuring the information remains current and relevant.</p>
+<p>Key Features:</p>
+<ul>
+<li><p>Diverse Data Sources: The information within the archive is meticulously collated from a wide array of sources, including news reports, governmental agencies, instrumental measurements, and satellite remote sensing.</p></li>
+<li><p>Granular Event Details: Each recorded flood event within the archive is distinct, and its associated details are presented in an “area affected” map. Despite the discrete nature of these records, it’s acknowledged that certain regions experience recurrent flooding, which may necessitate a nuanced approach in classifying such events.</p></li>
+<li><p>Comprehensive Coverage: The archive boasts a global purview, capturing the magnitude and impact of significant flood events worldwide. It’s noteworthy that while death and displacement estimates from tropical storms encompass all causative factors, storms devoid of notable river flooding aren’t incorporated.</p></li>
+<li><p>Accessible Formats: The archive is versatile in its presentation:</p>
+<ul>
+<li>An online table enumerates recent flood events.</li>
+<li>Detailed records from 1985 onwards are accessible in both Excel (.xlsx and .xml) formats. These are periodically updated.</li>
+<li>GIS users can tap into zip-compressed MapInfo and Shp format files that elucidate flood catalog numbers, centroids, and other salient attribute details.</li>
+</ul></li>
+<li><p>Satellite Imaging: A considerable number of flood events have been vividly captured through satellite imaging. These have been further processed by the DFO to generate detailed maps delineating inundation extents. An index of these maps is accessible via the DFO Flood Maps Index.</p>
+<ul>
+<li>For those interested in understanding the methodology behind the creation of these invaluable maps and tables, additional notes and insights are available within the archive.</li>
+</ul></li>
+</ul>
+<p>The Global Active Archive, given its academic and research-oriented nature, is generously made available at no charge for scholarly pursuits and educational endeavors.</p>
+<p>Sample Citation: G.R. Brakenridge. Global Active Archive of Large Flood Events. Dartmouth Flood Observatory, University of Colorado, USA.</p>
+<p><a href="/Users/ty/Documents/Github/hackathon2023_datacube/code_for_building_cube/file_types_for_flood_data.png">Flood data file types available for download</a></p>
+<p><a href="https://floodobservatory.colorado.edu/FloodMapIndex.htm">Here is arial imagery for some floods</a></p>
+<section id="load-libraries" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Load Libraries</h1>
+<p>The code chunk provided is written in R and is used for loading multiple libraries/packages. These libraries contain functions and tools that extend the capabilities of R for various tasks. Specifically:</p>
+<p>glue: Provides tools to format R strings with embedded code. sf: Used for handling and analyzing spatial data. terra: Offers tools for spatial data handling and analysis. ggplot2: A popular data visualization package in R. dplyr: Part of the tidyverse and is used for data manipulation. ggthemes: Adds extra themes, geoms, and scales to ggplot2. forecast: Used for time series forecasting.</p>
+<p>When executed, this code will make the functions and tools from these libraries available for use in the R session.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>terra 1.7.39</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'terra'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:glue':
+
+    trim</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:terra':
+
+    intersect, union</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forecast)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'lubridate'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:terra':
+
+    intersect, union</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggfortify)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 methods overwritten by 'ggfortify':
+  method                 from    
+  autoplot.Arima         forecast
+  autoplot.acf           forecast
+  autoplot.ar            forecast
+  autoplot.bats          forecast
+  autoplot.decomposed.ts forecast
+  autoplot.ets           forecast
+  autoplot.forecast      forecast
+  autoplot.stl           forecast
+  autoplot.ts            forecast
+  fitted.ar              forecast
+  fortify.ts             forecast
+  residuals.ar           forecast</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(changepoint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: zoo</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'zoo'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:terra':
+
+    time&lt;-</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Successfully loaded changepoint package version 2.2.4
+ See NEWS for details of changes.</code></pre>
+</div>
+</div>
+</section>
+<section id="connect-to-api" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <a href="https://floodobservatory.colorado.edu/temp/">Connect to api</a></h1>
+<p>The R code provided is designed to retrieve and preprocess flood data from a public API. Here’s a step-by-step breakdown:</p>
+<ul>
+<li>Using the glue function, a URL is created that points to an Excel file (FloodArchive.xlsx) hosted on the Flood Observatory website.</li>
+<li>vect() reads this URL, which is effectively an Excel file, treating it as a spatial vector.</li>
+<li>as.data.frame() is used to convert the spatial vector to a dataframe.</li>
+<li>st_as_sf() converts the dataframe to a spatial dataframe with longitude and latitude coordinates.</li>
+<li>The following mutate() functions are utilized: Convert the ‘Began’ and ‘Ended’ columns into POSIXct date-time format.</li>
+<li>Convert ‘Validation’ and ‘MainCause’ columns into factors.</li>
+<li>Compute the logarithm (base 10) of the ‘Dead’ and ‘Displaced’ columns and store them as ‘log_dead’ and ‘log_displaced’, respectively.</li>
+<li>Finally, the select() function keeps only specific columns from the dataframe, providing a cleaner, more focused dataset.</li>
+</ul>
+<p>After processing, the flood_point_data dataframe is displayed, showing the cleaned and transformed flood data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to API: https://floodobservatory.colorado.edu/temp/</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>flood_point_data <span class="ot">&lt;-</span> <span class="fu">glue</span>(<span class="st">"/vsicurl/https://floodobservatory.colorado.edu/temp/FloodArchive.xlsx"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vect</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"long"</span>,<span class="st">"lat"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Began =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(Began, <span class="at">format=</span><span class="st">"%Y/%m/%d"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Ended =</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(Ended, <span class="at">format=</span><span class="st">"%Y/%m/%d"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Validation =</span> <span class="fu">as.factor</span>(Validation)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MainCause =</span> <span class="fu">as.factor</span>(MainCause)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_dead =</span> <span class="fu">log10</span>(Dead)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_displaced =</span> <span class="fu">log10</span>(Displaced)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Began, Ended, ID, GlideNumber, Country,   </span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>         OtherCountry, Area, Validation, Dead, Displaced,   </span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>         MainCause, Severity, log_dead, log_displaced, geometry)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>flood_point_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 5130 features and 14 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -173.454 ymin: -52.9076 xmax: 179.651 ymax: 68.1591
+CRS:           NA
+First 10 features:
+        Began      Ended ID GlideNumber         Country OtherCountry      Area
+1  1985-01-01 1985-01-05  1           0         Algeria            0  92615.67
+2  1985-01-15 1985-02-02  2           0          Brazil            0 678498.82
+3  1985-01-20 1985-01-21  3           0     Phillipines            0  12846.03
+4  1985-02-04 1985-02-18  4           0       Indonesia            0  16542.12
+5  1985-02-09 1985-02-11  5           0      Mozambique            0  20082.21
+6  1985-02-16 1985-02-28  6           0 Comoros islands            0   1035.61
+7  1985-02-17 1985-02-18  7           0     New Zealand            0   7871.37
+8  1985-02-19 1985-02-23  8           0       Indonesia            0  77091.11
+9  1985-02-22 1985-03-01  9           0             USA            0 210527.96
+10 1985-02-25 1985-02-28 10           0         Bolivia            0  69706.89
+   Validation Dead Displaced         MainCause Severity log_dead log_displaced
+1        News   26      3000        Heavy rain        1 1.414973      3.477121
+2        News  229     80000        Heavy rain        2 2.359835      4.903090
+3        News   43       444   Torrential rain        1 1.633468      2.647383
+4        News   21       300   Torrential rain        1 1.322219      2.477121
+5        News   19         0        Heavy rain        2 1.278754          -Inf
+6        News    2     35000  Tropical cyclone        1 0.301030      4.544068
+7        News    4       200        Heavy rain        1 0.602060      2.301030
+8        News   10      2000        Heavy rain        1 1.000000      3.301030
+9        News    7      2250 Rain and snowmelt        2 0.845098      3.352183
+10       News    2      1000        Heavy Rain        1 0.301030      3.000000
+                    geometry
+1    POINT (5.23026 35.8142)
+2  POINT (-45.3489 -18.7111)
+3    POINT (122.974 10.0207)
+4    POINT (124.606 1.01489)
+5   POINT (32.3491 -25.8693)
+6     POINT (43.36 -11.6516)
+7   POINT (175.734 -37.2305)
+8    POINT (108.14 -7.04008)
+9   POINT (-85.1742 40.6691)
+10 POINT (-63.2887 -21.2244)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Severity)) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_severity-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>ggplot(data=flood_point_data, aes(color=Severity)): This initializes a ggplot object using the flood_point_data dataframe. It also sets the aesthetic color based on the ‘Severity’ column. This means that different severities will be represented by different colors.</li>
+<li>geom_sf(size=0.01): Adds spatial data points to the plot. The size=0.01 argument reduces the size of these points, making them small dots on the plot. The original code used cex=0.01, which isn’t a valid argument for geom_sf in ggplot2. Instead, the correct argument to control the size of the points is size.</li>
+</ul>
+<p>The resulting plot would visualize the spatial distribution of flood points, with colors indicating the severity of each flood. Adjusting the size parameter can make the dots larger or smaller based on preference.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>MainCause))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_MainCause-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>log_displaced))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_displaced-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>log_dead))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Dead-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Validation))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Validation-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Ended))  <span class="sc">+</span><span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Ended-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data, <span class="fu">aes</span>(<span class="at">color=</span>Area))  <span class="sc">+</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">cex=</span><span class="fl">0.01</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/plot_flood_point_Area-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data)  <span class="sc">+</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>Began ,<span class="at">y=</span>log_dead), <span class="at">color=</span><span class="st">"grey90"</span>, <span class="at">alpha=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d</span>(<span class="fu">aes</span>(<span class="at">x=</span>Began ,<span class="at">y=</span>log_dead), <span class="at">color=</span><span class="st">"cornflowerblue"</span>) <span class="sc">+</span> </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tufte</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1554 rows containing non-finite values (`stat_density2d()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>ggplot(data=flood_point_data): Initializes a ggplot object using the flood_point_data dataframe.</li>
+<li>geom_point(aes(x=Began ,y=log_dead), color=“grey90”, alpha=0.8): Adds scatter plot points to the ggplot object, with the x-axis representing the date the flood began (Began) and the y-axis representing the logarithm of the death toll (log_dead). The points are colored light gray (grey90) with a transparency of 0.8, making them slightly see-through.</li>
+<li>geom_density_2d(aes(x=Began ,y=log_dead), color=“cornflowerblue”): This adds a 2D density estimation to the plot. The density estimation essentially provides a visual representation of where most of the data points cluster, helping identify patterns in the scatter plot. The density lines are colored cornflower blue.</li>
+<li>theme_tufte(): Applies the Tufte theme to the plot, which is a minimalist theme based on the design principles of Edward Tufte, a pioneer in the field of data visualization. This theme helps reduce non-data ink, thereby enhancing the clarity of the visualization.</li>
+</ul>
+<p>The resulting plot would visually represent the relationship between the date floods started and the logarithm of the associated death toll, with additional visual cues indicating areas of high density (many events with similar characteristics).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data)  <span class="sc">+</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>Began ,<span class="at">y=</span>log_displaced), <span class="at">color=</span><span class="st">"grey90"</span>, <span class="at">alpha=</span><span class="fl">0.8</span>)<span class="sc">+</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d</span>(<span class="fu">aes</span>(<span class="at">x=</span>Began ,<span class="at">y=</span>log_displaced), <span class="at">color=</span><span class="st">"cornflowerblue"</span>) <span class="sc">+</span> </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tufte</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1525 rows containing non-finite values (`stat_density2d()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data)  <span class="sc">+</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>Severity ,<span class="at">y=</span>log_displaced), <span class="at">color=</span><span class="st">"grey90"</span>, <span class="at">alpha=</span><span class="fl">0.8</span>)<span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d</span>(<span class="fu">aes</span>(<span class="at">x=</span>Severity ,<span class="at">y=</span>log_displaced), <span class="at">color=</span><span class="st">"cornflowerblue"</span>) <span class="sc">+</span> </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tufte</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1525 rows containing non-finite values (`stat_density2d()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>flood_point_data)  <span class="sc">+</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>Severity ,<span class="at">y=</span>log_dead), <span class="at">color=</span><span class="st">"grey90"</span>, <span class="at">alpha=</span><span class="fl">0.8</span>)<span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d</span>(<span class="fu">aes</span>(<span class="at">x=</span>Severity ,<span class="at">y=</span>log_dead), <span class="at">color=</span><span class="st">"cornflowerblue"</span>) <span class="sc">+</span> </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tufte</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1554 rows containing non-finite values (`stat_density2d()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(flood_point_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 14 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -45.3489 ymin: -25.8693 xmax: 124.606 ymax: 35.8142
+CRS:           NA
+       Began      Ended ID GlideNumber         Country OtherCountry      Area
+1 1985-01-01 1985-01-05  1           0         Algeria            0  92615.67
+2 1985-01-15 1985-02-02  2           0          Brazil            0 678498.82
+3 1985-01-20 1985-01-21  3           0     Phillipines            0  12846.03
+4 1985-02-04 1985-02-18  4           0       Indonesia            0  16542.12
+5 1985-02-09 1985-02-11  5           0      Mozambique            0  20082.21
+6 1985-02-16 1985-02-28  6           0 Comoros islands            0   1035.61
+  Validation Dead Displaced        MainCause Severity log_dead log_displaced
+1       News   26      3000       Heavy rain        1 1.414973      3.477121
+2       News  229     80000       Heavy rain        2 2.359835      4.903090
+3       News   43       444  Torrential rain        1 1.633468      2.647383
+4       News   21       300  Torrential rain        1 1.322219      2.477121
+5       News   19         0       Heavy rain        2 1.278754          -Inf
+6       News    2     35000 Tropical cyclone        1 0.301030      4.544068
+                   geometry
+1   POINT (5.23026 35.8142)
+2 POINT (-45.3489 -18.7111)
+3   POINT (122.974 10.0207)
+4   POINT (124.606 1.01489)
+5  POINT (32.3491 -25.8693)
+6    POINT (43.36 -11.6516)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>non_spatial_version_data <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(flood_point_data)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>first_date <span class="ot">&lt;-</span> <span class="fu">min</span>(non_spatial_version_data[,<span class="dv">1</span>])</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>last_date <span class="ot">&lt;-</span> <span class="fu">max</span>(non_spatial_version_data[,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>non_spatial_version_data &lt;- as.data.frame(flood_point_data): The spatial data flood_point_data is converted to a regular non-spatial dataframe, and stored in the variable non_spatial_version_data.</li>
+<li>first_date &lt;- min(non_spatial_version_data[,1]): It’s assumed that the first column of non_spatial_version_data contains the date data. The minimum date (earliest date) in this column is identified and stored in the variable first_date.</li>
+<li>last_date &lt;- max(non_spatial_version_data[,1]): Similarly, the maximum date (most recent date) in the first column is identified and stored in the variable last_date.</li>
+</ul>
+<p>This code effectively extracts the range of dates present in the flood_point_data. However, a more robust approach might be to use column names rather than column indices for clarity and to avoid potential errors if the structure of the dataframe changes in the future.</p>
+<div class="cell" data-hash="Pull_flood_data_cache/html/unnamed-chunk-7_1d48563436a665211b1909a5e6358a49">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>death_series <span class="ot">&lt;-</span> <span class="fu">ts</span>(<span class="fu">st_drop_geometry</span>(flood_point_data[,<span class="dv">9</span>]), <span class="at">frequency =</span> <span class="dv">365</span>, <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">1985</span>, <span class="dv">1</span>), <span class="at">end =</span> <span class="fu">c</span>(<span class="dv">2021</span>,<span class="dv">300</span>))</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(death_series)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time Series:
+Start = c(1985, 1) 
+End = c(1985, 6) 
+Frequency = 365 
+[1]  26 229  43  21  19   2</code></pre>
+</div>
+</div>
+<ul>
+<li>st_drop_geometry(flood_point_data[,9]): Before creating the time series, you’re using the st_drop_geometry function from the sf package to drop spatial information from the data. You’re then selecting the 9th column, which presumably contains death data (based on our prior discussions). However, it would be more robust to reference the column by name instead of its index to ensure the correct data is being selected.</li>
+<li>ts(…, frequency = 365, start = c(1985, 1), end = c(2021,300)): This initializes a time series (ts) object. The frequency argument is set to 365, suggesting that the data is daily. The start argument specifies that the series begins in January 1985. The end argument, however, seems to have an oversight; the day value of 300 is out of range for typical calendar days. Perhaps you meant to represent the 300th day of 2021, but typically, the ts function expects the format c(year, frequency_value), with the frequency value not exceeding the specified frequency (in this case, 365).</li>
+<li>death_series: Displays the created time series object.</li>
+</ul>
+<div class="cell" data-hash="Pull_flood_data_cache/html/unnamed-chunk-8_c0db41d87649e7d7afed0d87cc8a4137">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>death_series <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">decompose</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>() <span class="sc">+</span> <span class="fu">theme_tufte</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>death_series %&gt;% decompose(): The decompose() function from the base R stats package breaks a time series into its component parts: trend, seasonal, and random (also called “remainder” or “error”). This allows for a clearer understanding of the underlying patterns in the data.</li>
+<li>autoplot(): This function from the forecast package provides automatic ggplot2-based visualization of time series objects. When used on the output of decompose(), it generates a multipanel plot showing the observed, trend, seasonal, and remainder components of the time series.</li>
+<li>theme_tufte(): This adds the Tufte theme (from the ggthemes package) to the plot. As previously mentioned, Edward Tufte’s design principles prioritize clarity and minimalism, and this theme helps enhance the readability of the plot by reducing non-data ink.</li>
+</ul>
+<div class="cell" data-hash="Pull_flood_data_cache/html/unnamed-chunk-9_a930b2a20c263993e63d5a5dc0e0ad17">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>death_series <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">stl</span>(<span class="at">s.window =</span> <span class="st">"periodic"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>() <span class="sc">+</span> <span class="fu">theme_tufte</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>death_series %&gt;% stl(s.window = “periodic”): The stl() function decomposes the time series using LOESS. It’s a more flexible method compared to the traditional decompose() function, especially when dealing with non-linear trends or changing seasonal patterns. The s.window = “periodic” argument indicates that the seasonal component should be treated as periodic, implying a stable seasonal pattern throughout the series.</li>
+<li>autoplot(): Again, this function from the forecast package provides an automatic ggplot2-based visualization of time series objects. When applied to the output of stl(), it creates a multipanel plot displaying the observed series, trend component, seasonal component, and remainder (sometimes termed “noise” or “error”).</li>
+<li>theme_tufte(): This overlays the Tufte theme on the plot, providing a minimalist design that emphasizes the data. In essence, this code decomposes the death_series time series using the STL method and visualizes the observed series, its trend, its seasonal patterns, and the remainder, all presented in a clear and minimalist style courtesy of the theme_tufte(). This visualization can be immensely valuable in understanding underlying patterns and variations within time series data.</li>
+</ul>
+<div class="cell" data-hash="Pull_flood_data_cache/html/unnamed-chunk-10_93af5c905a9062e8d99be44596abc79d">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>seasonally_adjusted_max_temp <span class="ot">&lt;-</span> death_series <span class="sc">%&gt;%</span> <span class="fu">stl</span>(<span class="at">s.window=</span><span class="st">'periodic'</span>) <span class="sc">%&gt;%</span> <span class="fu">seasadj</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="Pull_flood_data_cache/html/unnamed-chunk-11_b0f8d1fa67cb67b2b3993f086be0f71f">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>death_series <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">stl</span>(<span class="at">s.window =</span> <span class="st">"periodic"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>() <span class="sc">+</span> <span class="fu">theme_tufte</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="Pull_flood_data_cache/html/unnamed-chunk-12_c94cd1d70954d36dc6ae8b0ce3258e5d">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>arima_max_temp <span class="ot">&lt;-</span> <span class="fu">auto.arima</span>(seasonally_adjusted_max_temp)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>arima_max_temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Series: seasonally_adjusted_max_temp 
+ARIMA(0,0,0) with non-zero mean 
+
+Coefficients:
+          mean
+      139.4875
+s.e.   29.0630
+
+sigma^2 = 11352339:  log likelihood = -128236
+AIC=256476   AICc=256476   BIC=256491</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="Pull_flood_data_cache/html/unnamed-chunk-13_605fd5b86e0742fb5c8768c5ff85e5d1">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(<span class="fu">cpt.meanvar</span>(seasonally_adjusted_max_temp), <span class="at">cpt.colour =</span> <span class="st">'blue'</span>, <span class="at">cpt.linetype =</span> <span class="st">'solid'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="Pull_flood_data_cache/html/unnamed-chunk-14_eef8502ddf153f542927c4dcf9dad1a1">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>arima_max_temp <span class="sc">%&gt;%</span> <span class="fu">forecast</span>(<span class="at">h=</span><span class="dv">2400</span>) <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pull_flood_data_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
