@@ -20,6 +20,7 @@ nav:
     - CyVerse Discovery Environment: 1_GIT_on_the_Cloud/collaboration.md
     - Connecting Cyverse to Github: 1_GIT_on_the_Cloud/github_cyverse.md
     - Environmental Data Science in the Cloud: code_for_building_cube/stac_mount_save.md
+    - Environmental Data Science in the Cloud (Python): 3_EDS_Data_Cube/translate_vsi_to_python.ipynb
   - Data Cubes: 
     - Why Data Cubes?: Why data cubes/Why data cubes.md
   - Data:
