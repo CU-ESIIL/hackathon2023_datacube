@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/685141441.svg)](https://zenodo.org/doi/10.5281/zenodo.11167021)
+
 # ESIIL Virtual Hackathon 2023
 
 **Are you a pioneer in your field?** Excited about Environmental Data Science? Ready to be part of something bigger? Then grab your laptop, your expertise, and your passion for making the world a better place and join us for **Environmental MosAIc**, ESIIL’s first Hackathon. Together, we're not just learning and using AI; we are unlocking a greener and more inclusive tomorrow.
